@@ -14,7 +14,7 @@ const landingpageBuildConfig = new BuildConfig()
 	.withModulesRootPath("modules")
 	.withSourceMapEnabled(true)
 	.withModules(new ModuleConfig().withName("main").withPath("main.js"));
-/*
+/*aaa
 const websiteBuildConfig = new BuildConfig()
   .withName('master-template-cx-22.0-website')
   .withVersion(package.version)

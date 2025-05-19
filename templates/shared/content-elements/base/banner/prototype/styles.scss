@@ -1,0 +1,68 @@
+@import "../../../../styles/properties";
+
+@mixin styles($id: 'banner-8eHkFN', $overlay-primary-color: $primary, $overlay-secondary-color: $secondary, $overlay-dark: $dark, $overlay-light: $light, $height: $bannerHeight) {
+  .bsi-element-#{$id} {
+    min-height: $height !important;
+    // padding: 80px;
+
+    .bsi-banner {
+      min-height: $height !important;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .bsi-banner-dz {
+      z-index: 2;
+      &.container{
+        padding: 80px !important;
+        @media(max-width: 767px){
+          padding: 30px !important;
+        }
+      }
+    }
+
+    $vAlign: (top: flex-start, center: center, bottom: flex-end);
+    @each $key, $value in $vAlign {
+      &.bsi-vertical-align-#{$key} {
+        .bsi-vertical-align {
+          align-self: $value;
+        }
+      }
+    }
+
+    $hAlign: (left: flex-start, center: center, right: flex-end);
+    @each $key, $value in $hAlign {
+      &.bsi-horizontal-align-#{$key} {
+        .bsi-horizontal-align {
+          justify-content: $value;
+        }
+
+        .bsi-vertical-align {
+          text-align: $key;
+        }
+      }
+    }
+
+    $colors: ("primary-color": $overlay-primary-color, "secondary-color": $overlay-secondary-color, "dark": $overlay-dark, "light": $overlay-light);
+    @each $name, $color in $colors {
+      &.bsi-overlay-#{$name} {
+        background-color: $color;
+      }
+    }
+    @for $i from 0 through 100 {
+      @if $i % 10 == 0 {
+        $opacity-percentage: $i*1%;
+        &.bsi-overlay-opacity-#{$i} > img {
+          opacity: 100%-$opacity-percentage;
+        }
+      }
+    }
+
+    &.bsi-overlay-hide {
+      background-color: unset;
+      > img {
+        opacity: unset;
+      }
+    }
+  }
+}

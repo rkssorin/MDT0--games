@@ -1,0 +1,17 @@
+{% apply spaceless %}
+    {% set colThreeAlignment = (colThreeAlignment ?: properties.colThreeAlignment) ?: 'bsi-col-align-left' %}
+
+    <div data-bsi-element="col-three-MEOl1p" class="bsi-element-col-three-MEOl1p bsi-column-element container bsi-ratio-4-4-4 bsi-space-around-visible bsi-gaps-visible {{ colThreeAlignment }} bsi-bg-color-transparent bsi-opacity-100 bsi-gradient-hide bsi-mobile-break">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4 bsi-column bsi-column-1" data-bsi-dropzone="col-three-dropzone-1-gZDmPP">
+                {% block col_three_dropzone_1 %}{% endblock %}
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 bsi-column bsi-column-2" data-bsi-dropzone="col-three-dropzone-2-9kRnnj">
+                {% block col_three_dropzone_2 %}{% endblock %}
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 bsi-column bsi-column-3" data-bsi-dropzone="col-three-dropzone-3-M3XKDm">
+                {% block col_three_dropzone_3 %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endapply %}

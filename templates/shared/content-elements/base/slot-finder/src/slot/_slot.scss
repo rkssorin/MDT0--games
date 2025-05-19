@@ -1,0 +1,109 @@
+@mixin styles {
+  .slots-day {
+    display: grid;
+    gap: var(--default-gap);
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    overflow: auto;
+
+    &:has(.no-slots) {
+      display: flex;
+    }
+  }
+
+  .slots-week {
+    display: grid;
+    grid-template-rows: max-content 1fr;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    gap: var(--default-gap);
+    container-type: inline-size;
+
+    .day {
+      font-size: small;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      position: sticky;
+      top: 0;
+      transform: translate(0, -0.625em);
+      background-color: white;
+      padding-top: 0.625em;
+      padding-bottom: 1em;
+      z-index: 1;
+
+      .weekday {
+        font-weight: bold;
+      }
+
+      .date {
+        font-size: smaller;
+      }
+    }
+
+    .slots {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--default-gap);
+    }
+  }
+
+  @container (max-width: 523px) {
+    .slots-week .weekday.long,
+    .slots-week .duration,
+    .slots-week .to-time {
+      display: none;
+    }
+  }
+
+  @container (min-width: 524px) {
+    .slots-week .weekday.short {
+      display: none;
+    }
+  }
+
+  .slot {
+    border: 1px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    padding: 0.75em;
+    font-size: small;
+    display: flex;
+    flex-direction: column;
+    gap: var(--default-gap);
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    &.selected {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .time {
+      font-weight: bold;
+      display: flex;
+    }
+
+    .time > .to-time::before {
+      content: "\a0-\a0";
+    }
+
+    .duration {
+      display: flex;
+      align-items: center;
+      font-size: smaller;
+    }
+  }
+
+  .no-slots {
+    background: gainsboro;
+    border-radius: var(--border-radius);
+    width: 100%;
+    height: 50px;
+    display: grid;
+    place-content: center;
+  }
+}

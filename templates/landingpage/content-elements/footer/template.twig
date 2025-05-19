@@ -1,0 +1,35 @@
+{% apply spaceless %}
+{% set footerColor = (footerColor ?: properties.footerColor) ?: 'bg-hell-grau' %}
+{% set footerGradient = (footerGradient ?: properties.footerGradient) ?: 'bg-gradient' %}
+
+<div data-bsi-element="footer-nJDYZP" class="element-footer-nJDYZP d-block {{ footerColor }} {{ footerGradient }} pt-5 pb-5">
+	<div data-bsi-dropzone="footer-dropzone-rR98ys">
+		{% block footer %}
+			<div data-bsi-element="col-three-MEOl1p" class="bsi-element-col-three-MEOl1p bsi-column-element container bsi-ratio-4-4-4 bsi-space-around-visible bsi-gaps-visible {{ colThreeAlignment }} bsi-bg-color-transparent bsi-opacity-100 bsi-gradient-hide bsi-mobile-break">
+				<div class="row">
+					<div class="col-sm-12 col-md-6 col-lg-4 bsi-column bsi-column-1" data-bsi-dropzone="col-three-dropzone-1-gZDmPP">
+						{% block col_three_dropzone_1 %}
+							{% include '../../../shared/content-elements/logo/template.twig' only %}
+
+						{% endblock %}
+					</div>
+					<div class="col-sm-12 col-md-6 col-lg-4 bsi-column bsi-column-2" data-bsi-dropzone="col-three-dropzone-2-9kRnnj">
+						{% block col_three_dropzone_2 %}
+							{# {% include '../../col-two-footer-logo/prototype/template.twig' only %} #}
+							{% include '../../../shared/content-elements/base/text/prototype/template.twig' with {text: 'BMW Group <br>Financial Services<br>Industriestrasse 20<br>8157 Dielsdorf'} %}
+						{% endblock %}
+					</div>
+					<div class="col-sm-12 col-md-6 col-lg-4 bsi-column bsi-column-3" data-bsi-dropzone="col-three-dropzone-3-M3XKDm">
+						{% block col_three_dropzone_3 %}
+							{% include '../../../shared/content-elements/base/text/prototype/template.twig' with {text: 'Telefon: <a href="tel:+41 58 269 65 54">+41 58 269 65 54</a><br>
+Mail: <a href="mailto:melanie.felice@bmw.ch">melanie.felice@bmw.ch</a><br>
+Web: <a href="https://www.bmw.ch/fs" target="_blank">www.bmw.ch/fs</a>'} %}
+							{# {% include '../../col-two-footer-logo/prototype/template.twig' only %} #}
+						{% endblock %}
+					</div>
+				</div>
+			</div>
+		{% endblock %}
+	</div>
+</div>
+{% endapply %}

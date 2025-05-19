@@ -1,0 +1,82 @@
+@mixin styles($id: 'webcam-image-upload-wHe4UP') {
+    .bsi-element-#{$id} {
+        width: 100%;
+        text-align: center;
+
+        .bsi-video-btn {
+            display: block;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+        }
+
+        .camera {
+            padding: 0;
+            position: relative;
+
+            * {
+                position: relative;
+            }
+
+            .camera-button {
+                display: block;
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 3rem;
+                margin: auto;
+                width: 6rem;
+                height: 6rem;
+                border: 3px solid var(--bs-btn-border-color);
+                border-radius: 3rem;
+                background: var(--bs-btn-bg);
+                color: white;
+                text-align: center;
+                padding: 0;
+
+                &.camera-button-capture {
+                    font-size: 2rem;
+                }
+
+                &.camera-button-undo {
+                    font-size: 3rem;
+                }
+
+                :hover {
+                    border-color: var(--bs-btn-hover-border-color);
+                    background-color: var(--bs-btn-hover-bg);
+                    color: var(--bs-btn-hover-color);
+                }
+
+                :active {
+                    border-color: var(--bs-btn-active-border-color);
+                    background-color: var(--bs-btn-active-bg);
+                    color: var(--bs-btn-active-color);
+                }
+            }
+        }
+
+        .card {
+            max-width: 700px;
+            margin: auto;   
+
+            i {
+                color: var(--bs-primary);
+                font-size: 10rem;
+                line-height: 1;
+            }
+        }
+        
+        .text-danger {
+            list-style-type: none;
+        }
+    }
+
+    .bsi-ce-preview-mode, .bsi-ce-edit-mode {
+        .bsi-element-#{$id} .card .bsi-ce-hide {
+            display: none;
+        }
+    }
+}

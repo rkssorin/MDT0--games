@@ -1,0 +1,18 @@
+{% macro render(elementId = null, dropzoneId = null) %}{% apply spaceless %}
+    {% deprecated 'The usage of "element.render(...)" is deprecated, use "include ... with {...}" instead. For detailed information, visit: https://github.com/bsi-software/bsi-cx-design-master-template-web/blob/main/MIGRATION_GUIDE.md"' %}
+    {% include './template.twig' %}
+{% endapply %}{% endmacro %}
+
+{% apply spaceless %}
+    {% set multiColumnElementId = elementId ?: 'multi-column-VxWXpr' %}
+    {% set multiColumnDropzoneId = dropzoneId ?: 'multi-column-dropzone-olNcOu' %}
+
+    <div data-bsi-element="{{ multiColumnElementId }}" class="{{ 'bsi-element-' ~ multiColumnElementId }} bsi-multi-col-element px-0 bsi-col-auto bsi-default-wide">
+        <div class="d-flex flex-wrap bsi-multi-col" data-bsi-dropzone="{{ multiColumnDropzoneId }}">
+            {% block multi_column_dropzone %}
+                {% include '../../form-field/template.twig' %}
+                {% include '../../form-field/template.twig' %}
+            {% endblock %}
+        </div>
+    </div>
+{% endapply %}

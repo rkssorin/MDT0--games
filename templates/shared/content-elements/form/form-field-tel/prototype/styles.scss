@@ -1,0 +1,45 @@
+$flagsImagePath: '~intl-tel-input/build/img/';
+
+@mixin styles($id: 'form-field-tel-fKUxNS') {
+  .bsi-element-#{$id}.bsi-form-tel-input {
+    .iti__flag {
+      background-image: url($flagsImagePath + "flags.png");
+    }
+
+    .iti {
+      margin-top: 0.5rem;
+      input.bsi-form-tel-input-element {
+        margin-top: 0 !important;
+      }
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .iti__flag {
+        background-image: url($flagsImagePath + "flags@2x.png");
+      }
+    }
+
+    &.bsi-element-width-full .iti {
+      width: 100% !important;
+      display: block;
+    }
+
+    .bsi-form-tel-input-element {
+      width: 100% !important;
+    }
+
+    .bsi-tel-input-error-invalid {
+      margin-top: 0.25rem;
+      font-size: 0.875em;
+      color: #dc3545;
+    }
+
+    .form-floating .form-label {
+      margin-left: 40px;
+    }
+
+    .iti__selected-flag {
+      background-color: rgba(0, 0, 0, 0.05) !important;
+    }
+  }
+}

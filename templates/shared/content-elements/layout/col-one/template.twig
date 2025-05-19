@@ -1,0 +1,11 @@
+{% apply spaceless %}
+    {% set colOneAlignment = (colOneAlignment ?: properties.colOneAlignment) ?: 'bsi-col-align-left' %}
+
+    <div data-bsi-element="col-one-l2ZclN" class="bsi-element-col-one-l2ZclN bsi-column-element container bsi-space-around-visible bsi-gaps-visible {{ colOneAlignment }} bsi-bg-color-transparent bsi-opacity-100 bsi-gradient-hide">
+        <div class="row">
+            <div class="col bsi-column" data-bsi-dropzone="col-one-dropzone-OzGBbS">
+                {% block col_one_dropzone %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endapply %}

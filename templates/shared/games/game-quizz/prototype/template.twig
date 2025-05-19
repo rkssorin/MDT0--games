@@ -1,0 +1,269 @@
+{% macro render(elementId = null, imagePartIdImage1 = null, imagePartIdImage2 = null, imagePartIdImage3 = null, imagePartIdImage4 = null, imageSrcDesktop = null, imgSrcMobile = null, imgSrc1 = null, imgSrc2 = null, imgSrc3 = null, imgSrc4 = null, textPartIdWelcome = null, textPartIdWelcome = null, textPartIdBadgeText = null, textPartIdIntroTop = null, textPartIdIntroTopDesktop = null, textPartIdIntroTopMobile = null, textPartIdTextSmallDescription = null, textPartIdTextPfuiPfui = null, textPartIdTextHuiHui = null, textPartIdTextVielenDank = null, elementPartIdButtonReset = null, elementPartIdButtonSendToForm = null, elementPartIdButtonClose2 = null, elementPartIdButtonClose2 = null) %}
+	{% apply spaceless %}
+	{% deprecated 'The usage of "element.render(...)" is deprecated, use "include ... with {...}" instead. For detailed information, visit: https://github.com/bsi-software/bsi-cx-design-master-template-web/blob/main/MIGRATION_GUIDE.md"' %}
+	{% include './template.twig' %}
+	{% endapply %}
+{% endmacro %}
+
+{% apply spaceless %}
+{% set gameElementId = elementId ?: 'game-quiz-game-zOsd2' %}
+
+
+{#plain-text#}
+{% set textPartIdQuizStart = textPartIdQuizStart ?: 'title-start-part-4b0a' %}
+{% set smallTextPartIdDescription = smallTextPartIdDescription ?: 'text-part-Fjse59' %}
+{% set startButtonText = textPartIdstartButtonText ?: 'title-start-part-4b0a' %}
+{% set quizQuestion = textPartIdQuizQuestion ?: 'title-start-part-4b0a' %}
+{% set formFieldTimeout = formfiledPartIdTimeout ?: 'form-field-wuizz' %}
+
+{% set htmlPartIdGvr = htmlPartIdGvr ?: 'html-part-OrXIAg' %}
+{% set htmlPartIdGap = htmlPartIdGap ?: 'html-part-OrXIAg' %}
+
+{% set radioElementPartId = radioElementPartId ?: 'radio-part-I0iU7X4' %}
+
+{% set textTitleBlueSection = textTitlePartIdBlueSection ?: 'title-start-part-4b0a' %}
+{% set textConentBlueSection = textContentPartIdBlueSection ?: 'text-part-Fjse59' %}
+{% set succesImagePartId = succesImagePartId ?: 'figure-part-image-JoCwpV' %}
+
+{% set textTitleBlueSection2 = textTitlePartIdBlueSection2 ?: 'title-start-part-4b0a' %}
+{% set textConentBlueSection2 = textContentPartIdBlueSection2 ?: 'text-part-Fjse59' %}
+{% set succesImagePartId2 = succesImagePartId2 ?: 'figure-part-image-JoCwpV' %}
+
+{% set textTitleBlueSection3 = textTitlePartIdBlueSection3 ?: 'title-start-part-4b0a' %}
+{% set textConentBlueSection3 = textContentPartIdBlueSection3 ?: 'text-part-Fjse59' %}
+{% set succesImagePartId3 = succesImagePartId3 ?: 'figure-part-image-JoCwpV' %}
+
+{% set textTitleBlueSection4 = textTitlePartIdBlueSection4 ?: 'title-start-part-4b0a' %}
+{% set textConentBlueSection4 = textContentPartIdBlueSection4 ?: 'text-part-Fjse59' %}
+{% set succesImagePartId4 = succesImagePartId4 ?: 'figure-part-image-JoCwpV' %}
+
+{#########}
+
+
+{# {% set imagePartIdImageBulb1 = imagePartIdImageBulb1 ?: 'figure-part-image-JoCwpV' %} #}
+{# {% set textAnsw1 = textPartIdAnsw1 ?: 'text-part-Fjse59' %}
+{% set elementPartIdButtonAnsw1 = elementPartIdButtonAnsw1 ?: 'button-part-0Cq8Xc' %}
+{% set gameImageSrcBulb1 = gameImageSrcBulb1 ?: bsi_cx_asset('../../../../static/game-quizz/awareness.svg') %} #}
+
+{% set successImageSrc = successImageSrc ?: bsi_cx_asset('../../../static/game-quizz/bmw-green.jpg') %}
+{% set successImageSrc2 = successImageSrc2 ?: bsi_cx_asset('../../../static/game-quizz/bmw-blink.gif') %}
+
+	<div x-data="gameQuiz" x-init="initGameQuiz" class="content-element image-wrapper image-title-cta flip-cards-christmas bsi-element-{{gameElementId}}" data-bsi-element="{{gameElementId}}"> <div class="row">
+
+
+		<div class="flex">
+			<div class="element">
+
+				<div class="second_phase_container">
+
+					<div class="game_section_container">
+						<div class="blue_section">
+							<div class="blue_section_left">
+								<div class="blue_section_title">
+									<h1 data-bsi-element-part="{{textPartIdQuizStart}}">Starten Sie das Quiz</h1>
+								</div>
+								<div class="blue-section-content">
+									<div class="description-text wysiwyg" data-bsi-element-part="{{smallTextPartIdDescription}}" data-bsi-multiline="true">
+										Beantworten Sie die Quizfrage korrekt und nehmen Sie am Gewinnspiel teil. Jede richtige Antwort erhöht Ihre Chancen auf den Hauptpreis.<br/>
+										Viel Glück!
+									</div>
+								</div>
+							</div>
+							<div class="blue_section_right">
+								<div class="start_button button" data-bsi-element-part="{{startButtonText}}">Start</div>
+							</div>
+						</div>
+						<div class="timer_section">
+							<div id="progressbar">
+								<span id=""></span>
+							</div>
+						</div>
+						<div class="answers_container">
+							<div class="bluruiema">
+								<div class="the_question">
+									<h2 data-bsi-element-part="{{quizQuestion}}" class="title-color">{Welches Wort beschreibt das Soundsystem, das in der neuen BMW M-Serie eingebaut ist?}</h2>
+								</div>
+								<div class="the_answers">
+
+
+									<div class="content-element form answers_form">
+
+										<form class="form form-wrapper" id="answers-form">
+											<div data-bsi-element-part="{{formFieldTimeout}}" class="form-field u-hide">
+												<label class="label">Label</label>
+												<input type="text" value="0" name="timeout"/>
+											</div>
+
+											<div class="row">
+												<ul class="form-validation" data-bsi-form-validation="">
+													<li class="form-validation-item" data-bsi-form-validation-item=""></li>
+												</ul>
+												<div class="form-content">
+
+													<div
+														class="form-field-container form-radio inline_radio">
+														{#####}
+
+														<div class="mb-2 bsi-form-element bsi-form-radio-element bsi-form-flex-label bsi-radio-block bsi-radio-default" data-bsi-element-part="{{ radioElementPartId }}">
+															<div class="bsi-form-input-element">
+																<label class="form-label pt-0" style="display: none;"></label>
+																<div data-bsi-radio-group="" class="form-radio">
+																	<div class="form-check" data-bsi-radio-item="">
+																		<input class="form-check-input" type="radio" name="radio" id="radio1">
+																		<label class="form-check-label" for="radio1">Radio-Button 1</label>
+																	</div>
+																</div>
+
+															</div>
+														</div>
+
+
+													</div>
+
+												</div>
+												<div class="form-button-bar">
+													<div class="form-button-container submit">
+														<input type="submit" class="form-button send" value="Senden"/>
+													</div>
+													<div class="form-button-container reset">
+														<input type="reset" class="form-button reset" value="Zurücksetzen" disabled/>
+													</div>
+												</div>
+											</div>
+										</form>
+
+									</div>
+								</div>
+
+								<div class="widget-html" data-bsi-element-part="{{htmlPartIdGap}}">
+									<input type="hidden" value="[Game already Played]" id="GaP">
+								</div>
+								<div class="widget-html" data-bsi-element-part="{{htmlPartIdGvr}}">
+									<input type="hidden" value="{getQuestion}" id="getQuestion">
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--  -->
+					<!--  -->
+					<!--  -->
+					<!--  -->
+					<!--  -->
+						<div class="game_section_container u-hide" id="success_1"> <div class="blue_section">
+							<div class="blue_section_left">
+								<div class="blue_section_title">
+									<h1 data-bsi-element-part="{{textTitleBlueSection}}">Ihre Antwort ist richtig!</h1>
+								</div>
+								<div class="blue-section-content">
+									<div class="description-text wysiwyg" data-bsi-element-part="{{textConentBlueSection}}">
+										Herzliche Gratulation! Wir fühlen uns geehrt, mit Ihnen einen wahren BMW Profi zu unserer Kundschaft zählen zu dürfen.<br/>
+										Spielen Sie auch morgen wieder, um Ihre Chance auf den Hauptpreis zu erhöhen.
+									</div>
+								</div>
+							</div>
+							<div class="blue_section_right">
+								<div class="bravo_car_icon icons_right">Bravo!</div>
+							</div>
+						</div>
+
+						<div class="answers_container no-padding-around">
+
+							<div class="game_large_image">
+								<img src="{{successImageSrc}}" data-bsi-element-part="{{succesImagePartId}}" alt="">
+							</div>
+						</div>
+					</div>
+
+					<div class="game_section_container u-hide" id="success_2">
+						<div class="blue_section">
+							<div class="blue_section_left">
+								<div class="blue_section_title">
+									<h1 data-bsi-element-part="{{textTitleBlueSection2}}">BRAVO!</h1>
+								</div>
+								<div class="blue-section-content">
+									<div class="description-text wysiwyg" data-bsi-element-part="{{textConentBlueSection2}}">
+										Mit Ihrer richtigen Antwort und einer Extraportion Glück gewinnen Sie einen Sofortpreis!
+										<br/>
+										Sie erhalten in Kürze eine Bestätigung per E-Mail.
+										<br/>
+										Machen Sie morgen wieder mit, um Ihre Chance auf den Hauptpreis zu erhöhen.
+									</div>
+								</div>
+							</div>
+							<div class="blue_section_right">
+								<div class="success2_icon icons_right">Super!</div>
+							</div>
+						</div>
+
+						<div class="answers_container no-padding-around">
+							<div class="game_large_image">
+								<img src="{{successImageSrc}}" data-bsi-element-part="{{succesImagePartId2}}" alt="">
+							</div>
+						</div>
+					</div>
+
+					<div class="game_section_container u-hide" id="didnt-win">
+						<div class="blue_section">
+							<div class="blue_section_left">
+								<div class="blue_section_title">
+									<h1 data-bsi-element-part="{{textTitleBlueSection3}}">Leider falsch!
+									</h1>
+								</div>
+								<div class="blue-section-content">
+									<div class="description-text wysiwyg" data-bsi-element-part="{{textConentBlueSection3}}">
+										Die richtige Antwort lautet: {richtigeantwort}
+										<br/>
+										Versuchen Sie Ihr Glück morgen wieder! Jede richtige Antwort erhöht die Chance, den Hauptpreis zu gewinnen.
+
+									</div>
+								</div>
+							</div>
+							<div class="blue_section_right">
+								<div class="didnt_win_icon icons_right">Schade!</div>
+							</div>
+						</div>
+
+						<div class="answers_container no-padding-around blue_bg_didnt">
+
+							<div class="game_large_image ">
+								<img src="{{successImageSrc}}" data-bsi-element-part="{{succesImagePartId3}}" alt="">
+							</div>
+						</div>
+					</div>
+
+					<div class="game_section_container u-hide" id="time-out">
+						<div class="blue_section">
+							<div class="blue_section_left">
+								<div class="blue_section_title">
+									<h1 data-bsi-element-part="{{textTitleBlueSection4}}">Die Zeit für diese Frage ist leider abgelaufen!
+									</h1>
+								</div>
+								<div class="blue-section-content">
+									<div class="large_description2 description-text" data-bsi-element-part="{{textConentBlueSection4}}">
+										Sie haben bei jeder Frage 15 Sekunden Zeit, um die richtige Antwort einzugeben. Zum Vergleich: In derselben Zeit beschleunigt der BMW i5 M60 fast vier Mal von 0 auf 100 km/h.
+										<br/>
+										Versuchen Sie Ihr Glück morgen wieder!
+									</div>
+								</div>
+							</div>
+							<div class="blue_section_right">
+								<div class="time-out_icon icons_right">Ohh!</div>
+							</div>
+						</div>
+
+						<div class="answers_container no-padding-around gray_bg_timeout">
+
+							<div class="game_large_image">
+								<img src="{{successImageSrc2}}" data-bsi-element-part="{{succesImagePartId4}}" alt="">
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endapply %}

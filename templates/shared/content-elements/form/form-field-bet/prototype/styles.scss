@@ -1,0 +1,210 @@
+@import "flatpickr/dist/flatpickr";
+@import "../../../../styles/properties";
+
+
+@mixin styles($id: 'form-field-betnumber') {
+  :root{
+    --bs-light: #ffffff;
+    --swiss-yellow: #FFCC00;
+    --swiss-yellow-dark: #EEB23E;
+  }
+  .bsi-element-#{$id} {
+    .flatpickr-input {
+      -webkit-appearance: none;
+
+      &.form-control[readonly] {
+        background-color: #fff;
+      }
+    }
+
+    .format-invalid-feedback {
+      margin-top: 0.25rem;
+      font-size: 11pt;
+      color: #dc3545;
+    }
+
+    input[type=range] {
+      border: none;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    input[type=file]::file-selector-button,
+    input[type=file]::-webkit-file-upload-button {
+      background-color: rgba(0, 0, 0, 0.05) !important;
+      border: none;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05) !important;
+      }
+    }
+  }
+}
+
+.was-validated .bsi-element-form-field-betnumber .form-control:valid,
+.bsi-element-form-field-betnumber .form-control.is-valid {
+  border-color: var(--bs-form-valid-border-color);
+  padding-right: 0;
+  background-image: none;
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: 0;
+}
+
+.bet_container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 950px;
+  background-color: var(--swiss-yellow);
+  padding: 20px;;
+  border-radius: 20px;
+  margin: 0 auto;
+  .score-modifier{
+    font-size: 40px;
+    cursor: pointer;
+    margin: 15px 0;
+    display: block;
+  }
+  label{
+    font-weight: bold;
+    display: block;
+    font-size: 35px !important;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    height: 100px;
+    line-height: 1.2 !important;
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+    @media(max-width: $lg - 1px){
+      margin-bottom: 20px;;
+      font-size: 25px !important;
+      height: 70px;;
+    }
+    @media(max-width: ($sm - 1)){
+      margin-bottom: 20px;;
+      font-size: 18px !important;
+      height: 50px;;
+    }
+  }
+
+  .hometeam,
+  .visitors{
+    min-width: 250px;
+    max-width: 250px;
+    text-align: center;
+    position: relative;
+    color: #444;
+    @media(max-width: $lg - 1px){
+      min-width: 160px;
+      max-width: 160px;
+    }
+    @media(max-width: ($sm - 1)){
+      min-width: 120px;
+      max-width: 120px;
+    }
+    @media(max-width: ($xs - 1)){
+      min-width: 95px;
+      max-width: 95px;
+    }
+    img{
+      width: 60px;;
+      @media(max-width: $lg - 1px){
+        width: 40px;
+      }
+    }
+    input{
+      background-color: var(--bs-light);
+      border: 0 !important;
+      background:  var(--bs-light);
+      width: 214px;
+      height: 214px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 180px;
+      line-height: 1;
+      font-weight: 700;
+      border-radius: 20px !important;
+      padding-right: 0;
+      padding-left: 0;
+      color: #444;
+      &::-webkit-inner-spin-button {
+        position: absolute;
+        top: 0; bottom: 0;
+        right: 0;
+        margin: auto;
+        transform: scale(5);
+        transform-origin: right center;
+        opacity: 0;
+        cursor: pointer;
+        pointer-events: none;
+      }
+      &::-webkit-contacts-auto-fill-button {
+        opacity: 0;
+        pointer-events: none;
+      }
+      @media(max-width: $lg - 1px){
+        width: 160px;
+        font-size: 120px;;
+        height: 160px;
+      }
+      @media(max-width: $lg - 1px){
+        width: 95px;
+        font-size: 50px;
+        height: 95px;
+      }
+    }    
+  }
+  .team_spacer{
+    min-width: 200px;
+    max-width: 200px;
+    text-align: center;
+    font-size: 210px;
+    color: #444444;
+    font-weight: bold;
+    margin-top: 85px;;
+    @media(max-width: $lg - 1px){
+      min-width: 95px;
+      max-width: 95px;
+      margin-top: 95px;;
+      font-size: 110px;
+
+    }
+    @media(max-width: ($sm - 1)){
+      min-width: 30px;
+      max-width: 30px;
+      margin-top: 60px;;
+      font-size: 80px;
+    }
+  }
+  
+  .scoremodif-up,
+  .scoremodif-down{
+    width: 60px;
+    height: 60px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0 auto;
+  }
+  .scoremodif-up{
+    background-image: url("data:image/svg+xml,%3csvg width='90' height='52' viewBox='0 0 90 52' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M77.8322 49.5409C80.3941 52.1027 84.5476 52.1027 87.1094 49.5409C89.6713 46.9791 89.6713 42.8255 87.1094 40.2637L49.4853 2.63957C46.9235 0.0777452 42.7699 0.0777456 40.2081 2.63957C40.1855 2.66217 40.1631 2.68489 40.1409 2.70773L2.58439 40.2642C0.0225668 42.8261 0.0225647 46.9796 2.58439 49.5414C5.14622 52.1032 9.29975 52.1032 11.8616 49.5414L37.069 24.334C41.3648 20.0382 48.3296 20.0382 52.6253 24.334L77.8322 49.5409Z' fill='%23444444'/%3e%3c/svg%3e");
+  }
+  .scoremodif-up:hover{
+    background-image: url("data:image/svg+xml,%3csvg width='90' height='52' viewBox='0 0 90 52' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M77.8322 49.5409C80.3941 52.1027 84.5476 52.1027 87.1094 49.5409C89.6713 46.9791 89.6713 42.8255 87.1094 40.2637L49.4853 2.63957C46.9235 0.0777452 42.7699 0.0777456 40.2081 2.63957C40.1855 2.66217 40.1631 2.68489 40.1409 2.70773L2.58439 40.2642C0.0225668 42.8261 0.0225647 46.9796 2.58439 49.5414C5.14622 52.1032 9.29975 52.1032 11.8616 49.5414L37.069 24.334C41.3648 20.0382 48.3296 20.0382 52.6253 24.334L77.8322 49.5409Z' fill='%23851F41'/%3e%3c/svg%3e");
+  }
+  .scoremodif-down{
+    background-image: url("data:image/svg+xml,%3csvg width='90' height='52' viewBox='0 0 90 52' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.9158 2.26378C9.35398 -0.298045 5.20044 -0.298048 2.63862 2.26378C0.0767895 4.82561 0.0767949 8.97914 2.63862 11.541L40.2628 49.1651C42.8246 51.7269 46.9781 51.7269 49.54 49.1651C49.5626 49.1425 49.585 49.1198 49.6072 49.097L87.1637 11.5405C89.7255 8.97863 89.7255 4.82509 87.1637 2.26327C84.6018 -0.29856 80.4483 -0.298561 77.8865 2.26327L52.6791 27.4707C48.3833 31.7664 41.4185 31.7664 37.1227 27.4707L11.9158 2.26378Z' fill='%23444444'/%3e%3c/svg%3e");
+  }
+  .scoremodif-down:hover{
+    background-image: url("data:image/svg+xml,%3csvg width='90' height='52' viewBox='0 0 90 52' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.9158 2.26378C9.35398 -0.298045 5.20044 -0.298048 2.63862 2.26378C0.0767895 4.82561 0.0767949 8.97914 2.63862 11.541L40.2628 49.1651C42.8246 51.7269 46.9781 51.7269 49.54 49.1651C49.5626 49.1425 49.585 49.1198 49.6072 49.097L87.1637 11.5405C89.7255 8.97863 89.7255 4.82509 87.1637 2.26327C84.6018 -0.29856 80.4483 -0.298561 77.8865 2.26327L52.6791 27.4707C48.3833 31.7664 41.4185 31.7664 37.1227 27.4707L11.9158 2.26378Z' fill='%23851F41'/%3e%3c/svg%3e");
+  }
+
+  .scoremodif-down.disabled, .scoremodif-down.disabled:hover{
+    background-image: url("data:image/svg+xml,%3csvg width='90' height='52' viewBox='0 0 90 52' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.9158 2.26378C9.35398 -0.298045 5.20044 -0.298048 2.63862 2.26378C0.0767895 4.82561 0.0767949 8.97914 2.63862 11.541L40.2628 49.1651C42.8246 51.7269 46.9781 51.7269 49.54 49.1651C49.5626 49.1425 49.585 49.1198 49.6072 49.097L87.1637 11.5405C89.7255 8.97863 89.7255 4.82509 87.1637 2.26327C84.6018 -0.29856 80.4483 -0.298561 77.8865 2.26327L52.6791 27.4707C48.3833 31.7664 41.4185 31.7664 37.1227 27.4707L11.9158 2.26378Z' fill='%23F9B000'/%3e%3c/svg%3e");
+  }
+}

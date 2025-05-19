@@ -1,0 +1,269 @@
+@import "./properties";
+@import "bootstrap/scss/bootstrap";
+
+// Styles used by multiple content elements:
+// Columns
+
+.row > * {
+  padding-right: calc(var(--bs-gutter-x)* 0.625) !important;
+  padding-left: calc(var(--bs-gutter-x)* 0.625) !important;
+}
+.bsi-column-element {
+  &.bsi-space-around-hide {
+    --bs-gutter-x: 0;
+    overflow-x: hidden;
+
+    .row {
+      @media (max-width: ($md - 1px)) {
+        --bs-gutter-x: 0;
+      }
+    }
+  }
+
+  &.bsi-gaps-hide .row {
+    --bs-gutter-x: 0;
+  }
+
+  &.bsi-col-align-center {
+    .bsi-column, .card-body {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    p, h1, h2, h3 {
+      text-align: center;
+    }
+
+    .btn {
+      margin: 0 12px 12px 12px;
+    }
+  }
+
+  &.bsi-col-align-right {
+    .bsi-column, .card-body {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: right;
+    }
+
+    p, h1, h2, h3 {
+      text-align: right;
+    }
+
+    .btn {
+      margin: 0 0 12px 12px;
+    }
+  }
+
+  $colors: ("primary": $primary, "secondary": $secondary, "tertiary": $tertiary, "dark": $dark);
+  @for $i from 10 through 100 {
+    @if $i % 10 == 0 {
+      $opacity-percentage: $i*1%;
+      @each $name, $color in $colors {
+        &.bsi-bg-color-#{$name}.bsi-opacity-#{$i} {
+          .bsi-column {
+            background-color: mix(white, $color, 100%-$opacity-percentage);
+          }
+
+          &.bsi-gradient-to-bottom .bsi-column {
+            background-image: linear-gradient(to bottom, white, mix(white, $color, 100%-$opacity-percentage));
+          }
+
+          &.bsi-gradient-to-top .bsi-column {
+            background-image: linear-gradient(to top, white, mix(white, $color, 100%-$opacity-percentage));
+          }
+
+          &.bsi-gradient-to-bottom-and-top .bsi-column {
+            background-image: linear-gradient(white, mix(white, $color, 100%-$opacity-percentage), white);
+          }
+        }
+      }
+    }
+  }
+}
+#footer{
+  .bsi-element-logo-pm7eOT .figure-img{
+    max-width: 168px;;
+  }
+  .bsi-element-logo-right-pnrt42 .figure-img{
+    max-width: 168px;;
+  }
+  a{
+    color: #494949;
+    text-decoration: none;
+    &:hover{
+      text-decoration: none;
+      text-shadow: 0 0 #000000;
+    }
+  }
+}
+.bg-hell-grau{
+  opacity: 1;
+  background-color: #f3f3f3 !important;
+}
+.divider1px{
+  position: relative;
+  &:before{
+    content: '';
+    background: #D9D9D9;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+  }
+}
+.divider2px{
+  position: relative;
+  &:before{
+    content: '';
+    background: #D9D9D9;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+  }
+}
+.pt-8 {
+  padding-top: 10rem !important;
+}
+.pt-1-5{
+padding-top: 0.938rem !important;
+}
+.pt-3-0{
+  padding-top: 1.875rem !important;
+
+}
+.pt-4-5{
+  padding-top: 2.813rem !important;
+
+}
+.pt-6-0{
+  padding-top: 3.75rem !important;
+
+}
+.bsi-element-col-one-l2ZclN.bsi-column-element.col_border{
+  
+  height: 100%;;
+  .bsi-column{
+    border: 1px solid #d9d9d9;
+    padding: 30px !important; 
+    width: calc(100% - 30px);
+    margin: 0 15px;
+  }
+}
+.bsi-element-col-three-MEOl1p.bsi-column-element.col_border,
+.bsi-element-col-four-yFAGKM.bsi-column-element.col_border{
+  border: 0 !important;
+}
+.bsi-element-col-two-ILRIL0{
+  &.col_border{
+    // border: 1px solid #d9d9d9;
+    height: 100%;;
+    .bsi-column{
+      padding: 30px !important; 
+  
+    }
+  }
+  .bsi-column{
+    .bsi-column-element{
+      height: 100%;
+      .row{
+        height: 100%;
+      }
+    }
+  }
+}
+.bsi-column-element.bsi-bg-color-grau{
+  .bsi-column{
+    width: calc(100% - 30px);
+    margin: 0 15px;
+    @media(max-width: $md - 1px){
+      width: calc(100% - 30px);
+      margin-left: 15px !important;
+      margin-right: 15px !important;
+      margin-bottom: 1rem;
+    }
+  }
+  &.container-fluid{
+    &.bsi-bg-color-grau{
+      .bsi-column{
+        margin: 0;
+        @media(max-width: $md - 1px){
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+        }
+      }
+    }
+  }
+  &.bsi-opacity-100 {
+    .bsi-column{
+      padding: 30px !important; 
+      background-color: #F4F4F4;
+    } 
+  }
+  &.bsi-opacity-90 {
+    .bsi-column{
+      background-color: #f5f5f5;
+      padding: 30px !important; 
+    } 
+  }
+  &.bsi-opacity-80 {
+    .bsi-column{
+      background-color: #f6f6f6;
+      padding: 30px !important; 
+    } 
+  }
+  &.bsi-opacity-70 {
+    .bsi-column{
+      background-color: #f7f7f7;
+      padding: 30px !important; 
+    } 
+  }
+  &.bsi-opacity-60 {
+    .bsi-column{
+      background-color: #f8f8f8;
+      padding: 30px !important; 
+    } 
+  }
+  &.bsi-opacity-50 {
+    .bsi-column{
+      background-color: #f9f9f9;
+      padding: 30px !important; 
+    } 
+  }
+  &.bsi-opacity-40 {
+    .bsi-column{
+      background-color: #fbfbfb;
+      padding: 30px !important; 
+    } 
+  }
+  &.bsi-opacity-30 {
+    .bsi-column{
+      background-color: #fcfcfc;
+      padding: 30px !important; 
+    } 
+  }
+  &.bsi-opacity-20 {
+    .bsi-column{
+      background-color: #fdfdfd;
+      padding: 30px !important; 
+    } 
+  }
+  &.bsi-opacity-10 {
+    .bsi-column{
+      background-color: #fefefe;
+      padding: 30px !important; 
+    } 
+  }
+}
+
+
+// content editor specific CSS
+.bsi-ce-edit-mode [data-bsi-element] .bsi-column-element.bsi-space-around-hide {
+  overflow-x: visible !important;
+}

@@ -1,0 +1,117 @@
+@use "../src/slot/slot";
+
+@import "../../../../styles/properties";
+
+
+@mixin styles($id: "slot-finder-dZlvGH", $primary-color: $primary) {
+  .bsi-element-#{$id} {
+    --primary-color: #{$primary-color};
+    --disabled-color: #808080;
+
+    --border-radius: 3px;
+    --default-gap: 5px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--default-gap);
+
+    &.column-flow {
+      flex-direction: column;
+      max-width: 420px;
+    }
+
+    &.small-slots .slot .duration,
+    &.small-slots .slot .to-time {
+      display: none;
+    }
+
+    &.day-view > .slot-view > .slots-week,
+    &.week-view > .slot-view > .slots-day {
+      display: none;
+    }
+
+    fieldset {
+      all: revert; /* Revert Bootstrap design */
+      white-space: nowrap;
+      border: 1px solid gainsboro;
+      border-radius: var(--border-radius);
+
+      &:first-child {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+      }
+
+      &:not(:first-child) {
+        flex: 10;
+      }
+
+      legend {
+        all: revert; /* Revert Bootstrap design */
+        display: flex;
+        align-items: center;
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+
+        &::before {
+          margin-right: 0.3rem;
+        }
+      }
+    }
+
+    .flatpickr-calendar {
+      box-shadow: revert; /* Revert flatpickr border */
+
+      .flatpickr-day.prevMonthDay,
+      .flatpickr-day.nextMonthDay {
+        height: 0;
+        width: 0;
+        visibility: hidden;
+      }
+
+      .flatpickr-day.selected {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+      }
+    }
+
+    .slots-day,
+    .slots-week {
+      max-height: 300px;
+      min-width: 205px; /* 2x slots (long with duration) */
+      overflow: auto;
+    }
+
+    .slot-picker-summary {
+      min-width: 292px;
+
+      p {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    @media screen and (min-width: 886px) {
+      .slots-week {
+        min-width: 525px; /* min width using big slots */
+      }
+
+      :not(&.day-view) > .slot-view > .slots-day,
+      .slots-week .weekday.short {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 885px) {
+      .slots-week {
+        min-width: 292px; /* min width using small slots */
+      }
+
+      :not(&.week-view) > .slot-view > .slots-week {
+        display: none;
+      }
+    }
+
+    @include slot.styles;
+  }
+}

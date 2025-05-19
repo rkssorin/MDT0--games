@@ -1,0 +1,29 @@
+@import "../../../../styles/properties";
+
+@mixin styles($id: 'title-h3-gbnkTT', $title-font-family: $titleH3FontFamily, $title-font-size: $titleH3FontSize, $title-primary-color: $primary, $title-secondary-color: $secondary, $title-dark: $dark, $title-light: $light) {
+  .bsi-element-#{$id} {
+    width: 100%;
+    font-family: $title-font-family;
+    $colors: ("primary-color": $title-primary-color, "secondary-color": $title-secondary-color, "dark": $title-dark, "light": $title-light);
+    @each $name, $color in $colors {
+      &.bsi-text-#{$name} {
+        color: $color;
+      }
+    }
+    &.tt-normal{
+      text-transform: none;
+    }
+    &.tt-uppercase{
+      text-transform: uppercase;
+    }
+    &.tt-capitalize{
+      text-transform: capitalize;
+    }
+    @media (min-width: 1200px) {
+      font-size: $title-font-size;
+      &.display-1 {
+        font-size: 4rem;
+      }
+    }
+  }
+}

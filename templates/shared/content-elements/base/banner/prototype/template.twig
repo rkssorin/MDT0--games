@@ -1,0 +1,24 @@
+{% macro render(elementId = null, dropzoneId = null, imagePartId = null, imageSrc = null, imageMobileSrc = null) %}{% apply spaceless %}
+    {% deprecated 'The usage of "element.render(...)" is deprecated, use "include ... with {...}" instead. For detailed information, visit: https://github.com/bsi-software/bsi-cx-design-master-template-web/blob/main/MIGRATION_GUIDE.md"' %}
+    {% include './template.twig' %}
+{% endapply %}{% endmacro %}
+
+{% apply spaceless %}
+    {% set bannerElementId = elementId ?: 'banner-8eHkFN' %}
+    {% set bannerDropzoneId = dropzoneId ?: 'banner-dropzone-Hh2fWF' %}
+    {% set bannerImagePartId = imagePartId ?: 'banner-part-MIY0yR' %}
+    {% set bannerImageSrc = imageSrc ?: bsi_cx_asset('../../../../static/image.png') %}
+    {% set bannerImageMobileSrc = imageMobileSrc ?: bsi_cx_asset('../../../../static/image.png') %}
+    {% set bannerVerticalAlignment = (verticalAlign ?: properties.bannerVerticalAlignment) ?: 'bsi-vertical-align-center' %}
+    {% set bannerHorizontalAlignment = (horizontalAlign ?: properties.bannerHorizontalAlignment) ?: 'bsi-horizontal-align-center' %}
+
+    <div data-bsi-element="{{ bannerElementId }}" class="{{ 'bsi-element-' ~ bannerElementId }} {{ bannerHorizontalAlignment }} {{ bannerVerticalAlignment }} container-fluid mb-3 px-0 position-relative d-flex overflow-hidden bsi-overlay-hide bsi-overlay-opacity-0">
+        {# 'srcset' support removed until further notice. see: https://github.com/bsi-software/bsi-cx-design-standard-library-web/issues/46 #}
+        <img src="{{ bannerImageSrc }}" class="bsi-banner w-100 h-100 position-absolute" alt="" data-bsi-element-part="{{ bannerImagePartId }}"/>
+        <div class="bsi-banner-dz container position-relative bsi-horizontal-align py-5 d-flex">
+            <div class="bsi-vertical-align" data-bsi-dropzone="{{ bannerDropzoneId }}">
+                {% block banner_dropzone %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endapply %}

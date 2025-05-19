@@ -1,0 +1,103 @@
+{% macro render(elementId = null, elementPartId = null, linkedinURL = null, xingURL = null, twitterURL = null, facebookURL = null, youtubeURL = null, instagramURL = null, kununuURL = null, whatsappURL = null, pinterestURL = null, snapchatURL = null, linkedinHidden = null, xingHidden = null, twitterHidden = null, facebookHidden = null, youtubeHidden = null, instagramHidden = null, kununuHidden = null, whatsappHidden = null, pinterestHidden = null, snapchatHidden = null, iconColor = null, iconHoverColor = null, iconSize = null) %}{% apply spaceless %}
+    {% deprecated 'The usage of "element.render(...)" is deprecated, use "include ... with {...}" instead. For detailed information, visit: https://github.com/bsi-software/bsi-cx-design-master-template-web/blob/main/MIGRATION_GUIDE.md"' %}
+    {% include './template.twig' %}
+{% endapply %}{% endmacro %}
+
+{% apply spaceless %}
+    {% set followElementId = elementId ?: 'social-media-follow-2MlXWB' %}
+    {% set followElementPartId = elementPartId ?: 'social-media-follow-part-6oLWxR' %}
+
+    {% set followLinkedinURL = (linkedinURL ?: properties.followLinkedinURL) ?: "https://www.linkedin.com/" %}
+    {% set followXingURL = (xingURL ?: properties.followXingURL) ?: "https://www.xing.com/" %}
+    {% set followTwitterURL = (twitterURL ?: properties.followTwitterURL) ?: "https://www.twitter.com/" %}
+    {% set followFacebookURL = (facebookURL ?: properties.followFacebookURL) ?: "https://www.facebook.com/" %}
+    {% set followYoutubeURL = (youtubeURL ?: properties.followYoutubeURL) ?: "https://www.youtube.com/" %}
+    {% set followInstagramURL = (instagramURL ?: properties.followInstagramURL) ?: "https://www.instagram.com/" %}
+    {% set followKununuURL = (kununuURL ?: properties.followKununuURL) ?: "https://www.kununu.com/" %}
+    {% set followWhatsappURL = (whatsappURL ?: properties.followWhatsappURL) ?: "https://api.whatsapp.com/" %}
+    {% set followPinterestURL = (pinterestURL ?: properties.followPinterestURL) ?: "https://www.pinterest.com/" %}
+    {% set followSnapchatURL = (snapchatURL ?: properties.followSnapchatURL) ?: "https://www.snapchat.com/" %}
+    {% set followTiktokURL = (tiktokURL ?: properties.followTiktokURL) ?: "https://www.tiktok.com/" %}
+
+    {% set followLinkedinHidden = (linkedinHidden ?: properties.followLinkedinHidden) ?: false %}
+    {% set followXingHidden = (xingHidden ?: properties.followXingHidden) ?: false %}
+    {% set followTwitterHidden = (twitterHidden ?: properties.followTwitterHidden) ?: false %}
+    {% set followFacebookHidden = (facebookHidden ?: properties.followFacebookHidden) ?: false %}
+    {% set followYoutubeHidden = (youtubeHidden ?: properties.followYoutubeHidden) ?: false %}
+    {% set followInstagramHidden = (instagramHidden ?: properties.followInstagramHidden) ?: false %}
+    {% set followKununuHidden = (kununuHidden ?: properties.followKununuHidden) ?: false %}
+    {% set followWhatsappHidden = (whatsappHidden ?: properties.followWhatsappHidden) ?: false %}
+    {% set followPinterestHidden = (pinterestHidden ?: properties.followPinterestHidden) ?: false %}
+    {% set followSnapchatHidden = (snapchatHidden ?: properties.followSnapchatHidden) ?: false %}
+    {% set followTiktokHidden = (tiktokHidden ?: properties.followTiktokHidden) ?: false %}
+
+    {% set followIconColor = (iconColor ?: properties.followIconColor) ?: 'bsi-icon-color-primary' %}
+    {% set followIconHoverColor = (iconHoverColor ?: properties.followIconHoverColor) ?: 'bsi-icon-hover-color-secondary' %}
+    {% set followIconSize = (iconSize ?: properties.followIconSize) ?: 'bsi-icon-size-medium' %}
+
+    <div data-bsi-element="{{ followElementId }}" class="{{ 'bsi-element-' ~ followElementId }} d-flex flex-wrap {{ followIconColor }} {{ followIconHoverColor }} {{ followIconSize }}" data-bsi-element-part="{{ followElementPartId }}">
+        <div data-bsi-social-follow="Linkedin" {% if followLinkedinHidden == true %} data-bsi-remove-if="live" {% endif %} class="social-media-item p-2">
+            <a href="{{ followLinkedinURL }}" title="Linkedin">
+                <i class="bi bi-linkedin"></i>
+            </a>
+        </div>
+        <div data-bsi-social-follow="Xing" {% if followXingHidden == true %} data-bsi-remove-if="live" {% endif %} class="social-media-item bsi-social-media-svg p-2">
+            <a href="{{ followXingURL }}" title="Xing">
+                <svg class="bsi-svg-xing" height="26" width="26" viewBox="0 0 50 50">
+                    <path d="M 43.699219 2.097656 L 6.214844 2.097656 C 3.914063 2.097656 2 4.015625 2 6.3125 L 2 43.796875 C 2 46.085938 3.914063 48 6.214844 48 L 43.699219 48 C 45.984375 48 47.898438 46.085938 47.898438 43.796875 L 47.898438 6.3125 C 47.898438 4.015625 45.984375 2.097656 43.699219 2.097656 Z M 16.15625 33 L 10.796875 33 C 10.011719 32.972656 9.835938 32.308594 10.226563 31.738281 L 15.777344 21.5 C 15.960938 21.3125 15.960938 21.039063 15.777344 20.84375 L 12.117188 14.453125 C 11.921875 14.070313 12.117188 13.5 12.5 13.5 L 18 13.5 C 18.195313 13.5 18.386719 13.542969 18.578125 13.882813 L 22.660156 21.039063 C 22.84375 21.226563 22.84375 21.410156 22.660156 21.609375 L 16.726563 32.507813 C 16.726563 32.507813 16.5 32.980469 16.15625 33 Z M 39.488281 8.796875 L 28.75 28.5 C 28.5625 28.695313 28.5625 28.804688 28.75 29 L 35.65625 41.304688 C 36.039063 42.03125 35.65625 42.5 35.089844 42.5 L 29.738281 42.5 C 29.542969 42.5 29.425781 42.367188 29.15625 41.882813 L 21.890625 29 C 21.757813 28.851563 21.761719 28.671875 21.890625 28.492188 L 32.988281 8.027344 C 33.210938 7.597656 33.554688 7.5 33.75 7.5 L 39 7.5 C 39.675781 7.480469 39.789063 8.1875 39.488281 8.796875 Z"/>
+                </svg>
+            </a>
+        </div>
+        <div data-bsi-social-follow="X (Twitter)" {% if followTwitterHidden == true %} data-bsi-remove-if="live" {% endif %} class="social-media-item p-2">
+            <a href="{{ followTwitterURL }}" title="X (Twitter)">
+                <i class="bi bi-twitter-x"></i>
+            </a>
+        </div>
+        <div data-bsi-social-follow="Facebook" {% if followFacebookHidden == true %} data-bsi-remove-if="live" {% endif %} class="social-media-item p-2">
+            <a href="{{ followFacebookURL }}" title="Facebook">
+                <i class="bi bi-facebook"></i>
+            </a>
+        </div>
+        <div data-bsi-social-follow="Youtube" {% if followYoutubeHidden == true %} data-bsi-remove-if="live" {% endif %} class="social-media-item p-2">
+            <a href="{{ followYoutubeURL }}" title="YouTube">
+                <i class="bi bi-youtube"></i>
+            </a>
+        </div>
+        <div data-bsi-social-follow="Instagram" {% if followInstagramHidden == true %} data-bsi-remove-if="live" {% endif %} class="social-media-item p-2">
+            <a href="{{ followInstagramURL }}" title="Instagram">
+                <i class="bi bi-instagram"></i>
+            </a>
+        </div>
+        <div data-bsi-social-follow="Kununu" {% if followKununuHidden == true %} data-bsi-remove-if="live" {% endif %} class="social-media-item bsi-social-media-svg p-2">
+            <a href="{{ followKununuURL }}" title="Kununu">
+                <svg class="bsi-svg-kununu" height="24" width="24" viewBox="0 0 229.30667 229.30661">
+                    <g transform="matrix(1.3333333,0,0,-1.3333333,0,229.30667)" id="g10">
+                        <g transform="scale(0.1)" id="g12">
+                            <path id="path14" d="m 1565.16,1442.96 -49.99,-48.74 -3.31,-3.2 c -7.22,-6.95 -18.87,-6.95 -26.08,0 l -6.82,6.7 c -7.14,6.95 -7.67,18.65 -0.51,25.64 l 53.43,52.13 c 8.95,8.79 8.95,23.06 0,31.81 l -8.79,8.66 c -8.97,8.71 -23.87,8.89 -32.84,0.1 l -53.36,-52.03 c -7.22,-7.1 -19.03,-6.69 -26.19,0.29 l -6.74,6.57 c -7.16,7.1 -7.46,18.29 -0.29,25.24 l 53.42,52.35 c 27.53,26.82 72.05,27.11 99.58,0.29 l 8.72,-8.55 c 27.59,-26.95 27.25,-70.43 -0.23,-97.26 z m -0.18,-229.03 -8.67,-8.47 c -27.58,-26.94 -72.11,-26.66 -99.57,0.3 l -49.98,48.76 -3.27,3.18 c -7.22,6.97 -7.22,18.44 0,25.51 l 6.74,6.61 c 7.16,6.96 19.15,7.57 26.31,0.5 l 53.43,-52.15 c 8.96,-8.79 23.68,-8.79 32.65,0 l 8.79,8.55 c 9.08,8.91 9.2,23.34 0.17,32.13 L 1478.2,1331 c -7.2,6.97 -6.85,18.44 0.36,25.55 l 6.75,6.56 c 7.23,6.99 18.67,7.28 25.84,0.3 l 53.48,-52.26 c 27.59,-26.83 27.88,-70.31 0.35,-97.22 z m -189.72,257.36 -6.74,-6.56 c -7.17,-6.98 -19.22,-7.56 -26.37,-0.53 l -53.25,52.18 c -9.08,8.76 -23.74,8.76 -32.77,0 l -8.79,-8.58 c -8.95,-8.79 -9.12,-23.34 -0.17,-32.13 l 53.38,-52.03 c 7.2,-7.09 6.85,-18.56 -0.37,-25.55 l -6.68,-6.66 c -7.22,-6.98 -18.73,-7.3 -25.84,-0.2 l -53.54,52.13 c -27.6,26.84 -27.87,70.32 -0.29,97.25 l 8.79,8.57 c 27.46,26.82 71.93,26.53 99.45,-0.41 l 49.92,-48.75 3.27,-3.2 c 7.16,-6.95 7.16,-18.44 0,-25.53 z m 0,-213.59 -53.48,-52.24 c -27.52,-26.94 -71.99,-27.23 -99.57,-0.32 l -8.79,8.59 c -27.47,26.83 -27.17,70.31 0.41,97.13 l 49.87,48.77 3.31,3.2 c 7.16,7.04 18.99,7.04 26.13,0 l 6.76,-6.6 c 7.15,-7 7.8,-18.67 0.58,-25.74 l -53.37,-52.05 c -9.07,-8.79 -9.07,-23.13 0,-31.89 l 8.79,-8.6 c 8.96,-8.77 23.81,-8.97 32.76,-0.19 l 53.37,52.15 c 7.23,6.98 19.03,6.7 26.25,-0.3 l 6.69,-6.68 c 7.28,-6.99 7.45,-18.26 0.29,-25.23 z m -250.03,-836.481 -3.54,-222.047 c 0,-19.512 -16.14,-35.551 -36.41,-35.551 H 867.285 c -19.972,0 -36.308,16.039 -36.308,35.551 v 222.047 h -0.86 v 71.722 c 0,77.278 -64.512,140.149 -143.554,140.149 h -77.032 c -79.218,0 -143.535,-62.871 -143.535,-140.149 h -1.523 V 199.172 c 0,-19.512 -16.25,-35.551 -36.407,-35.551 H 209.961 c -20.059,0 -36.309,16.039 -36.309,35.551 V 1520.71 c 0,19.45 16.25,35.5 36.309,35.5 h 218.105 c 20.157,0 36.407,-16.05 36.407,-35.5 V 896.996 c 45.488,15.539 94.226,24.18 145.058,24.18 h 73.789 v 0.859 c 79.317,0 143.633,62.883 143.633,139.995 l 4.598,71.86 c 2.953,16.73 17.765,29.49 35.734,29.49 h 217.995 c 18.06,0 32.87,-12.76 35.83,-29.49 h 0.96 v -71.86 c 0,-108.276 -41.48,-207.182 -109.61,-282.678 C 1082.42,703.34 1125.23,603 1125.23,492.941 Z M 1639.8,1719.82 H 80 c -44.1914,0 -80,-35.81 -80,-80 L 0,80 C 0,35.8281 35.8086,0 80,0 h 1559.8 c 44.18,0 80,35.8281 80,80 v 1559.82 c 0,44.19 -35.82,80 -80,80"/>
+                        </g>
+                    </g>
+                </svg>
+            </a>
+        </div>
+        <div data-bsi-social-follow="WhatsApp" {% if followWhatsappHidden == true %} data-bsi-remove-if="live" {% endif %} class="social-media-item p-2">
+            <a href="{{ followWhatsappURL }}" title="WhatsApp">
+                <i class="bi bi-whatsapp"></i>
+            </a>
+        </div>
+        <div data-bsi-social-follow="Pinterest" {% if followPinterestHidden == true %} data-bsi-remove-if="live" {% endif %} class="social-media-item p-2">
+            <a href="{{ followPinterestURL }}" title="Pinterest">
+                <i class="bi bi-pinterest"></i>
+            </a>
+        </div>
+        <div data-bsi-social-follow="Snapchat" {% if followSnapchatHidden == true %} data-bsi-remove-if="live" {% endif %} class="social-media-item p-2">
+            <a href="{{ followSnapchatURL }}" title="Snapchat">
+                <i class="bi bi-snapchat"></i>
+            </a>
+        </div>
+        <div data-bsi-social-follow="Tiktok" {% if followTiktokHidden == true %} data-bsi-remove-if="live" {% endif %} class="social-media-item p-2">
+            <a href="{{ followTiktokURL }}" title="Tiktok">
+                <i class="bi bi-tiktok"></i>
+            </a>
+        </div>        
+    </div>
+{% endapply %}

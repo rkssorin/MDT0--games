@@ -1,0 +1,48 @@
+{% macro render(elementId = null, elementPartId = null, countriesPartId = null, pinnedCountriesPartId = null, formTextPartId = null, errorRequiredPartId = null, errorInvalidPartId = null, labelText = null, infoText = null, errorRequiredText = null, errorInvalidText = null) %}{% apply spaceless %}
+    {% deprecated 'The usage of "element.render(...)" is deprecated, use "include ... with {...}" instead. For detailed information, visit: https://github.com/bsi-software/bsi-cx-design-master-template-web/blob/main/MIGRATION_GUIDE.md"' %}
+    {% include './template.twig' %}
+{% endapply %}{% endmacro %}
+
+{% apply spaceless %}
+    {% set phoneElementId = elementId ?: 'form-field-tel-fKUxNS' %}
+    {% set phoneElementPartId = elementPartId ?: 'form-field-tel-part-L3Y3gC' %}
+    {% set phoneCountriesPartId = countriesPartId ?: 'form-field-tel-part-countries-OGz4jf' %}
+    {% set phonePinnedCountriesPartId = pinnedCountriesPartId ?: 'form-field-tel-part-pinned-BEWZhN' %}
+    {% set phoneFormTextPartId = formTextPartId ?: 'form-field-tel-part-text-yXZUwb' %}
+    {% set phoneErrorRequiredPartId = errorRequiredPartId ?: 'form-field-tel-part-error-required-XKiYlP' %}
+    {% set phoneErrorInvalidPartId = errorInvalidPartId ?: 'form-field-tel-part-error-invalid-3XeP4R' %}
+    {% set phoneLabelText = (labelText ?: properties.phoneLabelText) ?: bsi_cx_lorem(3) %}
+    {% set phoneInfoText = (infoText ?: properties.phoneInfoText) ?: "" %}
+    {% set phoneErrorRequiredText = (errorRequiredText ?: properties.errorRequiredText) ?: 'Bitte füllen Sie dieses Feld aus.' %} {# TODO: make translatable #}
+    {% set phoneErrorInvalidText = (errorInvalidText ?: properties.errorInvalidText) ?: 'Der Wert, den Sie für dieses Feld eingegeben haben, ist ungültig.' %} {# TODO: make translatable #}
+
+    <div x-data="telInput" data-bsi-element="{{ phoneElementId }}" data-bsi-element-part="{{ phoneElementPartId }}" data-bsi-form-field-fixed-type class="{{ 'bsi-element-' ~ phoneElementId }} mb-4 bsi-form-element bsi-form-flex-label bsi-form-tel-input bsi-element-width-full">
+        <div class="bsi-form-input-element mb-3">
+            <div class="form-label-and-info-text">
+                <label for="tel-field" class="form-label">{{ phoneLabelText }}</label>
+                <div data-bsi-element-part="{{ phoneFormTextPartId }}" class="form-text">{{ phoneInfoText }}</div>
+                <i class="bi bi-info-circle" data-bs-toggle="tooltip" data-bs-custom-class="bsi-tooltip" role="tooltip" aria-label="{{ phoneInfoText }}"></i>
+            </div>
+
+            <input x-ref="inputField" x-on:change="validateInput" x-on:countrychange="changeCountry" x-on:focus="onFocus" x-on:focusout="onFocusOut" class="form-control bsi-form-tel-input-element" id="tel-field" type="tel" value="">
+
+            <!-- When live, the following section will hold hidden input field with the normalized phone number -->
+            <div x-ref="hiddenInput" data-bsi-remove-if="draft" class="normalizedValueHolder" role="presentation" hidden="true" aria-hidden="true"></div>
+
+            <!-- configuration -->
+            <div role="presentation" hidden="true" aria-hidden="true">
+                <label data-bsi-element-part="{{ phoneCountriesPartId }}" class="only-countries"></label>
+            </div>
+            <div role="presentation" hidden="true" aria-hidden="true">
+                <label data-bsi-element-part="{{ phonePinnedCountriesPartId }}" class="preferred-countries">ch,de,at</label>
+            </div>
+
+            <div x-ref="requiredErrorField" class="bsi-tel-input-error-required invalid-feedback">
+                <label data-bsi-element-part="{{ phoneErrorRequiredPartId }}" role="alert" aria-live="assertive" aria-atomic="true">{{ phoneErrorRequiredText }}</label>
+            </div>
+            <div x-ref="invalidErrorField" class="bsi-tel-input-error-invalid" hidden="true" aria-hidden="true">
+                <label data-bsi-element-part="{{ phoneErrorInvalidPartId }}" class="errormessage-invalid" role="alert" aria-live="assertive" aria-atomic="true">{{ phoneErrorInvalidText }}</label>
+            </div>
+        </div>
+    </div>
+{% endapply %}

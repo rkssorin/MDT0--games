@@ -1,0 +1,13 @@
+{% macro render(elementId = null, htmlPartId = null) %}{% apply spaceless %}
+    {% deprecated 'The usage of "element.render(...)" is deprecated, use "include ... with {...}" instead. For detailed information, visit: https://github.com/bsi-software/bsi-cx-design-master-template-web/blob/main/MIGRATION_GUIDE.md"' %}
+    {% include './template.twig' %}
+{% endapply %}{% endmacro %}
+
+{% apply spaceless %}
+    {% set htmlElementId = elementId ?: 'html-VN5KXz' %}
+    {% set htmlPartId = htmlPartId ?: 'html-part-OrXIAg' %}
+
+    <div data-bsi-element="{{ htmlElementId }}" data-bsi-element-part="{{ htmlPartId }}" class="{{ 'bsi-element-' ~ htmlElementId }} mb-3 text-center">
+        <iframe width="100%" height="500px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=8.200864791870119%2C47.41676322219383%2C8.369092941284181%2C47.49070292103441&amp;layer=mapnik"></iframe>
+    </div>
+{% endapply %}

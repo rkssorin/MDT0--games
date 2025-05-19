@@ -1,0 +1,180 @@
+@import "../../../../styles/properties";
+
+@mixin styles($id: 'figure-DWEfdD', $shape-1: './shape-01.png', $shape-2: './shape-02.png', $shape-3: './shape-03.png', $overlay-primary-color: $primary, $overlay-secondary-color: $secondary, $overlay-dark: $dark, $overlay-light: $light) {
+  .bsi-element-#{$id} {
+    width: 100%;
+    position: relative;
+
+    .figure-img {
+      width: 100%;
+      margin-bottom: 0px;
+    }
+
+    &.bsi-shape-rounded .figure-img {
+      border-radius: 0.5rem
+    }
+
+    &.bsi-shape-aura-1,
+    &.bsi-shape-aura-2,
+    &.bsi-shape-aura-3 {
+      @include aspect-ratio(calc(1 / 1));
+
+      .figure-img {
+        -webkit-mask-size: cover;
+      }
+    }
+
+    &.bsi-shape-aura-1 .figure-img {
+      @if ($shape-1 != '') {
+        -webkit-mask-image: url($shape-1);
+      }
+    }
+
+    &.bsi-shape-aura-2 .figure-img {
+      @if ($shape-2 != '') {
+        -webkit-mask-image: url($shape-2);
+      }
+    }
+
+    &.bsi-shape-aura-3 .figure-img {
+      @if ($shape-3 != '') {
+        -webkit-mask-image: url($shape-3);
+      }
+    }
+
+    &.bsi-hover-effect-zoom-in {
+      overflow: hidden;
+
+      .figure-img {
+        transition: transform .5s ease;
+
+        &:hover {
+          transform: scale(1.5);
+        }
+      }
+    }
+
+    &.bsi-aspect-ratio-auto.bsi-shape-circle,
+    &.bsi-aspect-ratio-1-1.bsi-shape-circle,
+    &.bsi-aspect-ratio-4-3.bsi-orientation-landscape.bsi-shape-circle,
+    &.bsi-aspect-ratio-3-2.bsi-orientation-landscape.bsi-shape-circle,
+    &.bsi-aspect-ratio-16-9.bsi-orientation-landscape.bsi-shape-circle,
+    &.bsi-aspect-ratio-4-3.bsi-orientation-portrait.bsi-shape-circle,
+    &.bsi-aspect-ratio-3-2.bsi-orientation-portrait.bsi-shape-circle,
+    &.bsi-aspect-ratio-16-9.bsi-orientation-portrait.bsi-shape-circle {
+      @include aspect-ratio(calc(1 / 1));
+
+      .figure-img {
+        border-radius: 50%;
+      }
+    }
+
+    &.bsi-aspect-ratio-1-1 {
+      @include aspect-ratio(calc(1 / 1));
+    }
+
+    &.bsi-aspect-ratio-4-3.bsi-orientation-landscape {
+      @include aspect-ratio(calc(3 / 4));
+    }
+
+    &.bsi-aspect-ratio-3-2.bsi-orientation-landscape {
+      @include aspect-ratio(calc(2 / 3));
+    }
+
+    &.bsi-aspect-ratio-16-9.bsi-orientation-landscape {
+      @include aspect-ratio(calc(9 / 16));
+    }
+
+    &.bsi-aspect-ratio-4-3.bsi-orientation-portrait {
+      @include aspect-ratio(calc(4 / 3));
+    }
+
+    &.bsi-aspect-ratio-3-2.bsi-orientation-portrait {
+      @include aspect-ratio(calc(3 / 2));
+    }
+
+    &.bsi-aspect-ratio-16-9.bsi-orientation-portrait {
+      @include aspect-ratio(calc(16 / 9));
+    }
+
+    &.bsi-caption-hide .figure-caption {
+      display: none;
+    }
+
+    &.bsi-caption-overlay .figure-caption {
+      position: absolute;
+      width: 100%;
+      height: 50px;
+      bottom: 0px;
+      color: white;
+      background: rgba(119, 119, 119, 0.5);
+      text-align: center;
+      padding-top: 15px;
+    }
+
+    &.bsi-caption-centred .figure-caption {
+      position: absolute;
+      width: 100%;
+      height: 50%;
+      bottom: 15px;
+      color: white;
+      text-align: center;
+    }
+
+    &.bsi-shape-rounded.bsi-caption-overlay .figure-caption {
+      border-bottom-right-radius: 0.5rem;
+      border-bottom-left-radius: 0.5rem;
+    }
+
+    $font-sizes: ("small": 0.875em, "medium": 1.2em, "large": 1.5em);
+    @each $name, $font-size in $font-sizes {
+      &.bsi-caption-#{$name} .figure-caption {
+        font-size: $font-size;
+      }
+    }
+
+    &.bsi-caption-medium.bsi-caption-overlay .figure-caption {
+      padding-top: 10px;
+    }
+
+    &.bsi-caption-large.bsi-caption-overlay .figure-caption {
+      padding-top: 5px;
+    }
+
+    $colors: ("primary-color": $overlay-primary-color, "secondary-color": $overlay-secondary-color, "dark": $overlay-dark, "light": $overlay-light);
+    @each $name, $color in $colors {
+      &.bsi-overlay-#{$name} {
+        background-color: $color;
+      }
+    }
+    @for $i from 0 through 100 {
+      @if $i % 10 == 0 {
+        $opacity-percentage: $i*1%;
+        &.bsi-overlay-opacity-#{$i} > img {
+          opacity: 100%-$opacity-percentage;
+        }
+      }
+    }
+  }
+}
+
+@mixin aspect-ratio($ratio) {
+  position: relative;
+  &:before {
+    display: block;
+    content: " ";
+    width: 100%;
+    padding-top: $ratio * 100%;
+  }
+
+  > .figure-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}

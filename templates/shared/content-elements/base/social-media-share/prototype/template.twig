@@ -1,0 +1,57 @@
+{% macro render(elementId = null, elementPartId = null, labelPartId = null) %}{% apply spaceless %}
+    {% deprecated 'The usage of "element.render(...)" is deprecated, use "include ... with {...}" instead. For detailed information, visit: https://github.com/bsi-software/bsi-cx-design-master-template-web/blob/main/MIGRATION_GUIDE.md"' %}
+    {% include './template.twig' %}
+{% endapply %}{% endmacro %}
+
+{% apply spaceless %}
+    {% set shareElementId = elementId ?: 'social-media-share-u9ppdj' %}
+    {% set shareElementPartId = elementPartId ?: 'social-media-share-part-7duJql' %}
+    {% set shareLabelPartId = labelPartId ?: 'social-media-share-part-label-gVreZk' %}
+
+    {% set shareIconColor = (iconColor ?: properties.shareIconColor) ?: 'bsi-icon-color-dark' %}
+    {% set shareIconHoverColor = (iconHoverColor ?: properties.shareIconHoverColor) ?: 'bsi-icon-hover-color-dark' %}
+    {% set shareIconSize = (iconSize ?: properties.shareIconSize) ?: 'bsi-icon-size-medium' %}
+
+    <div data-bsi-element="{{ shareElementId }}" class="{{ 'bsi-element-' ~ shareElementId }} d-flex flex-wrap bsi-icon-color-dark bsi-icon-size-medium {{ shareIconColor }} {{ shareIconHoverColor }} {{ shareIconSize }}" data-bsi-element-part="{{ shareElementPartId }}">
+        <div class="social-media-info">
+            <label data-bsi-element-part="{{ shareLabelPartId }}">Share this page</label>
+        </div>
+        <div data-bsi-social-share="LinkedIn" class="sm-linkedin social-media-item share m-1">
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=(url)" target="_blank" title="LinkedIn" class="btn btn-outline-primary">
+                <i class="bi bi-linkedin"></i>
+            </a>
+        </div>
+        <div data-bsi-social-share="Xing" class="sm-xing social-media-item bsi-social-media-svg share m-1">
+            <a href="https://www.xing.com/spi/shares/new?url=(url)" target="_blank" title="Xing" class="btn btn-outline-primary">
+                <svg class="bsi-svg-xing" height="26" width="26" viewBox="0 0 50 50">
+                    <path d="M 43.699219 2.097656 L 6.214844 2.097656 C 3.914063 2.097656 2 4.015625 2 6.3125 L 2 43.796875 C 2 46.085938 3.914063 48 6.214844 48 L 43.699219 48 C 45.984375 48 47.898438 46.085938 47.898438 43.796875 L 47.898438 6.3125 C 47.898438 4.015625 45.984375 2.097656 43.699219 2.097656 Z M 16.15625 33 L 10.796875 33 C 10.011719 32.972656 9.835938 32.308594 10.226563 31.738281 L 15.777344 21.5 C 15.960938 21.3125 15.960938 21.039063 15.777344 20.84375 L 12.117188 14.453125 C 11.921875 14.070313 12.117188 13.5 12.5 13.5 L 18 13.5 C 18.195313 13.5 18.386719 13.542969 18.578125 13.882813 L 22.660156 21.039063 C 22.84375 21.226563 22.84375 21.410156 22.660156 21.609375 L 16.726563 32.507813 C 16.726563 32.507813 16.5 32.980469 16.15625 33 Z M 39.488281 8.796875 L 28.75 28.5 C 28.5625 28.695313 28.5625 28.804688 28.75 29 L 35.65625 41.304688 C 36.039063 42.03125 35.65625 42.5 35.089844 42.5 L 29.738281 42.5 C 29.542969 42.5 29.425781 42.367188 29.15625 41.882813 L 21.890625 29 C 21.757813 28.851563 21.761719 28.671875 21.890625 28.492188 L 32.988281 8.027344 C 33.210938 7.597656 33.554688 7.5 33.75 7.5 L 39 7.5 C 39.675781 7.480469 39.789063 8.1875 39.488281 8.796875 Z"/>
+                </svg>
+            </a>
+        </div>
+        <div data-bsi-social-share="X (Twitter)" class="sm-twitter social-media-item share m-1">
+            <a href="https://twitter.com/intent/tweet?url=(url)&text=(description.short)" target="_blank" title="X (Twitter)" class="btn btn-outline-primary">
+                <i class="bi bi-twitter-x"></i>
+            </a>
+        </div>
+        <div data-bsi-social-share="Facebook" class="sm-facebook social-media-item share m-1">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=(url)" target="_blank" title="Facebook" class="btn btn-outline-primary">
+                <i class="bi bi-facebook"></i>
+            </a>
+        </div>
+        <div data-bsi-social-share="Pinterest" data-bsi-remove-if="live" class="sm-pinterest social-media-item share m-1">
+            <a href="http://pinterest.com/pin/create/button/?url=(url)&description=(title)&media=(preview.image.url)" target="_blank" title="Pinterest" class="btn btn-outline-primary">
+                <i class="bi bi-pinterest"></i>
+            </a>
+        </div>
+        <div data-bsi-social-share="WhatsApp" class="sm-whatsapp social-media-item share m-1">
+            <a href="whatsapp://send?text=(title.with.url)" target="_blank" title="WhatsApp" class="btn btn-outline-primary">
+                <i class="bi bi-whatsapp"></i>
+            </a>
+        </div>
+        <div data-bsi-social-share="E-Mail" class="sm-email social-media-item share m-1">
+            <a href="mailto:?subject=(title)&body=(description.with.url)" title="E-Mail" class="btn btn-outline-primary">
+                <i class="bi bi-envelope"></i>
+            </a>
+        </div>
+    </div>
+{% endapply %}

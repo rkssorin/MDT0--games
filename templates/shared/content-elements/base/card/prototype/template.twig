@@ -1,0 +1,26 @@
+{% macro render(elementId = null, dropzoneImageId = null, dropzoneContentId = null) %}{% apply spaceless %}
+    {% deprecated 'The usage of "element.render(...)" is deprecated, use "include ... with {...}" instead. For detailed information, visit: https://github.com/bsi-software/bsi-cx-design-master-template-web/blob/main/MIGRATION_GUIDE.md"' %}
+    {% include './template.twig' %}
+{% endapply %}{% endmacro %}
+
+{% apply spaceless %}
+    {% set cardElementId = elementId ?: 'card-crRST4' %}
+    {% set cardDropzoneImageId = dropzoneImageId ?: 'card-dropzone-image-CIqKdf' %}
+    {% set cardDropzoneContentId = dropzoneContentId ?: 'card-dropzone-content-b19htW' %}
+
+    <div data-bsi-element="{{ cardElementId }}" class="{{ 'bsi-element-' ~ cardElementId }} card mb-3 bsi-image-top bsi-ratio-4-8 bsi-shadow-visible bsi-bg-color-transparent bsi-opacity-100 bsi-gradient-hide bsi-border-visible bsi-corner-rounded bsi-height-auto">
+        <div class="bsi-card-element row g-0">
+            <div data-bsi-dropzone="{{ cardDropzoneImageId }}" class="bsi-card-image">
+                {% block card_dropzone_image %}
+                    {% include '../../figure/template.twig' %}
+                {% endblock %}
+            </div>
+            <div data-bsi-dropzone="{{ cardDropzoneContentId }}" class="card-body container">
+                {% block card_dropzone_content %}
+                    {% include '../../h3/template.twig' %}
+                    {% include '../../text/template.twig' %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endapply %}

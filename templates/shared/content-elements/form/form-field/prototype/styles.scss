@@ -1,0 +1,37 @@
+@import "flatpickr/dist/flatpickr";
+
+@mixin styles($id: 'form-field-REEhtN') {
+  .bsi-element-#{$id} {
+    .flatpickr-input {
+      -webkit-appearance: none;
+
+      &.form-control[readonly] {
+        background-color: #fff;
+      }
+    }
+
+    .format-invalid-feedback {
+      margin-top: 0.25rem;
+      font-size: 0.875em;
+      color: #dc3545;
+    }
+
+    input[type=range] {
+      border: none;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    input[type=file]::file-selector-button,
+    input[type=file]::-webkit-file-upload-button {
+      background-color: rgba(0, 0, 0, 0.05) !important;
+      border: none;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05) !important;
+      }
+    }
+  }
+}

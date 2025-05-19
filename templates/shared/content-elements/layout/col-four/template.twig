@@ -1,0 +1,20 @@
+{% apply spaceless %}
+    {% set colFourAlignment = (colFourAlignment ?: properties.colFourAlignment) ?: 'bsi-col-align-left' %}
+
+    <div data-bsi-element="col-four-yFAGKM" class="bsi-element-col-four-yFAGKM bsi-column-element container bsi-space-around-visible bsi-gaps-visible {{ colFourAlignment }} bsi-bg-color-transparent bsi-opacity-100 bsi-gradient-hide bsi-mobile-break">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-3 bsi-column bsi-column-1" data-bsi-dropzone="col-four-dropzone-1-CKCyLC">
+                {% block col_four_dropzone_1 %}{% endblock %}
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3 bsi-column bsi-column-2" data-bsi-dropzone="col-four-dropzone-2-4UemGW">
+                {% block col_four_dropzone_2 %}{% endblock %}
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3 bsi-column bsi-column-3" data-bsi-dropzone="col-four-dropzone-3-Iuejt6">
+                {% block col_four_dropzone_3 %}{% endblock %}
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-3 bsi-column bsi-column-4" data-bsi-dropzone="col-four-dropzone-4-HVE6UW">
+                {% block col_four_dropzone_4 %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endapply %}

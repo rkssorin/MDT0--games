@@ -1,0 +1,18 @@
+@import "../../../../styles/properties";
+
+@mixin styles($id: 'text-kkq2fq', $text-color: $textColor, $text-size: $textSize, $text-font-family: $textFont) {
+  .bsi-element-#{$id} {
+    width: 100%;
+    color: $text-color;
+    font-size: $text-size;
+    font-family: $text-font-family;
+    font-weight: 300;;
+    &.lead {
+      font-size: 1.25rem;
+    }
+
+    &.small {
+      font-size: 0.75rem;
+    }
+  }
+}

@@ -1,0 +1,178 @@
+{% macro render(elementId = null, imagePartIdImage1 = null, imagePartIdImage2 = null, imagePartIdImage3 = null, imagePartIdImage4 = null, imageSrcDesktop = null, imgSrcMobile = null, imgSrc1 = null, imgSrc2 = null, imgSrc3 = null, imgSrc4 = null, textPartIdWelcome = null, textPartIdWelcome = null, textPartIdBadgeText = null, textPartIdIntroTop = null, textPartIdIntroTopDesktop = null, textPartIdIntroTopMobile = null, textPartIdTextSmallDescription = null, textPartIdTextPfuiPfui = null, textPartIdTextHuiHui = null, textPartIdTextVielenDank = null, elementPartIdButtonReset = null, elementPartIdButtonSendToForm = null, elementPartIdButtonClose2 = null, elementPartIdButtonClose2 = null) %}
+	{% apply spaceless %}
+	{% deprecated 'The usage of "element.render(...)" is deprecated, use "include ... with {...}" instead. For detailed information, visit: https://github.com/bsi-software/bsi-cx-design-master-template-web/blob/main/MIGRATION_GUIDE.md"' %}
+	{% include './template.twig' %}
+	{% endapply %}
+{% endmacro %}
+
+{% apply spaceless %}
+{% set gameElementId = elementId ?: 'game-wheelspin11324' %}
+
+
+{% set imagePartIdImage1 = imagePartIdImage1 ?: 'figure-part-image-JoCwpV' %}
+{% set imagePartIdImage2 = imagePartIdImage2 ?: 'figure-part-image-JoCwpV' %}
+
+{% set elementPartIdStartButton = elementPartIdStartButton ?: 'figure-part-image-JoCwpV' %}
+{% set textPartIdStartTitle = textPartIdStartTitle ?: 'title-start-part-4b0a' %}
+{% set textPartIdIntroTop = textPartIdIntroTop ?: 'text-part-Fjse59' %}
+{% set textPartIdTitleThanks = textPartIdTitleThanks ?: 'title-start-part-4b0a' %}
+
+{% set htmlPartIdGvr = htmlPartIdGvr ?: 'html-part-OrXIAg' %}
+{% set htmlPartIdGap = htmlPartIdGap ?: 'html-part-OrXIAg' %}
+
+{% set wheelIndicator = wheelIndicator ?: 'figure-part-image-JoCwpV' %}
+{% set imagePartIdImageBulb1 = imagePartIdImageBulb1 ?: 'figure-part-image-JoCwpV' %}
+{% set imagePartIdImageBulb2 = imagePartIdImageBulb2 ?: 'figure-part-image-JoCwpV' %}
+{% set imagePartIdImageBulb3 = imagePartIdImageBulb3 ?: 'figure-part-image-JoCwpV' %}
+{% set imagePartIdImageBulb4 = imagePartIdImageBulb4 ?: 'figure-part-image-JoCwpV' %}
+{% set imagePartIdImageBulb5 = imagePartIdImageBulb5 ?: 'figure-part-image-JoCwpV' %}
+
+
+{% set textAnsw1 = textPartIdAnsw1 ?: 'text-part-Fjse59' %}
+{% set elementPartIdButtonAnsw1 = elementPartIdButtonAnsw1 ?: 'button-part-0Cq8Xc' %}
+
+{% set textAnsw2 = textPartIdAnsw2 ?: 'text-part-Fjse59' %}
+{% set elementPartIdButtonAnsw2 = elementPartIdButtonAnsw2 ?: 'button-part-0Cq8Xc' %}
+
+{% set textAnsw3 = textPartIdAnsw3 ?: 'text-part-Fjse59' %}
+{% set elementPartIdButtonAnsw3 = elementPartIdButtonAnsw3 ?: 'button-part-0Cq8Xc' %}
+
+{% set textAnsw4 = textPartIdAnsw4 ?: 'text-part-Fjse59' %}
+{% set elementPartIdButtonAnsw4 = elementPartIdButtonAnsw4 ?: 'button-part-0Cq8Xc' %}
+
+{% set textAnsw5 = textPartIdAnsw5 ?: 'text-part-Fjse59' %}
+{% set elementPartIdButtonAnsw5 = elementPartIdButtonAnsw5 ?: 'button-part-0Cq8Xc' %}
+
+{% set gameImageHeaderDesktop = imageSrc1 ?: bsi_cx_asset('../../../static/game-wheel/BMW-christmas-bg-1920.jpg') %}
+{% set gameImageHeaderMobile = imageSrc2 ?: bsi_cx_asset('../../../static/game-wheel/BMW-christmas-bg-1920.jpg') %}
+{% set gameStartSrc = gameStartSrc ?: bsi_cx_asset('../../../static/game-wheel/start_new.png') %}
+{% set wheelIndicatorSrc = wheelIndicatorSrc ?: bsi_cx_asset('../../../static/game-wheel/hg.png') %}
+{% set imgReelSrc = imgReelSrc ?: bsi_cx_asset('../../../static/game-wheel/yellow_wheel.svg') %}
+
+{% set gameImageSrcBulb1 = gameImageSrcBulb1 ?: bsi_cx_asset('../../../static/game-wheel/awareness.svg') %}
+{% set gameImageSrcBulb2 = gameImageSrcBulb2 ?: bsi_cx_asset('../../../static/game-wheel/consideration.svg') %}
+{% set gameImageSrcBulb3 = gameImageSrcBulb3 ?: bsi_cx_asset('../../../static/game-wheel/action.svg') %}
+{% set gameImageSrcBulb4 = gameImageSrcBulb4 ?: bsi_cx_asset('../../../static/game-wheel/retention.svg') %}
+{% set gameImageSrcBulb5 = gameImageSrcBulb5 ?: bsi_cx_asset('../../../static/game-wheel/advocacy.svg') %}
+
+
+<div x-data="gameElement" x-init="initGame" class=" image bild-fixe-breite-responsive bild_caption_button game_of_fortune bsi-element-{{gameElementId}}" data-bsi-element="{{gameElementId}}">
+
+
+	<div class="row image-wrapper">
+		<img data-bsi-element-part="{{imagePartIdImage1}}" src="{{gameImageHeaderDesktop}}" class="header-desktop" alt="">
+		<img data-bsi-element-part="{{imagePartIdImage2}}" src="{{gameImageHeaderMobile}}" class="header-mobile" alt="">
+
+		<div class="start_btn_overlay" id="start_btn">
+			<img src="{{gameStartSrc}}" alt="START" width="188" class="button-start" data-bsi-element-part="{{elementPartIdStartButton}}">
+			<span class="button_start_text" data-bsi-element-part="{{textPartIdStartTitle}}">Jetzt Spielen!</span>
+		</div>
+
+		<div class="element-wrapper caption_onimg">
+			<div class="element wysiwyg" data-bsi-element-part="{{textPartIdIntroTop}}" id="game_title1">
+				<h1>Lieber {Username},<br>
+					jetzt mitmachen<br>und gewinnen!</h1>
+			</div>
+
+
+			<div class="element wysiwyg" id="game_title2">
+				<h1 data-bsi-element-part="{{textPartIdTitleThanks}}">Thanks for playing!</h1>
+			</div>
+		</div>
+
+		<div class="widget-html" data-bsi-element-part="{{htmlPartIdGvr}}">
+			<input type="hidden" value="{Game result}" id="gwr">
+		</div>
+		<div class="widget-html" data-bsi-element-part="{{htmlPartIdGap}}">
+			<input type="hidden" value="[Game already Played]" id="GaP">
+		</div>
+
+		<img src="{{wheelIndicatorSrc}}" alt="" class="indicator" width="" id="indicator-wheel">
+
+		<div class="wheel_of_fortune_container" id="fortune-wheel">
+			<img src="{{imgReelSrc}}" alt="" class="fortune-wheeler" width="584">
+
+			<img data-bsi-element-part="{{imagePartIdImageBulb1}}" src="{{gameImageSrcBulb1}}" class="wheel_images wheel_first_img" alt="">
+			<img data-bsi-element-part="{{imagePartIdImageBulb2}}" src="{{gameImageSrcBulb2}}" class="wheel_images wheel_second_img" alt="">
+			<img data-bsi-element-part="{{imagePartIdImageBulb3}}" src="{{gameImageSrcBulb3}}" class="wheel_images wheel_third_img" alt="">
+			<img data-bsi-element-part="{{imagePartIdImageBulb4}}" src="{{gameImageSrcBulb4}}" class="wheel_images wheel_fourth_img" alt="">
+			<img data-bsi-element-part="{{imagePartIdImageBulb5}}" src="{{gameImageSrcBulb5}}" class="wheel_images wheel_fifth_img" alt="">
+
+		</div>
+
+
+		<div id="ribbon_box_1" class="element-wrapper answerbox general_box ribbon">
+			<div class="white_inside_box">
+				<div class="element wysiwyg" data-bsi-element-part="{{textAnsw1}}">
+					<h3>AWARENESS</h3>
+					<p>Sie haben einen Webseiten Quickcheck gewonnen. Damit können Sie Ihre Online-Präsenz kontrollieren und stärken.</p>
+				</div>
+				<div class="element">
+					<div class="button">
+						<a href="[link]" data-bsi-element-part="{{elementPartIdButtonAnsw1}}">zur Anmeldung</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="ribbon_box_2" class="element-wrapper answerbox general_box ribbon">
+			<div class="white_inside_box">
+				<div class="element wysiwyg" data-bsi-element-part="{{textAnsw2}}">
+					<h3>CONSIDERATION</h3>
+					<p>Sie können vergleichen, informiert sein, sicher sein. Hier finden Sie einige Beispiele unsere Erfolgsgeschichten mit exzellenten Customer Journeys.</p>
+				</div>
+				<div class="element">
+					<div class="button">
+						<a href="[link]" data-bsi-element-part="{{elementPartIdButtonAnsw2}}">zum Stories</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="ribbon_box_3" class="element-wrapper answerbox general_box ribbon">
+			<div class="white_inside_box">
+				<div class="element wysiwyg" data-bsi-element-part="{{textAnsw3}}">
+					<h3>AKTION</h3>
+					<p>Ein Tag bei admire. Sie haben einen eintägigen Workshop bei uns gewonnen. Erleben Sie live die Gestaltung einer Customer Journey und überraschen Sie Ihre Kunden.</p>
+				</div>
+				<div class="element">
+					<div class="button">
+						<a href="[link]" data-bsi-element-part="{{elementPartIdButtonAnsw3}}">einen Termin vereinbaren</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="ribbon_box_4" class="element-wrapper answerbox general_box ribbon">
+			<div class="white_inside_box">
+				<div class="element wysiwyg" data-bsi-element-part="{{textAnsw4}}">
+					<h3>RETENTION</h3>
+					<p>Sie haben einen Rabatt auf einige der BSI-Marketingpakete gewonnen. Oder einen Gutschein, um das Abonnement eines bereits gültigen Pakets zu verlängern.</p>
+				</div>
+				<div class="element">
+					<div class="button">
+						<a href="[link]" data-bsi-element-part="{{elementPartIdButtonAnsw4}}">Ihren Rabatt abholen</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="ribbon_box_5" class="element-wrapper answerbox general_box ribbon">
+			<div class="white_inside_box">
+				<div class="element wysiwyg" data-bsi-element-part="{{textAnsw5}}">
+					<h3>ADVOCACY</h3>
+					<p>Leiten Sie unser bewundernswertes Glücksrad an einen Ihrer Freunde oder Kunden weiter und teilen Sie diese Erfahrung der Exzellenz mit Ihren sozialen Netzwerken.</p>
+				</div>
+				<div class="element">
+					<div class="button">
+						<a href="[link]" data-bsi-element-part="{{elementPartIdButtonAnsw5}}">Jetzt teilen</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+{% endapply %}

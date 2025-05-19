@@ -1,0 +1,81 @@
+@import "../../../styles/properties";
+
+.bsi-element-col-three-MEOl1p {
+    @media (min-width: $md) {
+        &.bsi-ratio-4-4-4 {
+            > .row > .bsi-column-1 {
+                width: 33.33333333%;
+            }
+            > .row > .bsi-column-2 {
+                width: 33.33333334%;
+            }
+            > .row > .bsi-column-3 {
+                width: 33.33333333%;
+            }
+            &.col_border{
+                > .row > .bsi-column-1 {
+                    width: calc(33.33333333% - 30px);
+                    border: 1px solid #d9d9d9;
+                    padding: 30px !important;
+                    margin: 0 15px;
+                }
+                > .row > .bsi-column-2 {
+                    width: calc(33.33333334% - 30px);
+                    border: 1px solid #d9d9d9;
+                    padding: 30px !important;
+                    margin: 0 15px;
+                }
+                > .row > .bsi-column-3 {
+                    width: calc(33.33333333% - 30px);
+                    border: 1px solid #d9d9d9;
+                    padding: 30px !important;
+                    margin: 0 15px;
+                }
+            }
+        }
+
+        &.bsi-ratio-3-6-3 {
+            > .row > .bsi-column-1 {
+                width: 25%;
+            }
+            > .row > .bsi-column-2 {
+                width: 50%;
+            }
+            > .row > .bsi-column-3 {
+                width: 25%;
+            }
+            &.col_border{
+                > .row > .bsi-column-1 {
+                    width: calc(25% - 30px);
+                    border: 1px solid #d9d9d9;
+                    padding: 30px !important;
+                    margin: 0 15px;
+                }
+                > .row > .bsi-column-2 {
+                    width: calc(50% - 30px);
+                    border: 1px solid #d9d9d9;
+                    padding: 30px !important;
+                    margin: 0 15px;
+                }
+                > .row > .bsi-column-3 {
+                    width: calc(25% - 30px);
+                    border: 1px solid #d9d9d9;
+                    padding: 30px !important;
+                    margin: 0 15px;
+                }
+            }
+        }      
+    }
+
+    @media (max-width: ($md - 1)) {
+        &.bsi-mobile-keep .row .bsi-column {
+            width: 33.3%!important;
+        }
+        &.bsi-mobile-keep.col_border .row .bsi-column {
+            width: calc(33.3% - 30px);
+            border: 1px solid #d9d9d9;
+            padding: 30px !important;
+            margin: 0 15px;
+        }
+    }    
+}

@@ -1,0 +1,20 @@
+{% apply spaceless %}
+    {% embed '../base/banner/prototype/template.twig' with {
+        elementId: 'header-image-xC4085',
+        dropzoneId: 'header-image-dropzone-Dt5Gll',
+        imagePartId: 'header-image-part-MHZ8Gp',
+        imageSrc: bsi_cx_asset('../../static/header.png'),
+        imageMobileSrc: bsi_cx_asset('../../static/header.png')
+    } %}
+        {% block banner_dropzone %}
+            {% include '../base/h1/template.twig' with {
+                text: 'Master Template',
+                color: 'bsi-text-light',
+                style: 'display-1'
+            } only %}
+            {% include '../layout/spacer/template.twig' with {
+                spacingStyle: 'pt-1-5'
+            } only %}            
+        {% endblock %}
+    {% endembed %}
+{% endapply %}

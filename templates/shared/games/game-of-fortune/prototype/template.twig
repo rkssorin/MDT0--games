@@ -1,0 +1,1216 @@
+{% macro render(elementId = null, textPartIdThanks = null, textPartIdTitle = null, textPartIdThamks = null, textPartIdRibbonBox1 = null, textPartIdRibbonBox2 = null,textPartIdRibbonBox3 = null, textPartIdRibbonBox4 = null, textPartIdRibbonBox5 = null, imagePartIdDesktop = null, imagePartIdMobile = null, imagePartIdWheenlImg1 = null, imagePartIdWheenlImg2 = null, imagePartIdWheenlImg3 = null, imagePartIdWheenlImg4 = null, imagePartIdWheenlImg5 = null, htmlPartIdGvr = null, htmlPartIdGap = null, elementPartIdButtonBox1 = null, elementPartIdButtonBox2 = null, elementPartIdButtonBox3 = null, elementPartIdButtonBox4 = null, elementPartIdButtonBox5  = null) %}
+
+	{% apply spaceless %}
+	{% deprecated 'The usage of "element.render(...)" is deprecated, use "include ... with {...}" instead. For detailed information, visit: https://github.com/bsi-software/bsi-cx-design-master-template-web/blob/main/MIGRATION_GUIDE.md"' %}
+	{% include './template.twig' %}
+	{% endapply %}
+{% endmacro %}
+
+{% apply spaceless %}
+{% set gameElementId = elementId ?: 'game-slot31324' %}
+
+{% set textPartIdTitle = textPartIdTitle ?: 'game-title-part-4b0a' %}
+{# ^ formatted text #}
+
+{# {% set textPartIdThanks = textPartIdThanks ?: 'thanks-title-part-4b0a' %} #}
+{# ^ plain text #}
+
+{% set textPartIdRibbonBox1 = textPartIdRibbonBox1 ?: 'text-part-ribb2329' %}
+{% set textPartIdRibbonBox2 = textPartIdRibbonBox2 ?: 'text-part-ribb2329' %}
+
+{% set elementPartIdButtonBox1 = elementPartIdButtonBox1 ?: 'button-part-gmf9674' %}
+{% set elementPartIdButtonBox2 = elementPartIdButtonBox2 ?: 'button-part-gmf9674' %}
+
+{% set imagePartIdDesktop = imagePartIdDesktop ?: 'figure-part-image-JoCwpV' %}
+{% set imagePartIdMobile = imagePartIdMobile ?: 'figure-part-image-JoCwpV' %}
+
+{# {% set imagePartIdWheenlImg1 = imagePartIdWheenlImg1 ?: 'figure-part-image-JoCwpV' %}
+{% set imagePartIdWheenlImg2 = imagePartIdWheenlImg2 ?: 'figure-part-image-JoCwpV' %} #}
+{# {% set imagePartIdWheenlImg3 = imagePartIdWheenlImg3 ?: 'figure-part-image-JoCwpV' %}
+{% set imagePartIdWheenlImg4 = imagePartIdWheenlImg4 ?: 'figure-part-image-JoCwpV' %}
+{% set imagePartIdWheenlImg5 = imagePartIdWheenlImg5 ?: 'figure-part-image-JoCwpV' %} #}
+
+
+{% set htmlPartIdGvr = htmlPartIdGvr ?: 'html-part-OrXIAg' %}
+{% set htmlPartIdGap = htmlPartIdGap ?: 'html-part-OrXIAg' %}
+
+
+{% set imageDesktopSrc = imageDesktopSrc ?: bsi_cx_asset('../../../static/slot-machine/background_bricks.jpg') %}
+{% set imageMobileSrc = imageMobileSrc ?: bsi_cx_asset('../../../static/slot-machine/background_bricks.jpg') %}
+{# {% set imageStartSrc = imageStartSrc ?: bsi_cx_asset('../../../static/slot-machine/Button-start-fortune-wheel.png') %} #}
+{% set imageCoinsrc = imageCoinsSrc ?: bsi_cx_asset('../../../static/slot-machine/coins.svg') %}
+
+
+{# /**********************************/ #}
+{# {% set imageSpinnerSrc = imageSpinnerSrc ?: bsi_cx_asset('../../../static/slot-machine/spinner.svg') %}
+{% set imageWheelTranspSrc = imageWheelTranspSrc ?: bsi_cx_asset('../../../static/slot-machine/the-wheel_transp.png') %} #}
+
+{% set imagePartIdWheenlImg1Src = imagePartIdWheenlImg1Src ?: bsi_cx_asset('../../../static/slot-machine/seven.png') %}
+{% set imagePartIdWheenlImg2Src = imagePartIdWheenlImg2Src ?: bsi_cx_asset('../../../static/slot-machine/bell.png') %}
+{% set imagePartIdWheenlImg3Src = imagePartIdWheenlImg3Src ?: bsi_cx_asset('../../../static/slot-machine/apple.png') %}
+{% set imagePartIdWheenlImg4Src = imagePartIdWheenlImg4Src ?: bsi_cx_asset('../../../static/slot-machine/bar.png') %}
+{% set imagePartIdWheenlImg5Src = imagePartIdWheenlImg5Src ?: bsi_cx_asset('../../../static/slot-machine/bell.png') %}
+
+{% set audioDingSrc = bsi_cx_asset('../../../static/slot-machine/ding.mp3') %}
+{% set audioWinSrc = bsi_cx_asset('../../../static/slot-machine/win.mp3') %}
+{% set audioPullSrc = bsi_cx_asset('../../../static/slot-machine/pull.mp3') %}
+{% set audioLoseSrc = bsi_cx_asset('../../../static/slot-machine/lose.mp3') %}
+
+
+{#plain-text#}
+{% set textPartIdQuizStart = textPartIdQuizStart ?: 'title-start-part-4b0a' %}
+{% set smallTextPartIdDescription = smallTextPartIdDescription ?: 'text-part-Fjse59' %}
+
+
+	<div x-data="gameElement" x-init="initGame" class="image bild-fixe-breite-responsive bild_caption_button game_of_fortune bsi-element-{{gameElementId}}" data-bsi-element="{{gameElementId}}"> <div class="row image-wrapper">
+
+		<audio id="audioWin" class="u-hide">
+			<source src=" {{audioWinSrc}} " type="audio/ogg">
+
+		</audio>
+		<audio id="audioLose" class="u-hide">
+			<source src=" {{audioLoseSrc}} " type="audio/ogg">
+
+		</audio>
+
+		<audio id="audioPull" class="u-hide">
+			<source src=" {{audioPullSrc}} " type="audio/ogg">
+
+		</audio>
+
+		<audio id="audioDing" class="u-hide">
+			<source src=" {{audioDingSrc}} " type="audio/ogg">
+		</audio>
+
+
+		<img data-bsi-element-part="{{imagePartIdDesktop}}" src="{{imageDesktopSrc}}" class="header-desktop" alt="">
+		<img data-bsi-element-part="{{imagePartIdMobile}}" src="{{imageMobileSrc}}" class="header-mobile" alt="">
+		{# <div class="start_btn_overlay" id="start_btn">
+															<img src="{{imageStartSrc}}" alt="START" width="584" class="button-start">
+												
+														</div> #}
+		<!-- <div class="element-wrapper caption_onimg"><div class="element wysiwyg" data-bsi-element-part="formatted-text"><h1>Lieber {Username},<br />jetzt mitmachen<br />und gewinnen!</h1></div></div> -->
+		<!-- don`t mess this up -->
+			<div class="widget-html" data-bsi-element-part="{{htmlPartIdGvr}}"> <input type="hidden" value="{Game result}" id="gwr">
+		</div>
+		<div class="widget-html" data-bsi-element-part="{{htmlPartIdGap}}">
+			<input type="hidden" value="[Game already Played]" id="GaP">
+		</div>
+
+		<!-- text don`t touch -->
+		<div class="content-element machinetitle">
+			<h1 data-bsi-element-part="{{textPartIdTitle}}">
+				SPIELEN SIE MIT UND GEWINNEN SIE
+				<br>GESCHLECHT NACHNAME!
+			</h1>
+		</div>
+
+		<!-- text don`t touch -->
+
+		<div class="machinescale_cont">
+			<div class="machinescale">
+				<div class="coins_container">
+					<img src="{{imageCoinsrc}}" class="coins">
+				</div>
+
+				<div class="stars_container">
+
+					<div class="before">
+
+						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 118.3 61.1" style="enable-background: new 0 0 118.3 61.1" xml:space="preserve">
+							<style type="text/css">
+								.stb0 {
+									opacity: 5.34e-4;
+								}
+
+								.stb1 {
+									fill: #0b6bff;
+									animation: glowy_blue 3s infinite cubic-bezier(0.4, 0, 1, 1);
+								}
+
+								.stb2 {
+									opacity: 1.609e-3;
+								}
+
+								.stb3 {
+									opacity: 3.24e-3;
+								}
+
+								.stb4 {
+									opacity: 5.451e-3;
+								}
+
+								.stb5 {
+									opacity: 8.275e-3;
+								}
+
+								.stb6 {
+									opacity: 1.1761e-2;
+								}
+
+								.stb7 {
+									opacity: 1.5975e-2;
+								}
+
+								.stb8 {
+									opacity: 2.1008e-2;
+								}
+
+								.stb9 {
+									opacity: 2.6992e-2;
+								}
+
+								.stb10 {
+									opacity: 3.4123e-2;
+								}
+
+								.stb11 {
+									opacity: 4.2709e-2;
+								}
+
+								.stb12 {
+									opacity: 5.3291e-2;
+								}
+
+								.stb13 {
+									opacity: 6.6976e-2;
+								}
+
+								.stb14 {
+									opacity: 8.6862e-2;
+								}
+
+								.stb15 {
+									opacity: 0.1531;
+								}
+
+								.stb16 {
+									fill: #ffffff;
+								}
+							</style>
+							<g>
+								<g class="stb0">
+									<path class="stb1" d="M14.7,61.1c8.1,0,14.7-6.6,14.7-14.7V34.9c0-3.1,2.5-5.6,5.6-5.6h68.8c8.1,0,14.7-6.6,14.7-14.7
+																																																																																																																																																																																																																																										                                            S111.8,0,103.7,0L34.9,0C15.7,0,0,15.7,0,34.9l0,11.6C0,54.5,6.6,61.1,14.7,61.1z"/>
+								</g>
+								<g class="stb2">
+									<path class="stb1" d="M14.7,60.2c7.6,0,13.8-6.2,13.8-13.8V34.9c0-3.6,2.9-6.4,6.4-6.4h68.8c7.6,0,13.8-6.2,13.8-13.8
+																																																																																																																																																																																																																																										                                            s-6.2-13.8-13.8-13.8H34.9c-18.8,0-34,15.3-34,34v11.6C0.9,54.1,7,60.2,14.7,60.2z"/>
+								</g>
+								<g class="stb3">
+									<path class="stb1" d="M14.7,59.4c7.1,0,12.9-5.8,12.9-12.9V34.9c0-4,3.3-7.3,7.3-7.3h68.8c7.1,0,12.9-5.8,12.9-12.9
+																																																																																																																																																																																																																																										                                            s-5.8-12.9-12.9-12.9H34.9C16.6,1.7,1.7,16.6,1.7,34.9v11.6C1.7,53.6,7.5,59.4,14.7,59.4z"/>
+								</g>
+								<g class="stb4">
+									<path class="stb1" d="M14.7,58.5c6.7,0,12.1-5.4,12.1-12.1V34.9c0-4.5,3.7-8.2,8.2-8.2h68.8c6.7,0,12.1-5.4,12.1-12.1
+																																																																																																																																																																																																																																										                                            s-5.4-12.1-12.1-12.1H34.9C17.1,2.6,2.6,17.1,2.6,34.9v11.6C2.6,53.1,8,58.5,14.7,58.5z"/>
+								</g>
+								<g class="stb5">
+									<path class="stb1" d="M14.7,57.7c6.2,0,11.2-5,11.2-11.2V34.9c0-5,4.1-9,9-9h68.8c6.2,0,11.2-5,11.2-11.2s-5-11.2-11.2-11.2H34.9
+																																																																																																																																																																																																																																										                                            C17.6,3.4,3.4,17.6,3.4,34.9v11.6C3.4,52.6,8.5,57.7,14.7,57.7z"/>
+								</g>
+								<g class="stb6">
+									<path class="stb1" d="M14.7,56.8c5.7,0,10.3-4.6,10.3-10.3V34.9c0-5.5,4.4-9.9,9.9-9.9h68.8c5.7,0,10.3-4.6,10.3-10.3
+																																																																																																																																																																																																																																										                                            s-4.6-10.3-10.3-10.3H34.9C18,4.3,4.3,18,4.3,34.9v11.6C4.3,52.2,8.9,56.8,14.7,56.8z"/>
+								</g>
+								<g class="stb7">
+									<path class="stb1" d="M14.7,55.9c5.2,0,9.5-4.2,9.5-9.5V34.9c0-5.9,4.8-10.8,10.8-10.8h68.8c5.2,0,9.5-4.2,9.5-9.5
+																																																																																																																																																																																																																																										                                            c0-5.2-4.2-9.5-9.5-9.5H34.9C18.5,5.2,5.2,18.5,5.2,34.9v11.6C5.2,51.7,9.4,55.9,14.7,55.9z"/>
+								</g>
+								<g class="stb8">
+									<path class="stb1" d="M14.7,55.1c4.8,0,8.6-3.9,8.6-8.6V34.9c0-6.4,5.2-11.6,11.6-11.6h68.8c4.8,0,8.6-3.9,8.6-8.6S108.5,6,103.7,6
+																																																																																																																																																																																																																																										                                            H34.9C19,6,6,19,6,34.9v11.6C6,51.2,9.9,55.1,14.7,55.1z"/>
+								</g>
+								<g class="stb9">
+									<path class="stb1" d="M14.7,54.2c4.3,0,7.8-3.5,7.8-7.8V34.9c0-6.9,5.6-12.5,12.5-12.5h68.8c4.3,0,7.8-3.5,7.8-7.8
+																																																																																																																																																																																																																																										                                            s-3.5-7.8-7.8-7.8H34.9c-15.4,0-28,12.6-28,28v11.6C6.9,50.7,10.4,54.2,14.7,54.2z"/>
+								</g>
+								<g class="stb10">
+									<path class="stb1" d="M14.7,53.3c3.8,0,6.9-3.1,6.9-6.9V34.9c0-7.4,6-13.3,13.3-13.3h68.8c3.8,0,6.9-3.1,6.9-6.9s-3.1-6.9-6.9-6.9
+																																																																																																																																																																																																																																										                                            H34.9c-15,0-27.1,12.2-27.1,27.1v11.6C7.8,50.3,10.8,53.3,14.7,53.3z"/>
+								</g>
+								<g class="stb11">
+									<path class="stb1" d="M14.7,52.5c3.3,0,6-2.7,6-6V34.9c0-7.8,6.4-14.2,14.2-14.2h68.8c3.3,0,6-2.7,6-6s-2.7-6-6-6H34.9
+																																																																																																																																																																																																																																										                                            C20.4,8.6,8.6,20.4,8.6,34.9v11.6C8.6,49.8,11.3,52.5,14.7,52.5z"/>
+								</g>
+								<g class="stb12">
+									<path class="stb1" d="M14.7,51.6c2.9,0,5.2-2.3,5.2-5.2V34.9c0-8.3,6.8-15.1,15.1-15.1h68.8c2.9,0,5.2-2.3,5.2-5.2
+																																																																																																																																																																																																																																										                                            c0-2.9-2.3-5.2-5.2-5.2H34.9c-14,0-25.4,11.4-25.4,25.4v11.6C9.5,49.3,11.8,51.6,14.7,51.6z"/>
+								</g>
+								<g class="stb13">
+									<path class="stb1" d="M14.7,50.8c2.4,0,4.3-1.9,4.3-4.3V34.9C19,26.1,26.1,19,34.9,19h68.8c2.4,0,4.3-1.9,4.3-4.3s-1.9-4.3-4.3-4.3
+																																																																																																																																																																																																																																										                                            H34.9c-13.5,0-24.5,11-24.5,24.5v11.6C10.3,48.8,12.3,50.8,14.7,50.8z"/>
+								</g>
+								<g class="stb14">
+									<path class="stb1" d="M14.7,49.9c1.9,0,3.4-1.5,3.4-3.4V34.9c0-9.3,7.5-16.8,16.8-16.8h68.8c1.9,0,3.4-1.5,3.4-3.4
+																																																																																																																																																																																																																																										                                            s-1.5-3.4-3.4-3.4H34.9c-13.1,0-23.7,10.6-23.7,23.7v11.6C11.2,48.4,12.7,49.9,14.7,49.9z"/>
+								</g>
+								<g class="stb15">
+									<path class="stb1" d="M14.7,49c1.4,0,2.6-1.2,2.6-2.6V34.9c0-9.7,7.9-17.7,17.7-17.7h68.8c1.4,0,2.6-1.2,2.6-2.6s-1.2-2.6-2.6-2.6
+																																																																																																																																																																																																																																										                                            H34.9c-12.6,0-22.8,10.2-22.8,22.8v11.6C12.1,47.9,13.2,49,14.7,49z"/>
+								</g>
+								<g>
+									<path class="stb1" d="M14.7,48.2c1,0,1.7-0.8,1.7-1.7V34.9c0-10.2,8.3-18.5,18.5-18.5h68.8c1,0,1.7-0.8,1.7-1.7s-0.8-1.7-1.7-1.7
+																																																																																																																																																																																																																																										                                            H34.9c-12.1,0-22,9.9-22,22v11.6C12.9,47.4,13.7,48.2,14.7,48.2z"/>
+								</g>
+								<g>
+									<path class="stb16" d="M14.7,47c0.3,0,0.6-0.3,0.6-0.6V34.9c0-10.8,8.8-19.7,19.7-19.7h68.8c0.3,0,0.6-0.3,0.6-0.6
+																																																																																																																																																																																																																																										                                            s-0.3-0.6-0.6-0.6H34.9c-11.5,0-20.8,9.3-20.8,20.8v11.6C14.1,46.8,14.3,47,14.7,47z"/>
+								</g>
+							</g>
+						</svg>
+					</div>
+					<div class="star star_small star_left neon dimmer">
+
+						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 93.3 75" style="enable-background: new 0 0 93.3 75" xml:space="preserve">
+							<style type="text/css">
+								.sta0 {
+									opacity: 5.34e-4;
+								}
+
+								.sta1 {
+									fill: #df7200;
+									animation: glowy 3s infinite cubic-bezier(0.4, 0, 1, 1);
+								}
+
+								.sta2 {
+									opacity: 1.609e-3;
+								}
+
+								.sta3 {
+									opacity: 3.24e-3;
+								}
+
+								.sta4 {
+									opacity: 5.451e-3;
+								}
+
+								.sta5 {
+									opacity: 8.275e-3;
+								}
+
+								.sta6 {
+									opacity: 1.1761e-2;
+								}
+
+								.sta7 {
+									opacity: 1.5975e-2;
+								}
+
+								.sta8 {
+									opacity: 2.1008e-2;
+								}
+
+								.sta9 {
+									opacity: 2.6992e-2;
+								}
+
+								.sta10 {
+									opacity: 3.4123e-2;
+								}
+
+								.sta11 {
+									opacity: 4.2709e-2;
+								}
+
+								.sta12 {
+									opacity: 5.3291e-2;
+								}
+
+								.sta13 {
+									opacity: 6.6976e-2;
+								}
+
+								.sta14 {
+									opacity: 8.6862e-2;
+								}
+
+								.sta15 {
+									opacity: 0.1531;
+								}
+
+								.sta16 {
+									fill: #ffffff;
+								}
+							</style>
+							<g>
+								<g class="sta0">
+									<g>
+										<path class="sta1" d="M30.2,75c-1.1,0-2.3-0.1-3.4-0.4c-7.3-1.9-11.7-9.2-10-16.5L5,48.2c-4.3-3.6-6-9.5-4.3-14.8
+																																																																																																																																																																																																																																																																				                                                c1.7-5.4,6.6-9.1,12.2-9.5l15.3-1l5.7-14.2C35.9,3.4,41,0,46.6,0c0,0,0,0,0,0c5.6,0,10.7,3.4,12.8,8.7l5.7,14.2l15.3,1
+																																																																																																																																																																																																																																																																				                                                c5.6,0.4,10.5,4.1,12.2,9.5c1.7,5.4,0,11.2-4.3,14.8l-11.8,9.8c1.7,7.3-2.7,14.6-10,16.5c-7.4,1.9-14.9-2.6-16.7-9.9l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                                c-0.7-2.9-0.5-5.9,0.6-8.6c-0.6-0.4-1.1-0.8-1.7-1.2c-0.5,0.4-1.1,0.8-1.7,1.2c1.1,2.7,1.3,5.7,0.6,8.6l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                                C41.9,70.8,36.3,75,30.2,75z"/>
+									</g>
+								</g>
+								<g class="sta2">
+									<g>
+										<path class="sta1" d="M30.2,74.2c-1.1,0-2.1-0.1-3.2-0.4C20,72,15.8,64.9,17.6,58l0.1-0.2L5.5,47.6c-4.1-3.4-5.7-8.9-4-14
+																																																																																																																																																																																																																																																																				                                                c1.6-5,6.2-8.6,11.5-8.9l15.8-1L34.6,9c2-4.9,6.7-8.2,12-8.2c0,0,0,0,0,0C52,0.8,56.7,4,58.7,9l5.9,14.7l15.8,1
+																																																																																																																																																																																																																																																																				                                                c5.3,0.3,9.8,3.9,11.5,8.9c1.6,5,0,10.6-4,14L75.6,57.8l0.1,0.2c1.8,6.9-2.4,14-9.4,15.8c-6.9,1.8-14-2.4-15.8-9.4l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                                c-0.8-3-0.4-6.1,0.9-8.8c-1-0.5-1.9-1.2-2.7-2c-0.8,0.8-1.7,1.4-2.7,2c1.3,2.7,1.6,5.8,0.9,8.8l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                                C41.2,70.3,36,74.2,30.2,74.2z"/>
+									</g>
+								</g>
+								<g class="sta3">
+									<g>
+										<path class="sta1" d="M30.2,73.3c-1,0-2-0.1-3-0.4c-6.5-1.7-10.4-8.3-8.8-14.8l0.2-0.7L6,47c-3.8-3.2-5.3-8.4-3.8-13.1
+																																																																																																																																																																																																																																																																				                                                c1.5-4.7,5.8-8,10.8-8.4l16.3-1.1l6.1-15.2c1.8-4.6,6.3-7.6,11.3-7.6c0,0,0,0,0,0c5,0,9.4,3,11.3,7.7L64,24.5l16.3,1.1
+																																																																																																																																																																																																																																																																				                                                c5,0.3,9.2,3.6,10.8,8.4c1.5,4.7,0,9.9-3.8,13.1L74.7,57.5l0.2,0.7c1.7,6.5-2.3,13.1-8.8,14.8c-6.5,1.7-13.1-2.3-14.8-8.8
+																																																																																																																																																																																																																																																																				                                                L49.3,56c-0.8-3.1-0.3-6.2,1.2-8.9c-1.4-0.7-2.7-1.6-3.8-2.7c-1.1,1.2-2.4,2.1-3.8,2.7c1.5,2.7,1.9,5.8,1.2,8.9l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                                C40.5,69.7,35.6,73.3,30.2,73.3z"/>
+									</g>
+								</g>
+								<g class="sta4">
+									<g>
+										<path class="sta1" d="M63.1,72.5c-5.1,0-9.7-3.4-11-8.5L50,55.8c-0.8-3.2-0.2-6.5,1.6-9.1c-2-0.7-3.7-2-5-3.6
+																																																																																																																																																																																																																																																																				                                                c-1.3,1.6-3,2.9-5,3.6c1.8,2.6,2.4,5.9,1.6,9.1L41.2,64c-1.5,6.1-7.7,9.7-13.8,8.2c-6.1-1.5-9.7-7.7-8.2-13.8l0.3-1.2l-13-10.8
+																																																																																																																																																																																																																																																																				                                                c-3.6-3-5-7.8-3.5-12.2c1.4-4.4,5.4-7.5,10-7.8l16.8-1.1l6.3-15.7c1.7-4.3,5.9-7.1,10.5-7.1c0,0,0,0,0,0c4.6,0,8.8,2.8,10.5,7.1
+																																																																																																																																																																																																																																																																				                                                l6.2,15.7l16.8,1.1c4.6,0.3,8.6,3.4,10,7.8c1.4,4.4,0,9.3-3.5,12.2l-13,10.8l0.3,1.2c1.5,6.1-2.1,12.2-8.2,13.8
+																																																																																																																																																																																																																																																																				                                                C65,72.4,64,72.5,63.1,72.5z"/>
+									</g>
+								</g>
+								<g class="sta5">
+									<g>
+										<path class="sta1" d="M30.2,71.7c-0.9,0-1.7-0.1-2.6-0.3c-5.6-1.4-9-7.2-7.6-12.8l0.4-1.7L7,45.8C3.7,43,2.4,38.5,3.8,34.4
+																																																																																																																																																																																																																																																																				                                                c1.3-4.1,5-7,9.3-7.3L30.4,26l6.4-16.1c1.6-4,5.5-6.6,9.8-6.6c0,0,0,0,0,0c4.3,0,8.2,2.6,9.8,6.6L62.9,26l17.3,1.1
+																																																																																																																																																																																																																																																																				                                                c4.3,0.3,8,3.2,9.3,7.3c1.3,4.1,0,8.6-3.3,11.4L72.9,56.9l0.4,1.7c1.4,5.6-2,11.4-7.6,12.8c-5.6,1.4-11.4-2-12.8-7.6l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                                c-0.8-3.3,0-6.8,2.1-9.3c-2.6-0.7-4.9-2.3-6.3-4.6c-1.4,2.3-3.7,3.9-6.3,4.6c2.1,2.6,2.9,6,2.1,9.3l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                                C39.2,68.6,34.9,71.7,30.2,71.7z"/>
+									</g>
+								</g>
+								<g class="sta6">
+									<g>
+										<path class="sta1" d="M30.2,70.9c-0.8,0-1.6-0.1-2.4-0.3c-5.2-1.3-8.3-6.6-7-11.8l0.6-2.2L7.6,45.1c-3.1-2.5-4.3-6.7-3-10.5
+																																																																																																																																																																																																																																																																				                                                c1.2-3.8,4.6-6.4,8.6-6.7L31,26.8l6.6-16.6c1.5-3.7,5.1-6.1,9-6.1c0,0,0,0,0,0c4,0,7.6,2.4,9,6.1l6.6,16.6L80.2,28
+																																																																																																																																																																																																																																																																				                                                c4,0.3,7.4,2.9,8.6,6.7c1.2,3.8,0,7.9-3,10.5L72,56.6l0.6,2.2c1.3,5.2-1.8,10.5-7,11.8c-5.2,1.3-10.5-1.8-11.8-7l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                                c-0.9-3.5,0.3-7.2,3-9.7c-3.5-0.4-6.5-2.6-7.9-5.8c-1.4,3.2-4.4,5.4-7.9,5.8c2.7,2.4,3.9,6.1,3,9.7l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                                C38.5,68,34.5,70.9,30.2,70.9z"/>
+									</g>
+								</g>
+								<g class="sta7">
+									<g>
+										<path class="sta1" d="M30.2,70.1c-0.7,0-1.5-0.1-2.2-0.3c-4.8-1.2-7.7-6.1-6.4-10.8l0.7-2.7L8.1,44.5c-2.8-2.3-3.9-6.1-2.8-9.6
+																																																																																																																																																																																																																																																																				                                                c1.1-3.5,4.3-5.9,7.9-6.1l18.4-1.2l6.8-17.1c1.4-3.4,4.6-5.6,8.3-5.6c0,0,0,0,0,0c3.6,0,6.9,2.2,8.3,5.6l6.8,17.1l18.4,1.2
+																																																																																																																																																																																																																																																																				                                                c3.6,0.2,6.8,2.7,7.9,6.1c1.1,3.5,0,7.3-2.8,9.6L71.1,56.3l0.7,2.7c1.2,4.8-1.7,9.6-6.4,10.8c-4.8,1.2-9.6-1.7-10.8-6.4l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                                c-0.8-3.3,0.3-6.9,2.9-9.1l1.3-1.1L55,45c-3.4-0.2-6.4-2.4-7.7-5.6l-0.6-1.6L46,39.4c-1.3,3.2-4.3,5.4-7.7,5.6l-1.7,0.1l1.3,1.1
+																																																																																																																																																																																																																																																																				                                                c2.6,2.2,3.8,5.7,2.9,9.1l-2.1,8.2C37.8,67.4,34.1,70.1,30.2,70.1z"/>
+									</g>
+								</g>
+								<g class="sta8">
+									<g>
+										<path class="sta1" d="M30.2,69.3c-0.7,0-1.3-0.1-2-0.3c-4.3-1.1-7-5.5-5.9-9.9l0.8-3.2L8.6,43.9C6,41.8,5,38.3,6.1,35.2
+																																																																																																																																																																																																																																																																				                                                c1-3.2,3.9-5.4,7.2-5.6l18.9-1.2l7-17.6c1.2-3.1,4.2-5.1,7.5-5.1c0,0,0,0,0,0c3.3,0,6.3,2,7.5,5.1l7,17.6L80,29.6
+																																																																																																																																																																																																																																																																				                                                c3.3,0.2,6.2,2.4,7.2,5.6c1,3.2,0,6.6-2.5,8.7L70.2,56l0.8,3.2c1.1,4.3-1.5,8.7-5.9,9.9c-4.3,1.1-8.7-1.5-9.9-5.9L53.2,55
+																																																																																																																																																																																																																																																																				                                                c-0.8-3,0.3-6.2,2.7-8.2l2.9-2.4L55,44.2c-3.1-0.2-5.8-2.2-7-5.1l-1.4-3.5l-1.4,3.5c-1.2,2.9-3.9,4.9-7,5.1l-3.7,0.2l2.9,2.4
+																																																																																																																																																																																																																																																																				                                                c2.4,2,3.4,5.2,2.7,8.2L38,63.2C37.1,66.9,33.8,69.3,30.2,69.3z"/>
+									</g>
+								</g>
+								<g class="sta9">
+									<g>
+										<path class="sta1" d="M30.2,68.5c-0.6,0-1.2-0.1-1.8-0.2c-3.9-1-6.3-5-5.3-8.9l0.9-3.7L9.1,43.3c-2.3-1.9-3.2-5-2.3-7.9
+																																																																																																																																																																																																																																																																				                                                c0.9-2.8,3.5-4.8,6.5-5l19.4-1.3l7.2-18c1.1-2.8,3.8-4.6,6.8-4.6c0,0,0,0,0,0c3,0,5.7,1.8,6.8,4.6l7.2,18L80,30.4
+																																																																																																																																																																																																																																																																				                                                c3,0.2,5.5,2.2,6.5,5c0.9,2.8,0,6-2.3,7.9L69.2,55.7l0.9,3.7c1,3.9-1.4,7.9-5.3,8.9c-3.9,1-7.9-1.4-8.9-5.3L54,54.8
+																																																																																																																																																																																																																																																																				                                                c-0.7-2.7,0.2-5.6,2.4-7.4l4.4-3.7l-5.7-0.4c-2.8-0.2-5.3-2-6.3-4.6l-2.1-5.3l-2.1,5.3c-1,2.6-3.5,4.4-6.3,4.6l-5.7,0.4l4.4,3.7
+																																																																																																																																																																																																																																																																				                                                c2.2,1.8,3.1,4.7,2.4,7.4L37.2,63C36.4,66.3,33.4,68.5,30.2,68.5z"/>
+									</g>
+								</g>
+								<g class="sta10">
+									<g>
+										<path class="sta1" d="M30.2,67.7c-0.5,0-1.1-0.1-1.6-0.2c-3.5-0.9-5.6-4.4-4.7-7.9l1.1-4.2L9.6,42.6c-2-1.7-2.8-4.5-2-7
+																																																																																																																																																																																																																																																																				                                                c0.8-2.5,3.1-4.3,5.7-4.5l19.9-1.3l7.4-18.5c1-2.5,3.4-4.1,6-4.1c0,0,0,0,0,0c2.7,0,5,1.6,6,4.1L60,29.9l19.9,1.3
+																																																																																																																																																																																																																																																																				                                                c2.6,0.2,4.9,1.9,5.7,4.5c0.8,2.5,0,5.3-2,7L68.3,55.4l1.1,4.2c0.9,3.5-1.2,7-4.7,7.9c-3.5,0.9-7-1.2-7.9-4.7l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                                c-0.6-2.4,0.2-5,2.1-6.6l6-5l-7.8-0.5c-2.5-0.2-4.7-1.7-5.6-4.1l-2.9-7.2l-2.9,7.2c-0.9,2.3-3.1,3.9-5.6,4.1l-7.8,0.5l6,5
+																																																																																																																																																																																																																																																																				                                                c1.9,1.6,2.8,4.2,2.1,6.6l-2.1,8.2C35.7,65.7,33.1,67.7,30.2,67.7z"/>
+									</g>
+								</g>
+								<g class="sta11">
+									<g>
+										<path class="sta1" d="M30.2,66.9c-0.5,0-0.9-0.1-1.4-0.2c-3-0.8-4.9-3.9-4.1-6.9l1.2-4.7L10.1,42c-1.8-1.5-2.5-3.9-1.8-6.1
+																																																																																																																																																																																																																																																																				                                                c0.7-2.2,2.7-3.8,5-3.9l20.4-1.3l7.6-19c0.9-2.2,2.9-3.6,5.3-3.6c0,0,0,0,0,0c2.3,0,4.4,1.4,5.3,3.6l7.6,19L79.9,32
+																																																																																																																																																																																																																																																																				                                                c2.3,0.2,4.3,1.7,5,3.9c0.7,2.2,0,4.6-1.8,6.1L67.4,55.1l1.2,4.7c0.8,3-1.1,6.1-4.1,6.9c-3,0.8-6.1-1.1-6.9-4.1l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                                c-0.5-2.1,0.2-4.4,1.9-5.8l7.5-6.3l-9.8-0.6c-2.2-0.1-4.1-1.5-4.9-3.6l-3.6-9.1L43,38.2c-0.8,2-2.7,3.4-4.9,3.6l-9.8,0.6l7.5,6.3
+																																																																																																																																																																																																																																																																				                                                c1.7,1.4,2.4,3.6,1.9,5.8l-2.1,8.2C35,65.2,32.7,66.9,30.2,66.9z"/>
+									</g>
+								</g>
+								<g class="sta12">
+									<g>
+										<path class="sta1" d="M30.2,66.1c-0.4,0-0.8,0-1.2-0.2c-2.6-0.7-4.2-3.3-3.5-5.9l1.3-5.2L10.7,41.4c-1.5-1.3-2.1-3.3-1.5-5.2
+																																																																																																																																																																																																																																																																				                                                c0.6-1.9,2.3-3.2,4.3-3.3l20.9-1.4L42.1,12c0.7-1.8,2.5-3.1,4.5-3.1c0,0,0,0,0,0c2,0,3.8,1.2,4.5,3.1l7.8,19.5l20.9,1.4
+																																																																																																																																																																																																																																																																				                                                c2,0.1,3.7,1.5,4.3,3.3c0.6,1.9,0,4-1.5,5.2L66.5,54.8l1.3,5.2c0.7,2.6-0.9,5.2-3.5,5.9c-2.6,0.7-5.2-0.9-5.9-3.5l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                                c-0.5-1.8,0.2-3.7,1.6-4.9l9.1-7.6l-11.8-0.8c-1.9-0.1-3.5-1.3-4.2-3l-4.4-11l-4.4,11c-0.7,1.7-2.3,2.9-4.2,3l-11.8,0.8l9.1,7.6
+																																																																																																																																																																																																																																																																				                                                c1.4,1.2,2.1,3.1,1.6,4.9l-2.1,8.2C34.3,64.6,32.3,66.1,30.2,66.1z"/>
+									</g>
+								</g>
+								<g class="sta13">
+									<g>
+										<path class="sta1" d="M63.1,65.2c-1.8,0-3.5-1.2-3.9-3.1L57.1,54c-0.4-1.5,0.1-3.1,1.3-4.1L69.1,41l-13.8-0.9
+																																																																																																																																																																																																																																																																				                                                c-1.6-0.1-2.9-1.1-3.5-2.5l-5.1-12.9l-5.1,12.9C40.9,39,39.6,40,38,40.1L24.2,41l10.7,8.9c1.2,1,1.7,2.6,1.3,4.1l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                                c-0.6,2.2-2.8,3.5-4.9,2.9c-2.2-0.6-3.5-2.8-2.9-4.9l1.4-5.7L11.2,40.8c-1.3-1.1-1.8-2.8-1.3-4.4c0.5-1.6,1.9-2.7,3.6-2.8
+																																																																																																																																																																																																																																																																				                                                l21.4-1.4l8-19.9c0.6-1.5,2.1-2.5,3.8-2.5c0,0,0,0,0,0c1.7,0,3.1,1,3.8,2.6l8,19.9l21.4,1.4c1.7,0.1,3.1,1.2,3.6,2.8
+																																																																																																																																																																																																																																																																				                                                c0.5,1.6,0,3.3-1.3,4.4L65.6,54.5l1.4,5.7c0.6,2.2-0.8,4.4-2.9,4.9C63.8,65.2,63.4,65.2,63.1,65.2z"/>
+									</g>
+								</g>
+								<g class="sta14">
+									<g>
+										<path class="sta1" d="M30.2,64.4c-0.3,0-0.5,0-0.8-0.1c-1.7-0.4-2.8-2.2-2.3-3.9l1.6-6.2L11.7,40.2c-1-0.8-1.4-2.2-1-3.5
+																																																																																																																																																																																																																																																																				                                                c0.4-1.3,1.5-2.1,2.9-2.2L35.5,33l8.2-20.4c0.5-1.2,1.7-2,3-2h0c1.3,0,2.5,0.8,3,2L57.8,33l21.9,1.4c1.3,0.1,2.5,1,2.9,2.2
+																																																																																																																																																																																																																																																																				                                                c0.4,1.3,0,2.6-1,3.5L64.7,54.2l1.6,6.2c0.4,1.7-0.6,3.5-2.3,3.9c-1.7,0.4-3.5-0.6-3.9-2.3l-2.1-8.2c-0.3-1.2,0.1-2.5,1.1-3.3
+																																																																																																																																																																																																																																																																				                                                l12.2-10.2l-15.9-1c-1.2-0.1-2.3-0.9-2.8-2l-5.9-14.8l-5.9,14.8c-0.5,1.2-1.6,2-2.8,2l-15.9,1l12.2,10.2c1,0.8,1.4,2.1,1.1,3.3
+																																																																																																																																																																																																																																																																				                                                L33.3,62C32.9,63.5,31.6,64.4,30.2,64.4z"/>
+									</g>
+								</g>
+								<g class="sta15">
+									<g>
+										<path id="star1" class="sta1 no_glow" d="M63.1,63.6c-1.1,0-2.1-0.7-2.4-1.8l-2.1-8.2c-0.2-0.9,0.1-1.9,0.8-2.5l13.8-11.5l-17.9-1.2
+																																																																																																																																																																																																																																																																				                                                c-0.9-0.1-1.8-0.7-2.1-1.5l-6.6-16.7L40,37c-0.3,0.9-1.2,1.5-2.1,1.5L20,39.7l13.8,11.5c0.7,0.6,1,1.6,0.8,2.5l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                                c-0.3,1.3-1.7,2.1-3,1.8c-1.3-0.3-2.1-1.7-1.8-3l1.7-6.7L12.2,39.5c-0.8-0.6-1.1-1.7-0.8-2.6c0.3-0.9,1.2-1.6,2.2-1.7L36,33.8
+																																																																																																																																																																																																																																																																				                                                l8.3-20.9c0.4-0.9,1.3-1.5,2.3-1.5h0c1,0,1.9,0.6,2.3,1.5l8.3,20.9l22.4,1.5c1,0.1,1.8,0.7,2.2,1.7c0.3,0.9,0,2-0.8,2.6
+																																																																																																																																																																																																																																																																				                                                L63.8,53.9l1.7,6.7c0.3,1.3-0.5,2.6-1.8,3C63.5,63.6,63.3,63.6,63.1,63.6z"/>
+									</g>
+								</g>
+								<g>
+									<g>
+										<path id="star1" class="sta1 no_glow" d="M63.1,62.8c-0.7,0-1.4-0.5-1.6-1.2l-2.1-8.2c-0.2-0.6,0.1-1.2,0.5-1.6L75.4,39l-19.9-1.3
+																																																																																																																																																																																																																																																																				                                                c-0.6,0-1.2-0.4-1.4-1l-7.4-18.5l-7.4,18.5c-0.2,0.6-0.8,1-1.4,1L17.9,39l15.3,12.8c0.5,0.4,0.7,1,0.5,1.6l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                                c-0.2,0.9-1.1,1.4-2,1.2c-0.9-0.2-1.4-1.1-1.2-2l1.8-7.2L12.7,38.9c-0.5-0.4-0.7-1.1-0.5-1.7c0.2-0.6,0.8-1.1,1.4-1.1l22.9-1.5
+																																																																																																																																																																																																																																																																				                                                l8.5-21.4c0.2-0.6,0.8-1,1.5-1c0,0,0,0,0,0c0.7,0,1.3,0.4,1.5,1l8.5,21.4l23,1.5c0.7,0,1.2,0.5,1.4,1.1c0.2,0.6,0,1.3-0.5,1.7
+																																																																																																																																																																																																																																																																				                                                L62.9,53.6l1.8,7.2c0.2,0.9-0.3,1.7-1.2,2C63.4,62.8,63.2,62.8,63.1,62.8z"/>
+									</g>
+								</g>
+								<g>
+									<g>
+										<path class="sta16" d="M63.1,61.7c-0.2,0-0.5-0.2-0.5-0.4l-2.1-8.2c-0.1-0.2,0-0.4,0.2-0.5l17.4-14.5l-22.6-1.5
+																																																																																																																																																																																																																																																																				                                                c-0.2,0-0.4-0.1-0.5-0.3l-8.4-21.1l-8.4,21.1c-0.1,0.2-0.3,0.3-0.5,0.3l-22.6,1.5l17.4,14.5c0.2,0.1,0.2,0.3,0.2,0.5l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                                c-0.1,0.3-0.4,0.5-0.7,0.4c-0.3-0.1-0.5-0.4-0.4-0.7l2-7.8L13.4,38.1c-0.2-0.1-0.2-0.4-0.2-0.6c0.1-0.2,0.3-0.4,0.5-0.4l23.6-1.6
+																																																																																																																																																																																																																																																																				                                                l8.8-22c0.1-0.2,0.3-0.3,0.5-0.3l0,0c0.2,0,0.4,0.1,0.5,0.3l8.8,22l23.6,1.6c0.2,0,0.4,0.2,0.5,0.4c0.1,0.2,0,0.4-0.2,0.6
+																																																																																																																																																																																																																																																																				                                                L61.6,53.2l2,7.8c0.1,0.3-0.1,0.6-0.4,0.7C63.2,61.7,63.2,61.7,63.1,61.7z"/>
+									</g>
+								</g>
+							</g>
+						</svg>
+					</div>
+					<div class="star star_small star_midd neon dimmer">
+
+						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 93.3 75" style="enable-background: new 0 0 93.3 75" xml:space="preserve">
+							<style type="text/css">
+								.sta0 {
+									opacity: 5.34e-4;
+								}
+
+								.sta1 {
+									fill: #df7200;
+									animation: glowy 3s infinite cubic-bezier(0.4, 0, 1, 1);
+								}
+
+								.sta2 {
+									opacity: 1.609e-3;
+								}
+
+								.sta3 {
+									opacity: 3.24e-3;
+								}
+
+								.sta4 {
+									opacity: 5.451e-3;
+								}
+
+								.sta5 {
+									opacity: 8.275e-3;
+								}
+
+								.sta6 {
+									opacity: 1.1761e-2;
+								}
+
+								.sta7 {
+									opacity: 1.5975e-2;
+								}
+
+								.sta8 {
+									opacity: 2.1008e-2;
+								}
+
+								.sta9 {
+									opacity: 2.6992e-2;
+								}
+
+								.sta10 {
+									opacity: 3.4123e-2;
+								}
+
+								.sta11 {
+									opacity: 4.2709e-2;
+								}
+
+								.sta12 {
+									opacity: 5.3291e-2;
+								}
+
+								.sta13 {
+									opacity: 6.6976e-2;
+								}
+
+								.sta14 {
+									opacity: 8.6862e-2;
+								}
+
+								.sta15 {
+									opacity: 0.1531;
+								}
+
+								.sta16 {
+									fill: #ffffff;
+								}
+							</style>
+							<g>
+								<g class="sta0">
+									<g>
+										<path class="sta1" d="M30.2,75c-1.1,0-2.3-0.1-3.4-0.4c-7.3-1.9-11.7-9.2-10-16.5L5,48.2c-4.3-3.6-6-9.5-4.3-14.8
+																																																																																																																																																																																																																																																																				                                                c1.7-5.4,6.6-9.1,12.2-9.5l15.3-1l5.7-14.2C35.9,3.4,41,0,46.6,0c0,0,0,0,0,0c5.6,0,10.7,3.4,12.8,8.7l5.7,14.2l15.3,1
+																																																																																																																																																																																																																																																																				                                                c5.6,0.4,10.5,4.1,12.2,9.5c1.7,5.4,0,11.2-4.3,14.8l-11.8,9.8c1.7,7.3-2.7,14.6-10,16.5c-7.4,1.9-14.9-2.6-16.7-9.9l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                                c-0.7-2.9-0.5-5.9,0.6-8.6c-0.6-0.4-1.1-0.8-1.7-1.2c-0.5,0.4-1.1,0.8-1.7,1.2c1.1,2.7,1.3,5.7,0.6,8.6l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                                C41.9,70.8,36.3,75,30.2,75z"/>
+									</g>
+								</g>
+								<g class="sta2">
+									<g>
+										<path class="sta1" d="M30.2,74.2c-1.1,0-2.1-0.1-3.2-0.4C20,72,15.8,64.9,17.6,58l0.1-0.2L5.5,47.6c-4.1-3.4-5.7-8.9-4-14
+																																																																																																																																																																																																																																																																				                                                c1.6-5,6.2-8.6,11.5-8.9l15.8-1L34.6,9c2-4.9,6.7-8.2,12-8.2c0,0,0,0,0,0C52,0.8,56.7,4,58.7,9l5.9,14.7l15.8,1
+																																																																																																																																																																																																																																																																				                                                c5.3,0.3,9.8,3.9,11.5,8.9c1.6,5,0,10.6-4,14L75.6,57.8l0.1,0.2c1.8,6.9-2.4,14-9.4,15.8c-6.9,1.8-14-2.4-15.8-9.4l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                                c-0.8-3-0.4-6.1,0.9-8.8c-1-0.5-1.9-1.2-2.7-2c-0.8,0.8-1.7,1.4-2.7,2c1.3,2.7,1.6,5.8,0.9,8.8l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                                C41.2,70.3,36,74.2,30.2,74.2z"/>
+									</g>
+								</g>
+								<g class="sta3">
+									<g>
+										<path class="sta1" d="M30.2,73.3c-1,0-2-0.1-3-0.4c-6.5-1.7-10.4-8.3-8.8-14.8l0.2-0.7L6,47c-3.8-3.2-5.3-8.4-3.8-13.1
+																																																																																																																																																																																																																																																																				                                                c1.5-4.7,5.8-8,10.8-8.4l16.3-1.1l6.1-15.2c1.8-4.6,6.3-7.6,11.3-7.6c0,0,0,0,0,0c5,0,9.4,3,11.3,7.7L64,24.5l16.3,1.1
+																																																																																																																																																																																																																																																																				                                                c5,0.3,9.2,3.6,10.8,8.4c1.5,4.7,0,9.9-3.8,13.1L74.7,57.5l0.2,0.7c1.7,6.5-2.3,13.1-8.8,14.8c-6.5,1.7-13.1-2.3-14.8-8.8
+																																																																																																																																																																																																																																																																				                                                L49.3,56c-0.8-3.1-0.3-6.2,1.2-8.9c-1.4-0.7-2.7-1.6-3.8-2.7c-1.1,1.2-2.4,2.1-3.8,2.7c1.5,2.7,1.9,5.8,1.2,8.9l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                                C40.5,69.7,35.6,73.3,30.2,73.3z"/>
+									</g>
+								</g>
+								<g class="sta4">
+									<g>
+										<path class="sta1" d="M63.1,72.5c-5.1,0-9.7-3.4-11-8.5L50,55.8c-0.8-3.2-0.2-6.5,1.6-9.1c-2-0.7-3.7-2-5-3.6
+																																																																																																																																																																																																																																																																				                                                c-1.3,1.6-3,2.9-5,3.6c1.8,2.6,2.4,5.9,1.6,9.1L41.2,64c-1.5,6.1-7.7,9.7-13.8,8.2c-6.1-1.5-9.7-7.7-8.2-13.8l0.3-1.2l-13-10.8
+																																																																																																																																																																																																																																																																				                                                c-3.6-3-5-7.8-3.5-12.2c1.4-4.4,5.4-7.5,10-7.8l16.8-1.1l6.3-15.7c1.7-4.3,5.9-7.1,10.5-7.1c0,0,0,0,0,0c4.6,0,8.8,2.8,10.5,7.1
+																																																																																																																																																																																																																																																																				                                                l6.2,15.7l16.8,1.1c4.6,0.3,8.6,3.4,10,7.8c1.4,4.4,0,9.3-3.5,12.2l-13,10.8l0.3,1.2c1.5,6.1-2.1,12.2-8.2,13.8
+																																																																																																																																																																																																																																																																				                                                C65,72.4,64,72.5,63.1,72.5z"/>
+									</g>
+								</g>
+								<g class="sta5">
+									<g>
+										<path class="sta1" d="M30.2,71.7c-0.9,0-1.7-0.1-2.6-0.3c-5.6-1.4-9-7.2-7.6-12.8l0.4-1.7L7,45.8C3.7,43,2.4,38.5,3.8,34.4
+																																																																																																																																																																																																																																																																				                                                c1.3-4.1,5-7,9.3-7.3L30.4,26l6.4-16.1c1.6-4,5.5-6.6,9.8-6.6c0,0,0,0,0,0c4.3,0,8.2,2.6,9.8,6.6L62.9,26l17.3,1.1
+																																																																																																																																																																																																																																																																				                                                c4.3,0.3,8,3.2,9.3,7.3c1.3,4.1,0,8.6-3.3,11.4L72.9,56.9l0.4,1.7c1.4,5.6-2,11.4-7.6,12.8c-5.6,1.4-11.4-2-12.8-7.6l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                                c-0.8-3.3,0-6.8,2.1-9.3c-2.6-0.7-4.9-2.3-6.3-4.6c-1.4,2.3-3.7,3.9-6.3,4.6c2.1,2.6,2.9,6,2.1,9.3l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                                C39.2,68.6,34.9,71.7,30.2,71.7z"/>
+									</g>
+								</g>
+								<g class="sta6">
+									<g>
+										<path class="sta1" d="M30.2,70.9c-0.8,0-1.6-0.1-2.4-0.3c-5.2-1.3-8.3-6.6-7-11.8l0.6-2.2L7.6,45.1c-3.1-2.5-4.3-6.7-3-10.5
+																																																																																																																																																																																																																																																																				                                                c1.2-3.8,4.6-6.4,8.6-6.7L31,26.8l6.6-16.6c1.5-3.7,5.1-6.1,9-6.1c0,0,0,0,0,0c4,0,7.6,2.4,9,6.1l6.6,16.6L80.2,28
+																																																																																																																																																																																																																																																																				                                                c4,0.3,7.4,2.9,8.6,6.7c1.2,3.8,0,7.9-3,10.5L72,56.6l0.6,2.2c1.3,5.2-1.8,10.5-7,11.8c-5.2,1.3-10.5-1.8-11.8-7l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                                c-0.9-3.5,0.3-7.2,3-9.7c-3.5-0.4-6.5-2.6-7.9-5.8c-1.4,3.2-4.4,5.4-7.9,5.8c2.7,2.4,3.9,6.1,3,9.7l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                                C38.5,68,34.5,70.9,30.2,70.9z"/>
+									</g>
+								</g>
+								<g class="sta7">
+									<g>
+										<path class="sta1" d="M30.2,70.1c-0.7,0-1.5-0.1-2.2-0.3c-4.8-1.2-7.7-6.1-6.4-10.8l0.7-2.7L8.1,44.5c-2.8-2.3-3.9-6.1-2.8-9.6
+																																																																																																																																																																																																																																																																				                                                c1.1-3.5,4.3-5.9,7.9-6.1l18.4-1.2l6.8-17.1c1.4-3.4,4.6-5.6,8.3-5.6c0,0,0,0,0,0c3.6,0,6.9,2.2,8.3,5.6l6.8,17.1l18.4,1.2
+																																																																																																																																																																																																																																																																				                                                c3.6,0.2,6.8,2.7,7.9,6.1c1.1,3.5,0,7.3-2.8,9.6L71.1,56.3l0.7,2.7c1.2,4.8-1.7,9.6-6.4,10.8c-4.8,1.2-9.6-1.7-10.8-6.4l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                                c-0.8-3.3,0.3-6.9,2.9-9.1l1.3-1.1L55,45c-3.4-0.2-6.4-2.4-7.7-5.6l-0.6-1.6L46,39.4c-1.3,3.2-4.3,5.4-7.7,5.6l-1.7,0.1l1.3,1.1
+																																																																																																																																																																																																																																																																				                                                c2.6,2.2,3.8,5.7,2.9,9.1l-2.1,8.2C37.8,67.4,34.1,70.1,30.2,70.1z"/>
+									</g>
+								</g>
+								<g class="sta8">
+									<g>
+										<path class="sta1" d="M30.2,69.3c-0.7,0-1.3-0.1-2-0.3c-4.3-1.1-7-5.5-5.9-9.9l0.8-3.2L8.6,43.9C6,41.8,5,38.3,6.1,35.2
+																																																																																																																																																																																																																																																																				                                                c1-3.2,3.9-5.4,7.2-5.6l18.9-1.2l7-17.6c1.2-3.1,4.2-5.1,7.5-5.1c0,0,0,0,0,0c3.3,0,6.3,2,7.5,5.1l7,17.6L80,29.6
+																																																																																																																																																																																																																																																																				                                                c3.3,0.2,6.2,2.4,7.2,5.6c1,3.2,0,6.6-2.5,8.7L70.2,56l0.8,3.2c1.1,4.3-1.5,8.7-5.9,9.9c-4.3,1.1-8.7-1.5-9.9-5.9L53.2,55
+																																																																																																																																																																																																																																																																				                                                c-0.8-3,0.3-6.2,2.7-8.2l2.9-2.4L55,44.2c-3.1-0.2-5.8-2.2-7-5.1l-1.4-3.5l-1.4,3.5c-1.2,2.9-3.9,4.9-7,5.1l-3.7,0.2l2.9,2.4
+																																																																																																																																																																																																																																																																				                                                c2.4,2,3.4,5.2,2.7,8.2L38,63.2C37.1,66.9,33.8,69.3,30.2,69.3z"/>
+									</g>
+								</g>
+								<g class="sta9">
+									<g>
+										<path class="sta1" d="M30.2,68.5c-0.6,0-1.2-0.1-1.8-0.2c-3.9-1-6.3-5-5.3-8.9l0.9-3.7L9.1,43.3c-2.3-1.9-3.2-5-2.3-7.9
+																																																																																																																																																																																																																																																																				                                                c0.9-2.8,3.5-4.8,6.5-5l19.4-1.3l7.2-18c1.1-2.8,3.8-4.6,6.8-4.6c0,0,0,0,0,0c3,0,5.7,1.8,6.8,4.6l7.2,18L80,30.4
+																																																																																																																																																																																																																																																																				                                                c3,0.2,5.5,2.2,6.5,5c0.9,2.8,0,6-2.3,7.9L69.2,55.7l0.9,3.7c1,3.9-1.4,7.9-5.3,8.9c-3.9,1-7.9-1.4-8.9-5.3L54,54.8
+																																																																																																																																																																																																																																																																				                                                c-0.7-2.7,0.2-5.6,2.4-7.4l4.4-3.7l-5.7-0.4c-2.8-0.2-5.3-2-6.3-4.6l-2.1-5.3l-2.1,5.3c-1,2.6-3.5,4.4-6.3,4.6l-5.7,0.4l4.4,3.7
+																																																																																																																																																																																																																																																																				                                                c2.2,1.8,3.1,4.7,2.4,7.4L37.2,63C36.4,66.3,33.4,68.5,30.2,68.5z"/>
+									</g>
+								</g>
+								<g class="sta10">
+									<g>
+										<path class="sta1" d="M30.2,67.7c-0.5,0-1.1-0.1-1.6-0.2c-3.5-0.9-5.6-4.4-4.7-7.9l1.1-4.2L9.6,42.6c-2-1.7-2.8-4.5-2-7
+																																																																																																																																																																																																																																																																				                                                c0.8-2.5,3.1-4.3,5.7-4.5l19.9-1.3l7.4-18.5c1-2.5,3.4-4.1,6-4.1c0,0,0,0,0,0c2.7,0,5,1.6,6,4.1L60,29.9l19.9,1.3
+																																																																																																																																																																																																																																																																				                                                c2.6,0.2,4.9,1.9,5.7,4.5c0.8,2.5,0,5.3-2,7L68.3,55.4l1.1,4.2c0.9,3.5-1.2,7-4.7,7.9c-3.5,0.9-7-1.2-7.9-4.7l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                                c-0.6-2.4,0.2-5,2.1-6.6l6-5l-7.8-0.5c-2.5-0.2-4.7-1.7-5.6-4.1l-2.9-7.2l-2.9,7.2c-0.9,2.3-3.1,3.9-5.6,4.1l-7.8,0.5l6,5
+																																																																																																																																																																																																																																																																				                                                c1.9,1.6,2.8,4.2,2.1,6.6l-2.1,8.2C35.7,65.7,33.1,67.7,30.2,67.7z"/>
+									</g>
+								</g>
+								<g class="sta11">
+									<g>
+										<path class="sta1" d="M30.2,66.9c-0.5,0-0.9-0.1-1.4-0.2c-3-0.8-4.9-3.9-4.1-6.9l1.2-4.7L10.1,42c-1.8-1.5-2.5-3.9-1.8-6.1
+																																																																																																																																																																																																																																																																				                                                c0.7-2.2,2.7-3.8,5-3.9l20.4-1.3l7.6-19c0.9-2.2,2.9-3.6,5.3-3.6c0,0,0,0,0,0c2.3,0,4.4,1.4,5.3,3.6l7.6,19L79.9,32
+																																																																																																																																																																																																																																																																				                                                c2.3,0.2,4.3,1.7,5,3.9c0.7,2.2,0,4.6-1.8,6.1L67.4,55.1l1.2,4.7c0.8,3-1.1,6.1-4.1,6.9c-3,0.8-6.1-1.1-6.9-4.1l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                                c-0.5-2.1,0.2-4.4,1.9-5.8l7.5-6.3l-9.8-0.6c-2.2-0.1-4.1-1.5-4.9-3.6l-3.6-9.1L43,38.2c-0.8,2-2.7,3.4-4.9,3.6l-9.8,0.6l7.5,6.3
+																																																																																																																																																																																																																																																																				                                                c1.7,1.4,2.4,3.6,1.9,5.8l-2.1,8.2C35,65.2,32.7,66.9,30.2,66.9z"/>
+									</g>
+								</g>
+								<g class="sta12">
+									<g>
+										<path class="sta1" d="M30.2,66.1c-0.4,0-0.8,0-1.2-0.2c-2.6-0.7-4.2-3.3-3.5-5.9l1.3-5.2L10.7,41.4c-1.5-1.3-2.1-3.3-1.5-5.2
+																																																																																																																																																																																																																																																																				                                                c0.6-1.9,2.3-3.2,4.3-3.3l20.9-1.4L42.1,12c0.7-1.8,2.5-3.1,4.5-3.1c0,0,0,0,0,0c2,0,3.8,1.2,4.5,3.1l7.8,19.5l20.9,1.4
+																																																																																																																																																																																																																																																																				                                                c2,0.1,3.7,1.5,4.3,3.3c0.6,1.9,0,4-1.5,5.2L66.5,54.8l1.3,5.2c0.7,2.6-0.9,5.2-3.5,5.9c-2.6,0.7-5.2-0.9-5.9-3.5l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                                c-0.5-1.8,0.2-3.7,1.6-4.9l9.1-7.6l-11.8-0.8c-1.9-0.1-3.5-1.3-4.2-3l-4.4-11l-4.4,11c-0.7,1.7-2.3,2.9-4.2,3l-11.8,0.8l9.1,7.6
+																																																																																																																																																																																																																																																																				                                                c1.4,1.2,2.1,3.1,1.6,4.9l-2.1,8.2C34.3,64.6,32.3,66.1,30.2,66.1z"/>
+									</g>
+								</g>
+								<g class="sta13">
+									<g>
+										<path class="sta1" d="M63.1,65.2c-1.8,0-3.5-1.2-3.9-3.1L57.1,54c-0.4-1.5,0.1-3.1,1.3-4.1L69.1,41l-13.8-0.9
+																																																																																																																																																																																																																																																																				                                                c-1.6-0.1-2.9-1.1-3.5-2.5l-5.1-12.9l-5.1,12.9C40.9,39,39.6,40,38,40.1L24.2,41l10.7,8.9c1.2,1,1.7,2.6,1.3,4.1l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                                c-0.6,2.2-2.8,3.5-4.9,2.9c-2.2-0.6-3.5-2.8-2.9-4.9l1.4-5.7L11.2,40.8c-1.3-1.1-1.8-2.8-1.3-4.4c0.5-1.6,1.9-2.7,3.6-2.8
+																																																																																																																																																																																																																																																																				                                                l21.4-1.4l8-19.9c0.6-1.5,2.1-2.5,3.8-2.5c0,0,0,0,0,0c1.7,0,3.1,1,3.8,2.6l8,19.9l21.4,1.4c1.7,0.1,3.1,1.2,3.6,2.8
+																																																																																																																																																																																																																																																																				                                                c0.5,1.6,0,3.3-1.3,4.4L65.6,54.5l1.4,5.7c0.6,2.2-0.8,4.4-2.9,4.9C63.8,65.2,63.4,65.2,63.1,65.2z"/>
+									</g>
+								</g>
+								<g class="sta14">
+									<g>
+										<path class="sta1" d="M30.2,64.4c-0.3,0-0.5,0-0.8-0.1c-1.7-0.4-2.8-2.2-2.3-3.9l1.6-6.2L11.7,40.2c-1-0.8-1.4-2.2-1-3.5
+																																																																																																																																																																																																																																																																				                                                c0.4-1.3,1.5-2.1,2.9-2.2L35.5,33l8.2-20.4c0.5-1.2,1.7-2,3-2h0c1.3,0,2.5,0.8,3,2L57.8,33l21.9,1.4c1.3,0.1,2.5,1,2.9,2.2
+																																																																																																																																																																																																																																																																				                                                c0.4,1.3,0,2.6-1,3.5L64.7,54.2l1.6,6.2c0.4,1.7-0.6,3.5-2.3,3.9c-1.7,0.4-3.5-0.6-3.9-2.3l-2.1-8.2c-0.3-1.2,0.1-2.5,1.1-3.3
+																																																																																																																																																																																																																																																																				                                                l12.2-10.2l-15.9-1c-1.2-0.1-2.3-0.9-2.8-2l-5.9-14.8l-5.9,14.8c-0.5,1.2-1.6,2-2.8,2l-15.9,1l12.2,10.2c1,0.8,1.4,2.1,1.1,3.3
+																																																																																																																																																																																																																																																																				                                                L33.3,62C32.9,63.5,31.6,64.4,30.2,64.4z"/>
+									</g>
+								</g>
+								<g class="sta15">
+									<g>
+										<path class="sta1" d="M63.1,63.6c-1.1,0-2.1-0.7-2.4-1.8l-2.1-8.2c-0.2-0.9,0.1-1.9,0.8-2.5l13.8-11.5l-17.9-1.2
+																																																																																																																																																																																																																																																																				                                                c-0.9-0.1-1.8-0.7-2.1-1.5l-6.6-16.7L40,37c-0.3,0.9-1.2,1.5-2.1,1.5L20,39.7l13.8,11.5c0.7,0.6,1,1.6,0.8,2.5l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                                c-0.3,1.3-1.7,2.1-3,1.8c-1.3-0.3-2.1-1.7-1.8-3l1.7-6.7L12.2,39.5c-0.8-0.6-1.1-1.7-0.8-2.6c0.3-0.9,1.2-1.6,2.2-1.7L36,33.8
+																																																																																																																																																																																																																																																																				                                                l8.3-20.9c0.4-0.9,1.3-1.5,2.3-1.5h0c1,0,1.9,0.6,2.3,1.5l8.3,20.9l22.4,1.5c1,0.1,1.8,0.7,2.2,1.7c0.3,0.9,0,2-0.8,2.6
+																																																																																																																																																																																																																																																																				                                                L63.8,53.9l1.7,6.7c0.3,1.3-0.5,2.6-1.8,3C63.5,63.6,63.3,63.6,63.1,63.6z"/>
+									</g>
+								</g>
+								<g>
+									<g>
+										<path id="star2" class="sta1 no_glow" d="M63.1,62.8c-0.7,0-1.4-0.5-1.6-1.2l-2.1-8.2c-0.2-0.6,0.1-1.2,0.5-1.6L75.4,39l-19.9-1.3
+																																																																																																																																																																																																																																																																				                                                c-0.6,0-1.2-0.4-1.4-1l-7.4-18.5l-7.4,18.5c-0.2,0.6-0.8,1-1.4,1L17.9,39l15.3,12.8c0.5,0.4,0.7,1,0.5,1.6l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                                c-0.2,0.9-1.1,1.4-2,1.2c-0.9-0.2-1.4-1.1-1.2-2l1.8-7.2L12.7,38.9c-0.5-0.4-0.7-1.1-0.5-1.7c0.2-0.6,0.8-1.1,1.4-1.1l22.9-1.5
+																																																																																																																																																																																																																																																																				                                                l8.5-21.4c0.2-0.6,0.8-1,1.5-1c0,0,0,0,0,0c0.7,0,1.3,0.4,1.5,1l8.5,21.4l23,1.5c0.7,0,1.2,0.5,1.4,1.1c0.2,0.6,0,1.3-0.5,1.7
+																																																																																																																																																																																																																																																																				                                                L62.9,53.6l1.8,7.2c0.2,0.9-0.3,1.7-1.2,2C63.4,62.8,63.2,62.8,63.1,62.8z"/>
+									</g>
+								</g>
+								<g>
+									<g>
+										<path class="sta16" d="M63.1,61.7c-0.2,0-0.5-0.2-0.5-0.4l-2.1-8.2c-0.1-0.2,0-0.4,0.2-0.5l17.4-14.5l-22.6-1.5
+																																																																																																																																																																																																																																																																				                                                c-0.2,0-0.4-0.1-0.5-0.3l-8.4-21.1l-8.4,21.1c-0.1,0.2-0.3,0.3-0.5,0.3l-22.6,1.5l17.4,14.5c0.2,0.1,0.2,0.3,0.2,0.5l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                                c-0.1,0.3-0.4,0.5-0.7,0.4c-0.3-0.1-0.5-0.4-0.4-0.7l2-7.8L13.4,38.1c-0.2-0.1-0.2-0.4-0.2-0.6c0.1-0.2,0.3-0.4,0.5-0.4l23.6-1.6
+																																																																																																																																																																																																																																																																				                                                l8.8-22c0.1-0.2,0.3-0.3,0.5-0.3l0,0c0.2,0,0.4,0.1,0.5,0.3l8.8,22l23.6,1.6c0.2,0,0.4,0.2,0.5,0.4c0.1,0.2,0,0.4-0.2,0.6
+																																																																																																																																																																																																																																																																				                                                L61.6,53.2l2,7.8c0.1,0.3-0.1,0.6-0.4,0.7C63.2,61.7,63.2,61.7,63.1,61.7z"/>
+									</g>
+								</g>
+							</g>
+						</svg>
+					</div>
+					<div class="star star_small star_right neon dimmer">
+
+						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 93.3 75" style="enable-background: new 0 0 93.3 75" xml:space="preserve">
+							<style type="text/css">
+								.sta0 {
+									opacity: 5.34e-4;
+								}
+
+								.sta1 {
+									fill: #df7200;
+									animation: glowy 3s infinite cubic-bezier(0.4, 0, 1, 1);
+								}
+
+								.sta2 {
+									opacity: 1.609e-3;
+								}
+
+								.sta3 {
+									opacity: 3.24e-3;
+								}
+
+								.sta4 {
+									opacity: 5.451e-3;
+								}
+
+								.sta5 {
+									opacity: 8.275e-3;
+								}
+
+								.sta6 {
+									opacity: 1.1761e-2;
+								}
+
+								.sta7 {
+									opacity: 1.5975e-2;
+								}
+
+								.sta8 {
+									opacity: 2.1008e-2;
+								}
+
+								.sta9 {
+									opacity: 2.6992e-2;
+								}
+
+								.sta10 {
+									opacity: 3.4123e-2;
+								}
+
+								.sta11 {
+									opacity: 4.2709e-2;
+								}
+
+								.sta12 {
+									opacity: 5.3291e-2;
+								}
+
+								.sta13 {
+									opacity: 6.6976e-2;
+								}
+
+								.sta14 {
+									opacity: 8.6862e-2;
+								}
+
+								.sta15 {
+									opacity: 0.1531;
+								}
+
+								.sta16 {
+									fill: #ffffff;
+								}
+							</style>
+							<g>
+								<g class="sta0">
+									<g>
+										<path class="sta1" d="M30.2,75c-1.1,0-2.3-0.1-3.4-0.4c-7.3-1.9-11.7-9.2-10-16.5L5,48.2c-4.3-3.6-6-9.5-4.3-14.8
+																																																																																																																																																																																																																																																																				                                              c1.7-5.4,6.6-9.1,12.2-9.5l15.3-1l5.7-14.2C35.9,3.4,41,0,46.6,0c0,0,0,0,0,0c5.6,0,10.7,3.4,12.8,8.7l5.7,14.2l15.3,1
+																																																																																																																																																																																																																																																																				                                              c5.6,0.4,10.5,4.1,12.2,9.5c1.7,5.4,0,11.2-4.3,14.8l-11.8,9.8c1.7,7.3-2.7,14.6-10,16.5c-7.4,1.9-14.9-2.6-16.7-9.9l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                              c-0.7-2.9-0.5-5.9,0.6-8.6c-0.6-0.4-1.1-0.8-1.7-1.2c-0.5,0.4-1.1,0.8-1.7,1.2c1.1,2.7,1.3,5.7,0.6,8.6l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                              C41.9,70.8,36.3,75,30.2,75z"/>
+									</g>
+								</g>
+								<g class="sta2">
+									<g>
+										<path class="sta1" d="M30.2,74.2c-1.1,0-2.1-0.1-3.2-0.4C20,72,15.8,64.9,17.6,58l0.1-0.2L5.5,47.6c-4.1-3.4-5.7-8.9-4-14
+																																																																																																																																																																																																																																																																				                                              c1.6-5,6.2-8.6,11.5-8.9l15.8-1L34.6,9c2-4.9,6.7-8.2,12-8.2c0,0,0,0,0,0C52,0.8,56.7,4,58.7,9l5.9,14.7l15.8,1
+																																																																																																																																																																																																																																																																				                                              c5.3,0.3,9.8,3.9,11.5,8.9c1.6,5,0,10.6-4,14L75.6,57.8l0.1,0.2c1.8,6.9-2.4,14-9.4,15.8c-6.9,1.8-14-2.4-15.8-9.4l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                              c-0.8-3-0.4-6.1,0.9-8.8c-1-0.5-1.9-1.2-2.7-2c-0.8,0.8-1.7,1.4-2.7,2c1.3,2.7,1.6,5.8,0.9,8.8l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                              C41.2,70.3,36,74.2,30.2,74.2z"/>
+									</g>
+								</g>
+								<g class="sta3">
+									<g>
+										<path class="sta1" d="M30.2,73.3c-1,0-2-0.1-3-0.4c-6.5-1.7-10.4-8.3-8.8-14.8l0.2-0.7L6,47c-3.8-3.2-5.3-8.4-3.8-13.1
+																																																																																																																																																																																																																																																																				                                              c1.5-4.7,5.8-8,10.8-8.4l16.3-1.1l6.1-15.2c1.8-4.6,6.3-7.6,11.3-7.6c0,0,0,0,0,0c5,0,9.4,3,11.3,7.7L64,24.5l16.3,1.1
+																																																																																																																																																																																																																																																																				                                              c5,0.3,9.2,3.6,10.8,8.4c1.5,4.7,0,9.9-3.8,13.1L74.7,57.5l0.2,0.7c1.7,6.5-2.3,13.1-8.8,14.8c-6.5,1.7-13.1-2.3-14.8-8.8
+																																																																																																																																																																																																																																																																				                                              L49.3,56c-0.8-3.1-0.3-6.2,1.2-8.9c-1.4-0.7-2.7-1.6-3.8-2.7c-1.1,1.2-2.4,2.1-3.8,2.7c1.5,2.7,1.9,5.8,1.2,8.9l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                              C40.5,69.7,35.6,73.3,30.2,73.3z"/>
+									</g>
+								</g>
+								<g class="sta4">
+									<g>
+										<path class="sta1" d="M63.1,72.5c-5.1,0-9.7-3.4-11-8.5L50,55.8c-0.8-3.2-0.2-6.5,1.6-9.1c-2-0.7-3.7-2-5-3.6
+																																																																																																																																																																																																																																																																				                                              c-1.3,1.6-3,2.9-5,3.6c1.8,2.6,2.4,5.9,1.6,9.1L41.2,64c-1.5,6.1-7.7,9.7-13.8,8.2c-6.1-1.5-9.7-7.7-8.2-13.8l0.3-1.2l-13-10.8
+																																																																																																																																																																																																																																																																				                                              c-3.6-3-5-7.8-3.5-12.2c1.4-4.4,5.4-7.5,10-7.8l16.8-1.1l6.3-15.7c1.7-4.3,5.9-7.1,10.5-7.1c0,0,0,0,0,0c4.6,0,8.8,2.8,10.5,7.1
+																																																																																																																																																																																																																																																																				                                              l6.2,15.7l16.8,1.1c4.6,0.3,8.6,3.4,10,7.8c1.4,4.4,0,9.3-3.5,12.2l-13,10.8l0.3,1.2c1.5,6.1-2.1,12.2-8.2,13.8
+																																																																																																																																																																																																																																																																				                                              C65,72.4,64,72.5,63.1,72.5z"/>
+									</g>
+								</g>
+								<g class="sta5">
+									<g>
+										<path class="sta1" d="M30.2,71.7c-0.9,0-1.7-0.1-2.6-0.3c-5.6-1.4-9-7.2-7.6-12.8l0.4-1.7L7,45.8C3.7,43,2.4,38.5,3.8,34.4
+																																																																																																																																																																																																																																																																				                                              c1.3-4.1,5-7,9.3-7.3L30.4,26l6.4-16.1c1.6-4,5.5-6.6,9.8-6.6c0,0,0,0,0,0c4.3,0,8.2,2.6,9.8,6.6L62.9,26l17.3,1.1
+																																																																																																																																																																																																																																																																				                                              c4.3,0.3,8,3.2,9.3,7.3c1.3,4.1,0,8.6-3.3,11.4L72.9,56.9l0.4,1.7c1.4,5.6-2,11.4-7.6,12.8c-5.6,1.4-11.4-2-12.8-7.6l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                              c-0.8-3.3,0-6.8,2.1-9.3c-2.6-0.7-4.9-2.3-6.3-4.6c-1.4,2.3-3.7,3.9-6.3,4.6c2.1,2.6,2.9,6,2.1,9.3l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                              C39.2,68.6,34.9,71.7,30.2,71.7z"/>
+									</g>
+								</g>
+								<g class="sta6">
+									<g>
+										<path class="sta1" d="M30.2,70.9c-0.8,0-1.6-0.1-2.4-0.3c-5.2-1.3-8.3-6.6-7-11.8l0.6-2.2L7.6,45.1c-3.1-2.5-4.3-6.7-3-10.5
+																																																																																																																																																																																																																																																																				                                              c1.2-3.8,4.6-6.4,8.6-6.7L31,26.8l6.6-16.6c1.5-3.7,5.1-6.1,9-6.1c0,0,0,0,0,0c4,0,7.6,2.4,9,6.1l6.6,16.6L80.2,28
+																																																																																																																																																																																																																																																																				                                              c4,0.3,7.4,2.9,8.6,6.7c1.2,3.8,0,7.9-3,10.5L72,56.6l0.6,2.2c1.3,5.2-1.8,10.5-7,11.8c-5.2,1.3-10.5-1.8-11.8-7l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                              c-0.9-3.5,0.3-7.2,3-9.7c-3.5-0.4-6.5-2.6-7.9-5.8c-1.4,3.2-4.4,5.4-7.9,5.8c2.7,2.4,3.9,6.1,3,9.7l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                              C38.5,68,34.5,70.9,30.2,70.9z"/>
+									</g>
+								</g>
+								<g class="sta7">
+									<g>
+										<path class="sta1" d="M30.2,70.1c-0.7,0-1.5-0.1-2.2-0.3c-4.8-1.2-7.7-6.1-6.4-10.8l0.7-2.7L8.1,44.5c-2.8-2.3-3.9-6.1-2.8-9.6
+																																																																																																																																																																																																																																																																				                                              c1.1-3.5,4.3-5.9,7.9-6.1l18.4-1.2l6.8-17.1c1.4-3.4,4.6-5.6,8.3-5.6c0,0,0,0,0,0c3.6,0,6.9,2.2,8.3,5.6l6.8,17.1l18.4,1.2
+																																																																																																																																																																																																																																																																				                                              c3.6,0.2,6.8,2.7,7.9,6.1c1.1,3.5,0,7.3-2.8,9.6L71.1,56.3l0.7,2.7c1.2,4.8-1.7,9.6-6.4,10.8c-4.8,1.2-9.6-1.7-10.8-6.4l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                              c-0.8-3.3,0.3-6.9,2.9-9.1l1.3-1.1L55,45c-3.4-0.2-6.4-2.4-7.7-5.6l-0.6-1.6L46,39.4c-1.3,3.2-4.3,5.4-7.7,5.6l-1.7,0.1l1.3,1.1
+																																																																																																																																																																																																																																																																				                                              c2.6,2.2,3.8,5.7,2.9,9.1l-2.1,8.2C37.8,67.4,34.1,70.1,30.2,70.1z"/>
+									</g>
+								</g>
+								<g class="sta8">
+									<g>
+										<path class="sta1" d="M30.2,69.3c-0.7,0-1.3-0.1-2-0.3c-4.3-1.1-7-5.5-5.9-9.9l0.8-3.2L8.6,43.9C6,41.8,5,38.3,6.1,35.2
+																																																																																																																																																																																																																																																																				                                              c1-3.2,3.9-5.4,7.2-5.6l18.9-1.2l7-17.6c1.2-3.1,4.2-5.1,7.5-5.1c0,0,0,0,0,0c3.3,0,6.3,2,7.5,5.1l7,17.6L80,29.6
+																																																																																																																																																																																																																																																																				                                              c3.3,0.2,6.2,2.4,7.2,5.6c1,3.2,0,6.6-2.5,8.7L70.2,56l0.8,3.2c1.1,4.3-1.5,8.7-5.9,9.9c-4.3,1.1-8.7-1.5-9.9-5.9L53.2,55
+																																																																																																																																																																																																																																																																				                                              c-0.8-3,0.3-6.2,2.7-8.2l2.9-2.4L55,44.2c-3.1-0.2-5.8-2.2-7-5.1l-1.4-3.5l-1.4,3.5c-1.2,2.9-3.9,4.9-7,5.1l-3.7,0.2l2.9,2.4
+																																																																																																																																																																																																																																																																				                                              c2.4,2,3.4,5.2,2.7,8.2L38,63.2C37.1,66.9,33.8,69.3,30.2,69.3z"/>
+									</g>
+								</g>
+								<g class="sta9">
+									<g>
+										<path class="sta1" d="M30.2,68.5c-0.6,0-1.2-0.1-1.8-0.2c-3.9-1-6.3-5-5.3-8.9l0.9-3.7L9.1,43.3c-2.3-1.9-3.2-5-2.3-7.9
+																																																																																																																																																																																																																																																																				                                              c0.9-2.8,3.5-4.8,6.5-5l19.4-1.3l7.2-18c1.1-2.8,3.8-4.6,6.8-4.6c0,0,0,0,0,0c3,0,5.7,1.8,6.8,4.6l7.2,18L80,30.4
+																																																																																																																																																																																																																																																																				                                              c3,0.2,5.5,2.2,6.5,5c0.9,2.8,0,6-2.3,7.9L69.2,55.7l0.9,3.7c1,3.9-1.4,7.9-5.3,8.9c-3.9,1-7.9-1.4-8.9-5.3L54,54.8
+																																																																																																																																																																																																																																																																				                                              c-0.7-2.7,0.2-5.6,2.4-7.4l4.4-3.7l-5.7-0.4c-2.8-0.2-5.3-2-6.3-4.6l-2.1-5.3l-2.1,5.3c-1,2.6-3.5,4.4-6.3,4.6l-5.7,0.4l4.4,3.7
+																																																																																																																																																																																																																																																																				                                              c2.2,1.8,3.1,4.7,2.4,7.4L37.2,63C36.4,66.3,33.4,68.5,30.2,68.5z"/>
+									</g>
+								</g>
+								<g class="sta10">
+									<g>
+										<path class="sta1" d="M30.2,67.7c-0.5,0-1.1-0.1-1.6-0.2c-3.5-0.9-5.6-4.4-4.7-7.9l1.1-4.2L9.6,42.6c-2-1.7-2.8-4.5-2-7
+																																																																																																																																																																																																																																																																				                                              c0.8-2.5,3.1-4.3,5.7-4.5l19.9-1.3l7.4-18.5c1-2.5,3.4-4.1,6-4.1c0,0,0,0,0,0c2.7,0,5,1.6,6,4.1L60,29.9l19.9,1.3
+																																																																																																																																																																																																																																																																				                                              c2.6,0.2,4.9,1.9,5.7,4.5c0.8,2.5,0,5.3-2,7L68.3,55.4l1.1,4.2c0.9,3.5-1.2,7-4.7,7.9c-3.5,0.9-7-1.2-7.9-4.7l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                              c-0.6-2.4,0.2-5,2.1-6.6l6-5l-7.8-0.5c-2.5-0.2-4.7-1.7-5.6-4.1l-2.9-7.2l-2.9,7.2c-0.9,2.3-3.1,3.9-5.6,4.1l-7.8,0.5l6,5
+																																																																																																																																																																																																																																																																				                                              c1.9,1.6,2.8,4.2,2.1,6.6l-2.1,8.2C35.7,65.7,33.1,67.7,30.2,67.7z"/>
+									</g>
+								</g>
+								<g class="sta11">
+									<g>
+										<path class="sta1" d="M30.2,66.9c-0.5,0-0.9-0.1-1.4-0.2c-3-0.8-4.9-3.9-4.1-6.9l1.2-4.7L10.1,42c-1.8-1.5-2.5-3.9-1.8-6.1
+																																																																																																																																																																																																																																																																				                                              c0.7-2.2,2.7-3.8,5-3.9l20.4-1.3l7.6-19c0.9-2.2,2.9-3.6,5.3-3.6c0,0,0,0,0,0c2.3,0,4.4,1.4,5.3,3.6l7.6,19L79.9,32
+																																																																																																																																																																																																																																																																				                                              c2.3,0.2,4.3,1.7,5,3.9c0.7,2.2,0,4.6-1.8,6.1L67.4,55.1l1.2,4.7c0.8,3-1.1,6.1-4.1,6.9c-3,0.8-6.1-1.1-6.9-4.1l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                              c-0.5-2.1,0.2-4.4,1.9-5.8l7.5-6.3l-9.8-0.6c-2.2-0.1-4.1-1.5-4.9-3.6l-3.6-9.1L43,38.2c-0.8,2-2.7,3.4-4.9,3.6l-9.8,0.6l7.5,6.3
+																																																																																																																																																																																																																																																																				                                              c1.7,1.4,2.4,3.6,1.9,5.8l-2.1,8.2C35,65.2,32.7,66.9,30.2,66.9z"/>
+									</g>
+								</g>
+								<g class="sta12">
+									<g>
+										<path class="sta1" d="M30.2,66.1c-0.4,0-0.8,0-1.2-0.2c-2.6-0.7-4.2-3.3-3.5-5.9l1.3-5.2L10.7,41.4c-1.5-1.3-2.1-3.3-1.5-5.2
+																																																																																																																																																																																																																																																																				                                              c0.6-1.9,2.3-3.2,4.3-3.3l20.9-1.4L42.1,12c0.7-1.8,2.5-3.1,4.5-3.1c0,0,0,0,0,0c2,0,3.8,1.2,4.5,3.1l7.8,19.5l20.9,1.4
+																																																																																																																																																																																																																																																																				                                              c2,0.1,3.7,1.5,4.3,3.3c0.6,1.9,0,4-1.5,5.2L66.5,54.8l1.3,5.2c0.7,2.6-0.9,5.2-3.5,5.9c-2.6,0.7-5.2-0.9-5.9-3.5l-2.1-8.2
+																																																																																																																																																																																																																																																																				                                              c-0.5-1.8,0.2-3.7,1.6-4.9l9.1-7.6l-11.8-0.8c-1.9-0.1-3.5-1.3-4.2-3l-4.4-11l-4.4,11c-0.7,1.7-2.3,2.9-4.2,3l-11.8,0.8l9.1,7.6
+																																																																																																																																																																																																																																																																				                                              c1.4,1.2,2.1,3.1,1.6,4.9l-2.1,8.2C34.3,64.6,32.3,66.1,30.2,66.1z"/>
+									</g>
+								</g>
+								<g class="sta13">
+									<g>
+										<path class="sta1" d="M63.1,65.2c-1.8,0-3.5-1.2-3.9-3.1L57.1,54c-0.4-1.5,0.1-3.1,1.3-4.1L69.1,41l-13.8-0.9
+																																																																																																																																																																																																																																																																				                                              c-1.6-0.1-2.9-1.1-3.5-2.5l-5.1-12.9l-5.1,12.9C40.9,39,39.6,40,38,40.1L24.2,41l10.7,8.9c1.2,1,1.7,2.6,1.3,4.1l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                              c-0.6,2.2-2.8,3.5-4.9,2.9c-2.2-0.6-3.5-2.8-2.9-4.9l1.4-5.7L11.2,40.8c-1.3-1.1-1.8-2.8-1.3-4.4c0.5-1.6,1.9-2.7,3.6-2.8
+																																																																																																																																																																																																																																																																				                                              l21.4-1.4l8-19.9c0.6-1.5,2.1-2.5,3.8-2.5c0,0,0,0,0,0c1.7,0,3.1,1,3.8,2.6l8,19.9l21.4,1.4c1.7,0.1,3.1,1.2,3.6,2.8
+																																																																																																																																																																																																																																																																				                                              c0.5,1.6,0,3.3-1.3,4.4L65.6,54.5l1.4,5.7c0.6,2.2-0.8,4.4-2.9,4.9C63.8,65.2,63.4,65.2,63.1,65.2z"/>
+									</g>
+								</g>
+								<g class="sta14">
+									<g>
+										<path class="sta1" d="M30.2,64.4c-0.3,0-0.5,0-0.8-0.1c-1.7-0.4-2.8-2.2-2.3-3.9l1.6-6.2L11.7,40.2c-1-0.8-1.4-2.2-1-3.5
+																																																																																																																																																																																																																																																																				                                              c0.4-1.3,1.5-2.1,2.9-2.2L35.5,33l8.2-20.4c0.5-1.2,1.7-2,3-2h0c1.3,0,2.5,0.8,3,2L57.8,33l21.9,1.4c1.3,0.1,2.5,1,2.9,2.2
+																																																																																																																																																																																																																																																																				                                              c0.4,1.3,0,2.6-1,3.5L64.7,54.2l1.6,6.2c0.4,1.7-0.6,3.5-2.3,3.9c-1.7,0.4-3.5-0.6-3.9-2.3l-2.1-8.2c-0.3-1.2,0.1-2.5,1.1-3.3
+																																																																																																																																																																																																																																																																				                                              l12.2-10.2l-15.9-1c-1.2-0.1-2.3-0.9-2.8-2l-5.9-14.8l-5.9,14.8c-0.5,1.2-1.6,2-2.8,2l-15.9,1l12.2,10.2c1,0.8,1.4,2.1,1.1,3.3
+																																																																																																																																																																																																																																																																				                                              L33.3,62C32.9,63.5,31.6,64.4,30.2,64.4z"/>
+									</g>
+								</g>
+								<g class="sta15">
+									<g>
+										<path class="sta1 no_glow" d="M63.1,63.6c-1.1,0-2.1-0.7-2.4-1.8l-2.1-8.2c-0.2-0.9,0.1-1.9,0.8-2.5l13.8-11.5l-17.9-1.2
+																																																																																																																																																																																																																																																																				                                              c-0.9-0.1-1.8-0.7-2.1-1.5l-6.6-16.7L40,37c-0.3,0.9-1.2,1.5-2.1,1.5L20,39.7l13.8,11.5c0.7,0.6,1,1.6,0.8,2.5l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                              c-0.3,1.3-1.7,2.1-3,1.8c-1.3-0.3-2.1-1.7-1.8-3l1.7-6.7L12.2,39.5c-0.8-0.6-1.1-1.7-0.8-2.6c0.3-0.9,1.2-1.6,2.2-1.7L36,33.8
+																																																																																																																																																																																																																																																																				                                              l8.3-20.9c0.4-0.9,1.3-1.5,2.3-1.5h0c1,0,1.9,0.6,2.3,1.5l8.3,20.9l22.4,1.5c1,0.1,1.8,0.7,2.2,1.7c0.3,0.9,0,2-0.8,2.6
+																																																																																																																																																																																																																																																																				                                              L63.8,53.9l1.7,6.7c0.3,1.3-0.5,2.6-1.8,3C63.5,63.6,63.3,63.6,63.1,63.6z"/>
+									</g>
+								</g>
+								<g>
+									<g>
+										<path id="star3" class="sta1 no_glow" d="M63.1,62.8c-0.7,0-1.4-0.5-1.6-1.2l-2.1-8.2c-0.2-0.6,0.1-1.2,0.5-1.6L75.4,39l-19.9-1.3
+																																																																																																																																																																																																																																																																				                                              c-0.6,0-1.2-0.4-1.4-1l-7.4-18.5l-7.4,18.5c-0.2,0.6-0.8,1-1.4,1L17.9,39l15.3,12.8c0.5,0.4,0.7,1,0.5,1.6l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                              c-0.2,0.9-1.1,1.4-2,1.2c-0.9-0.2-1.4-1.1-1.2-2l1.8-7.2L12.7,38.9c-0.5-0.4-0.7-1.1-0.5-1.7c0.2-0.6,0.8-1.1,1.4-1.1l22.9-1.5
+																																																																																																																																																																																																																																																																				                                              l8.5-21.4c0.2-0.6,0.8-1,1.5-1c0,0,0,0,0,0c0.7,0,1.3,0.4,1.5,1l8.5,21.4l23,1.5c0.7,0,1.2,0.5,1.4,1.1c0.2,0.6,0,1.3-0.5,1.7
+																																																																																																																																																																																																																																																																				                                              L62.9,53.6l1.8,7.2c0.2,0.9-0.3,1.7-1.2,2C63.4,62.8,63.2,62.8,63.1,62.8z"/>
+									</g>
+								</g>
+								<g>
+									<g>
+										<path class="sta16" d="M63.1,61.7c-0.2,0-0.5-0.2-0.5-0.4l-2.1-8.2c-0.1-0.2,0-0.4,0.2-0.5l17.4-14.5l-22.6-1.5
+																																																																																																																																																																																																																																																																				                                              c-0.2,0-0.4-0.1-0.5-0.3l-8.4-21.1l-8.4,21.1c-0.1,0.2-0.3,0.3-0.5,0.3l-22.6,1.5l17.4,14.5c0.2,0.1,0.2,0.3,0.2,0.5l-2.1,8.2
+																																																																																																																																																																																																																																																																				                                              c-0.1,0.3-0.4,0.5-0.7,0.4c-0.3-0.1-0.5-0.4-0.4-0.7l2-7.8L13.4,38.1c-0.2-0.1-0.2-0.4-0.2-0.6c0.1-0.2,0.3-0.4,0.5-0.4l23.6-1.6
+																																																																																																																																																																																																																																																																				                                              l8.8-22c0.1-0.2,0.3-0.3,0.5-0.3l0,0c0.2,0,0.4,0.1,0.5,0.3l8.8,22l23.6,1.6c0.2,0,0.4,0.2,0.5,0.4c0.1,0.2,0,0.4-0.2,0.6
+																																																																																																																																																																																																																																																																				                                              L61.6,53.2l2,7.8c0.1,0.3-0.1,0.6-0.4,0.7C63.2,61.7,63.2,61.7,63.1,61.7z"/>
+									</g>
+								</g>
+							</g>
+						</svg>
+					</div>
+					<div class="after">
+
+						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 118.3 61.1" style="enable-background: new 0 0 118.3 61.1" xml:space="preserve">
+							<style type="text/css">
+								.stc0 {
+									opacity: 5.34e-4;
+								}
+
+								.stc1 {
+									fill: #0b6bff;
+									animation: glowy_blue 3s infinite cubic-bezier(0.4, 0, 1, 1);
+								}
+
+								.stc2 {
+									opacity: 1.609e-3;
+								}
+
+								.stc3 {
+									opacity: 3.24e-3;
+								}
+
+								.stc4 {
+									opacity: 5.451e-3;
+								}
+
+								.stc5 {
+									opacity: 8.275e-3;
+								}
+
+								.stc6 {
+									opacity: 1.1761e-2;
+								}
+
+								.stc7 {
+									opacity: 1.5975e-2;
+								}
+
+								.stc8 {
+									opacity: 2.1008e-2;
+								}
+
+								.stc9 {
+									opacity: 2.6992e-2;
+								}
+
+								.stc10 {
+									opacity: 3.4123e-2;
+								}
+
+								.stc11 {
+									opacity: 4.2709e-2;
+								}
+
+								.stc12 {
+									opacity: 5.3291e-2;
+								}
+
+								.stc13 {
+									opacity: 6.6976e-2;
+								}
+
+								.stc14 {
+									opacity: 8.6862e-2;
+								}
+
+								.stc15 {
+									opacity: 0.1531;
+								}
+
+								.stc16 {
+									fill: #ffffff;
+								}
+							</style>
+							<g>
+								<g class="stc0">
+									<path class="stc1" d="M103.7,61.1c-8.1,0-14.7-6.6-14.7-14.7V34.9c0-3.1-2.5-5.6-5.6-5.6H14.7C6.6,29.3,0,22.7,0,14.7S6.6,0,14.7,0
+																																																																																																																																																																																																																																										                                  h68.8c19.2,0,34.9,15.7,34.9,34.9v11.6C118.3,54.5,111.8,61.1,103.7,61.1z"/>
+								</g>
+								<g class="stc2">
+									<path class="stc1" d="M103.7,60.2c-7.6,0-13.8-6.2-13.8-13.8V34.9c0-3.6-2.9-6.4-6.4-6.4H14.7C7,28.4,0.9,22.3,0.9,14.7
+																																																																																																																																																																																																																																										                                          S7,0.9,14.7,0.9h68.8c18.8,0,34,15.3,34,34v11.6C117.5,54.1,111.3,60.2,103.7,60.2z"/>
+								</g>
+								<g class="stc3">
+									<path class="stc1" d="M103.7,59.4c-7.1,0-12.9-5.8-12.9-12.9V34.9c0-4-3.3-7.3-7.3-7.3H14.7c-7.1,0-12.9-5.8-12.9-12.9
+																																																																																																																																																																																																																																										                                          S7.5,1.7,14.7,1.7h68.8c18.3,0,33.2,14.9,33.2,33.2v11.6C116.6,53.6,110.8,59.4,103.7,59.4z"/>
+								</g>
+								<g class="stc4">
+									<path class="stc1" d="M103.7,58.5c-6.7,0-12.1-5.4-12.1-12.1V34.9c0-4.5-3.7-8.2-8.2-8.2H14.7C8,26.7,2.6,21.3,2.6,14.7
+																																																																																																																																																																																																																																										                                          S8,2.6,14.7,2.6h68.8c17.8,0,32.3,14.5,32.3,32.3v11.6C115.8,53.1,110.4,58.5,103.7,58.5z"/>
+								</g>
+								<g class="stc5">
+									<path class="stc1" d="M103.7,57.7c-6.2,0-11.2-5-11.2-11.2V34.9c0-5-4.1-9-9-9H14.7c-6.2,0-11.2-5-11.2-11.2s5-11.2,11.2-11.2h68.8
+																																																																																																																																																																																																																																										                                          c17.3,0,31.4,14.1,31.4,31.4v11.6C114.9,52.6,109.9,57.7,103.7,57.7z"/>
+								</g>
+								<g class="stc6">
+									<path class="stc1" d="M103.7,56.8c-5.7,0-10.3-4.6-10.3-10.3V34.9c0-5.5-4.4-9.9-9.9-9.9H14.7C8.9,25,4.3,20.4,4.3,14.7
+																																																																																																																																																																																																																																										                                          S8.9,4.3,14.7,4.3h68.8C100.3,4.3,114,18,114,34.9v11.6C114,52.2,109.4,56.8,103.7,56.8z"/>
+								</g>
+								<g class="stc7">
+									<path class="stc1" d="M103.7,55.9c-5.2,0-9.5-4.2-9.5-9.5V34.9c0-5.9-4.8-10.8-10.8-10.8H14.7c-5.2,0-9.5-4.2-9.5-9.5
+																																																																																																																																																																																																																																										                                          c0-5.2,4.2-9.5,9.5-9.5h68.8c16.4,0,29.7,13.3,29.7,29.7v11.6C113.2,51.7,108.9,55.9,103.7,55.9z"/>
+								</g>
+								<g class="stc8">
+									<path class="stc1" d="M103.7,55.1c-4.8,0-8.6-3.9-8.6-8.6V34.9c0-6.4-5.2-11.6-11.6-11.6H14.7c-4.8,0-8.6-3.9-8.6-8.6S9.9,6,14.7,6
+																																																																																																																																																																																																																																										                                          h68.8c15.9,0,28.9,12.9,28.9,28.9v11.6C112.3,51.2,108.5,55.1,103.7,55.1z"/>
+								</g>
+								<g class="stc9">
+									<path class="stc1" d="M103.7,54.2c-4.3,0-7.8-3.5-7.8-7.8V34.9c0-6.9-5.6-12.5-12.5-12.5H14.7c-4.3,0-7.8-3.5-7.8-7.8
+																																																																																																																																																																																																																																										                                          s3.5-7.8,7.8-7.8h68.8c15.4,0,28,12.6,28,28v11.6C111.4,50.7,108,54.2,103.7,54.2z"/>
+								</g>
+								<g class="stc10">
+									<path class="stc1" d="M103.7,53.3c-3.8,0-6.9-3.1-6.9-6.9V34.9c0-7.4-6-13.3-13.3-13.3H14.7c-3.8,0-6.9-3.1-6.9-6.9
+																																																																																																																																																																																																																																										                                          s3.1-6.9,6.9-6.9h68.8c15,0,27.1,12.2,27.1,27.1v11.6C110.6,50.3,107.5,53.3,103.7,53.3z"/>
+								</g>
+								<g class="stc11">
+									<path class="stc1" d="M103.7,52.5c-3.3,0-6-2.7-6-6V34.9c0-7.8-6.4-14.2-14.2-14.2H14.7c-3.3,0-6-2.7-6-6s2.7-6,6-6h68.8
+																																																																																																																																																																																																																																										                                          c14.5,0,26.3,11.8,26.3,26.3v11.6C109.7,49.8,107,52.5,103.7,52.5z"/>
+								</g>
+								<g class="stc12">
+									<path class="stc1" d="M103.7,51.6c-2.9,0-5.2-2.3-5.2-5.2V34.9c0-8.3-6.8-15.1-15.1-15.1H14.7c-2.9,0-5.2-2.3-5.2-5.2
+																																																																																																																																																																																																																																										                                          c0-2.9,2.3-5.2,5.2-5.2h68.8c14,0,25.4,11.4,25.4,25.4v11.6C108.9,49.3,106.5,51.6,103.7,51.6z"/>
+								</g>
+								<g class="stc13">
+									<path class="stc1" d="M103.7,50.8c-2.4,0-4.3-1.9-4.3-4.3V34.9c0-8.8-7.1-15.9-15.9-15.9H14.7c-2.4,0-4.3-1.9-4.3-4.3
+																																																																																																																																																																																																																																										                                          s1.9-4.3,4.3-4.3h68.8c13.5,0,24.5,11,24.5,24.5v11.6C108,48.8,106.1,50.8,103.7,50.8z"/>
+								</g>
+								<g class="stc14">
+									<path class="stc1" d="M103.7,49.9c-1.9,0-3.4-1.5-3.4-3.4V34.9c0-9.3-7.5-16.8-16.8-16.8H14.7c-1.9,0-3.4-1.5-3.4-3.4
+																																																																																																																																																																																																																																										                                          s1.5-3.4,3.4-3.4h68.8c13.1,0,23.7,10.6,23.7,23.7v11.6C107.1,48.4,105.6,49.9,103.7,49.9z"/>
+								</g>
+								<g class="stc15">
+									<path class="stc1" d="M103.7,49c-1.4,0-2.6-1.2-2.6-2.6V34.9c0-9.7-7.9-17.7-17.7-17.7H14.7c-1.4,0-2.6-1.2-2.6-2.6
+																																																																																																																																																																																																																																										                                          s1.2-2.6,2.6-2.6h68.8c12.6,0,22.8,10.2,22.8,22.8v11.6C106.3,47.9,105.1,49,103.7,49z"/>
+								</g>
+								<g>
+									<path class="stc1" d="M103.7,48.2c-1,0-1.7-0.8-1.7-1.7V34.9c0-10.2-8.3-18.5-18.5-18.5H14.7c-1,0-1.7-0.8-1.7-1.7s0.8-1.7,1.7-1.7
+																																																																																																																																																																																																																																										                                          h68.8c12.1,0,22,9.9,22,22v11.6C105.4,47.4,104.6,48.2,103.7,48.2z"/>
+								</g>
+								<g>
+									<path class="stc16" d="M103.7,47c-0.3,0-0.6-0.3-0.6-0.6V34.9c0-10.8-8.8-19.7-19.7-19.7H14.7c-0.3,0-0.6-0.3-0.6-0.6
+																																																																																																																																																																																																																																										                                          s0.3-0.6,0.6-0.6h68.8c11.5,0,20.8,9.3,20.8,20.8v11.6C104.3,46.8,104,47,103.7,47z"/>
+								</g>
+							</g>
+						</svg>
+					</div>
+				</div>
+
+				<div class="machineFrame machine_glow">
+					<div class="winner"></div>
+
+					<div id="ribbon_box_1" class="element-wrapper answerbox general_box ribbon">
+						<div class="white_inside_box">
+							<div class="element wysiwyg" data-bsi-element-part="{{textPartIdRibbonBox1}}">
+
+								<h3>Kein Gewinn</h3>
+								<p>Schauen Sie morgen wieder vorbei.</p>
+							</div>
+							<div class="element">
+								<div class="button">
+									<a href="[link]" data-bsi-element-part="{{elementPartIdButtonBox1}}">Schade!</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div id="ribbon_box_2" class="element-wrapper answerbox general_box ribbon">
+						<div class="white_inside_box">
+							<div class="element wysiwyg" data-bsi-element-part="{{textPartIdRibbonBox2}}">
+
+								<h3>Sofortpreis gewonnen!</h3>
+								<p>Versenden Sie eine Schokolade an Ihre liebsten oder an Sie selbst.</p>
+							</div>
+							<div class="element">
+								<div class="button">
+									<a href="[link]" data-bsi-element-part="{{elementPartIdButtonBox2}}">Empfänger erfassen</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="machine" style="opacity: 1;">
+						<div class="container_machine">
+							<div class="col">
+								<div class="row_machine image-0"></div>
+								<div class="row_machine image-1"></div>
+								<div class="row_machine image-2"></div>
+								<div class="row_machine image-3"></div>
+								<div class="row_machine image-4"></div>
+								<div class="row_machine image-0"></div>
+								<div class="row_machine image-1"></div>
+								<div class="row_machine image-2"></div>
+								<div class="row_machine image-3"></div>
+								<div class="row_machine image-4"></div>
+							</div>
+							<div class="col">
+								<div class="row_machine image-0"></div>
+								<div class="row_machine image-1"></div>
+								<div class="row_machine image-2"></div>
+								<div class="row_machine image-3"></div>
+								<div class="row_machine image-4"></div>
+								<div class="row_machine image-0"></div>
+								<div class="row_machine image-1"></div>
+								<div class="row_machine image-2"></div>
+								<div class="row_machine image-3"></div>
+								<div class="row_machine image-4"></div>
+							</div>
+							<div class="col">
+								<div class="row_machine image-0"></div>
+								<div class="row_machine image-1"></div>
+								<div class="row_machine image-2"></div>
+								<div class="row_machine image-3"></div>
+								<div class="row_machine image-4"></div>
+								<div class="row_machine image-0"></div>
+								<div class="row_machine image-1"></div>
+								<div class="row_machine image-2"></div>
+								<div class="row_machine image-3"></div>
+								<div class="row_machine image-4"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="handle"></div>
+					<style id="setting" scope=""></style>
+					<style scope id="update"></style>
+					<img data-bsi-element-part="image" src="{{imagePartIdWheenlImg1Src}}" class="slot_col_images slot_col_first_img" alt="">
+					<img data-bsi-element-part="image" src="{{imagePartIdWheenlImg2Src}}" class="slot_col_images slot_col_second_img" alt="">
+					<img data-bsi-element-part="image" src="{{imagePartIdWheenlImg3Src}}" class="slot_col_images slot_col_third_img" alt="">
+					<img data-bsi-element-part="image" src="{{imagePartIdWheenlImg4Src}}" class="slot_col_images slot_col_fourth_img" alt="">
+					<img data-bsi-element-part="image" src="{{imagePartIdWheenlImg5Src}}" class="slot_col_images slot_col_fifth_img" alt="">
+
+					<div class="bottom_glow_bar bottom_glow_bar1 dimmer"></div>
+					<div class="bottom_glow_bar bottom_glow_bar2 dimmer"></div>
+					<div class="roundedbox">
+						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 326.1 233.4" style="enable-background: new 0 0 326.1 233.4" xml:space="preserve">
+							<defs>
+								<filter id="f1" x="-50%" y="-50%" width="200%" height="200%">
+									<fegaussianblur in="SourceGraphic" stddeviation="2"></fegaussianblur>
+								</filter>
+								<filter id="f2" x="-50%" y="-50%" width="200%" height="200%">
+									<fegaussianblur in="SourceGraphic" stddeviation="1"></fegaussianblur>
+								</filter>
+							</defs>
+							<g>
+								<path id="shape" class="dimmer" filter="url(#f2)" fill="none" stroke="#ff2154" stroke-width="4" d="M317.31,217.25c0,3.65-2.96,6.6-6.6,6.6H15.81c-4.7,0-7.51-3.81-7.51-8.51V24.06c0-9.7,8.54-16.42,15.16-16.16
+																																																																																																																																																																																																																																										                                      h279.61c7.87,0,14.24,6.38,14.24,14.24V217.25z"/>
+								<ellipse class="hidden" ry="4" rx="8" fill="#ff2154" filter="url(#f1)">
+									<animatemotion dur="3s" repeatcount="indefinite" rotate="auto">
+										<mpath href="#shape"></mpath>
+									</animatemotion>
+								</ellipse>
+								<path fill="none" stroke="white" stroke-width="1" d="M317.31,217.25c0,3.65-2.96,6.6-6.6,6.6H15.81c-4.7,0-7.51-3.81-7.51-8.51V24.06c0-9.7,8.54-16.42,15.16-16.16
+																																																																																																																																																																																																																                                    h279.61c7.87,0,14.24,6.38,14.24,14.24V217.25z"/>
+							</g>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+{% endapply %}

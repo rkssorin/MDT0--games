@@ -1,0 +1,10 @@
+{% apply spaceless %}
+    {% set footerColor = (footerColor ?: properties.footerColor) ?: 'bg-light' %}
+    {% set footerGradient = (footerGradient ?: properties.footerGradient) ?: 'default' %}
+    {% set dropzoneId = dropzoneId ?: 'footer-dropzone-rR98ys' %}
+
+    <div class="d-block {{ footerColor }} {{ footerGradient }} pt-5 pb-5" data-bsi-dropzone="{{ dropzoneId }}">
+        {% block footer_element %}
+        {% endblock %}
+    </div>
+{% endapply %}

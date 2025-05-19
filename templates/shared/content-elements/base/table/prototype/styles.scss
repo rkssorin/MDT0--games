@@ -1,0 +1,106 @@
+@import "../../../../styles/properties";
+
+@mixin styles($id: 'table-FuXKu7') {
+  .bsi-element-#{$id} {
+    padding-bottom: 16px;
+
+    .table {
+      margin-bottom: 0px;
+    }
+
+    .table tr:not(:first-child) {
+      background-color: white;
+    }
+
+    .table tbody {
+      border-top: none;
+    }
+
+    &.bsi-shadow-hide {
+      box-shadow: none !important;
+    }
+
+    &.bsi-border-visible {
+      border: 1px solid rgba(0, 0, 0, 0.125);
+    }
+  }
+
+  $colors: ("primary": $primary, "secondary": $secondary, "dark": $dark);
+  @each $name, $color in $colors {
+    .bsi-element-#{$id}.bsi-table-#{$name} {
+      background-color: mix(white, $color, 90%);
+
+      .table tr:first-child {
+        background-color: mix(white, $color, 90%);
+        border-bottom: 1.75px solid mix(white, $color, 70%);
+        color: mix(black, $color, 40%);
+      }
+
+      .table tr:last-child {
+        border-bottom: 1.75px solid mix(white, $color, 70%);
+      }
+
+      .table-hover > tbody > tr:hover > * {
+        color: mix(black, $color, 40%);
+      }
+
+      @media (max-width: $lg - 1px) {
+        tr:nth-child(2n+1) {
+          background-color: mix(white, $color, 90%);;
+        }
+        td:first-child {
+          border-top: 1.75px solid mix(white, $color, 70%);
+        }
+        td:before {
+          color: mix(black, $color, 40%);
+        }
+      }
+    }
+  }
+
+  @media (max-width: $lg - 1px) {
+
+    .bsi-element-#{$id}.bsi-table-mobile {
+      padding-top: 16px;
+
+      table,
+      tbody,
+      th,
+      td,
+      tr {
+        display: block;
+      }
+
+      /* Hide table headers (but no display none, for accessibility) */
+      tr:first-child {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+
+      td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+        white-space: normal;
+        text-align: left;
+      }
+
+      td:not(:last-child) {
+        border-bottom: 1px solid #eee;
+      }
+
+      td:before {
+        content: attr(data-header);
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+      }
+    }
+  }
+}

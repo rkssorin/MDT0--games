@@ -1,0 +1,94 @@
+@import "../../../../styles/properties";
+
+@mixin styles($id: 'social-media-share-u9ppdj', $icon-primary-color: $primary, $icon-secondary-color: $secondary, $icon-dark: $dark, $icon-light: $light, $icon-info: $info) {
+  .bsi-element-#{$id} {
+    [data-bsi-remove-if] {
+      display: none !important;
+    }
+
+    .btn {
+      padding: 0rem 0.375rem;
+    }
+
+    .social-media-info {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      padding-right: 0.375em;
+      font-weight: 600;
+    }
+
+    .social-media-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .bsi-social-media-svg {
+      a {
+        display: flex;
+        align-items: center;
+
+        path {
+          fill-opacity: 1;
+          fill-rule: nonzero;
+          stroke: none;
+        }
+      }
+    }
+
+    $colors: ("primary": $icon-primary-color, "secondary": $icon-secondary-color, "dark": $icon-dark, "light": $icon-light);
+    @each $name, $color in $colors {
+      $contrast-color: $icon-light;
+      @if $name == "light" {
+        $contrast-color: $icon-primary-color;
+      }
+      &.bsi-icon-color-#{$name} {
+        .bi, .social-media-info {
+          color: $color;
+        }
+
+        .bsi-social-media-svg path {
+          fill: $color;
+        }
+
+        .btn {
+          border-color: $color;
+
+          &:hover {
+            background-color: $color;
+
+            svg path {
+              fill: $contrast-color;
+            }
+
+            .bi {
+              color: $contrast-color;
+            }
+          }
+        }
+      }
+    }
+
+    $sizes: ("small": 16px, "medium": 20px, "large": 24px);
+    @each $name, $size in $sizes {
+      &.bsi-icon-size-#{$name} {
+        .bi, .social-media-info {
+          font-size: $size;
+        }
+
+        .bsi-social-media-svg a {
+          width: $size+14px;
+          @if $name == "small" {
+            height: $size+10px;
+          }
+          @if $name == "medium" {
+            height: $size+12px;
+          }
+          @if $name == "large" {
+            height: $size+14px;
+          }
+        }
+      }
+    }
+  }
+}

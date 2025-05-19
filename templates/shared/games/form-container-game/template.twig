@@ -1,0 +1,36 @@
+{% apply spaceless %}
+{% set formWidth = (formWidth ?: properties.formWidth) ?: 'bsi-form-wide' %}
+{% set formLayout = (formLayout ?: properties.formLayout) ?: 'bsi-form-card-visible' %}
+{% set formBorderRadius = (formBorderRadius ?: properties.formBorderRadius) ?: 'bsi-corner-rounded' %}
+{% set formLabelPosition = (formLabelPosition ?: properties.formLabelPosition) ?: 'bsi-form-label-top' %}
+{# {% set formColor = (formColor ?: properties.formColor) ?: 'bsi-form-color-primary' %} #}
+{% set formButtonLayout = (formButtonLayout ?: properties.formButtonLayout) ?: 'bsi-form-btn-outline' %}
+
+<div x-data="formElementGame" data-bsi-element="form-container-game-4244" class="bsi-element-form-container-692qIu container mb-3 {{ formWidth }} {{ formLayout }} {{ formBorderRadius }} {{ formLabelPosition }} {{ formColor }} {{ formButtonLayout }} bsi-form-color-default">
+	<div class="card border-light shadow">
+		<div class="card-body">
+			<form x-init="initFormGame" x-on:submit="submitFormGame" data-bsi-element-part="form-container-part-6eHZEX" id="form" data-bsi-show-form-type-field class="needs-validation" novalidate>
+				<div data-bsi-dropzone="form-container-dropzone-game-5655">
+					{% block form_container_dropzone %}
+						{% include '../../content-elements/base/text/template.twig' %}
+						{% include '../../content-elements/form/multi-column/template.twig' %}
+						{% include '../../content-elements/form/form-field/template.twig' %}
+						{% include '../../content-elements/form/checkbox/template.twig' %}
+					{% endblock %}
+				</div>
+				<div data-bsi-remove-if="draft">
+					<ul class="text-danger" data-bsi-form-validation="">
+						<li data-bsi-form-validation-item=""></li>
+					</ul>
+				</div>
+				<div class="bsi-form-btn-row hstack flex-wrap">
+					<div class="bsi-form-btn d-flex">
+						<input type="submit" class="btn btn-submit" value="Submit"/>
+						<input type="reset" class="btn btn-outline-dark" value="Reset"/>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endapply %}

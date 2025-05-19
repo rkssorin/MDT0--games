@@ -1,0 +1,34 @@
+@mixin styles($id: 'select-iOtV1m') {
+  .bsi-element-#{$id} {
+    .bsi-form-input-element{
+      position: relative;
+    }
+    .select_chevron{
+      pointer-events: none !important;
+      &:after{
+      content: "\f285";
+        color: #767676;
+        display: inline-block;
+        font-family: bootstrap-icons !important;
+        font-style: normal;
+        font-weight: normal !important;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        vertical-align: -0.125em;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        position: absolute;
+        right: 3px;
+        bottom: 3px;
+        background-color: #fff;
+        width: 47px;
+        font-size: 28px;
+        height: 47px;
+        text-align: center;
+        line-height: 50px;
+        transform: rotate(90deg);
+      }
+    }
+  }
+}

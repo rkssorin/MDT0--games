@@ -1,0 +1,92 @@
+@import "../../../../styles/properties";
+
+@mixin styles($id: 'social-media-follow-2MlXWB', $icon-primary-color: $primary, $icon-secondary-color: $secondary, $icon-dark: $dark, $icon-light: $light) {
+  .bsi-element-#{$id} {
+    [data-bsi-remove-if] {
+      display: none !important;
+    }
+    &.icon-position-left{
+      &.d-flex{
+        justify-content: flex-start;
+        @media(max-width: $md - 1px){
+          justify-content: flex-start;
+          margin-left: -0.5rem;
+        }
+      }
+    }
+    &.icon-position-center{
+      &.d-flex{
+        justify-content: center;;
+      }
+    }
+    &.icon-position-right{
+      &.d-flex{
+        justify-content: flex-end;
+        @media(max-width: $md - 1px){
+          justify-content: flex-start;
+          margin-left: -0.5rem;
+        }
+      }
+    }
+    .bsi-social-media-svg {
+      display: flex;
+      align-items: center;
+
+      a {
+        display: flex;
+        align-items: center;
+
+        path {
+          fill-opacity: 1;
+          fill-rule: nonzero;
+          stroke: none;
+        }
+      }
+    } 
+
+    $colors: ("primary": $icon-primary-color, "secondary": $icon-secondary-color, "dark": $icon-dark, "light": $icon-light);
+    @each $name, $color in $colors {
+      &.bsi-icon-color-#{$name} {
+        .bi {
+          color: $color;
+        }
+
+        .bsi-social-media-svg path {
+          fill: $color;
+        }
+      }
+      &.bsi-icon-hover-color-#{$name} {
+        a:hover {
+          .bi {
+            color: $color;
+          }
+
+          svg path {
+            fill: $color;
+          }
+        }
+      }
+    }
+
+    $sizes: ("small": 16px, "medium": 24px, "large": 32px);
+    @each $name, $size in $sizes {
+      &.bsi-icon-size-#{$name} {
+        .bi {
+          font-size: $size;
+        }
+
+        .bsi-social-media-svg {
+          .bsi-svg-kununu {
+            height: $size;
+            width: $size;
+          }
+
+          .bsi-svg-xing {
+            height: $size+1.5px;
+            width: $size+1.5px;
+          }
+        }
+      }
+    }
+  }
+}

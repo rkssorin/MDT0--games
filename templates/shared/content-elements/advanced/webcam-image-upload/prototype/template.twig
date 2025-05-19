@@ -1,0 +1,87 @@
+{% apply spaceless %}
+    {% set webcamImgElementId = elementId ?: 'webcam-image-upload-wHe4UP' %}
+	{% set webcamImgModeAskTitlePartId = modeAskTitlePartId ?: "webcam-image-upload-part-plain-text-KVYYMZ" %}
+  	{% set webcamImgModeAskDescriptionPartId = modeAskDescriptionPartId ?: "webcam-image-upload-part-plain-text-YLjguq" %}
+  	{% set webcamImgModeAskButtonCameraPartId = modeAskButtonCameraPartId ?: "webcam-image-upload-part-plain-text-YLjguq" %}
+  	{% set webcamImgModeAskButtonManualPartId = modeAskButtonManualPartId ?: "webcam-image-upload-part-plain-text-Mh7lOL" %}
+  	{% set webcamImgModeManualTitlePartId = modeManualTitlePartId ?: "webcam-image-upload-part-plain-text-uFFq2F" %}
+  	{% set webcamImgModeManualDescriptionPartId = modeManualDescriptionPartId ?: "webcam-image-upload-part-plain-text-KKc5DW" %}
+    {% set webcamImgFormPartId = formPartId ?: 'webcam-image-upload-part-form-X98egp' %}
+	{% set webcamImgFileFormFieldPartId = fileformFieldPartId ?: 'webcam-image-upload-part-file-form-field-ZxE3ka' %}
+	{% set webcamImgModeAskTitleText = (modeAskTitleText ?: properties.webcamImgModeAskTitleText) ?: 'Kamerazugriff benötigt' %} {# TODO: make translatable #}
+	{% set webcamImgModeAskDescriptionText = (modeAskDescriptionText ?: properties.webcamImgModeAskDescriptionText) ?: 'Wir benötigen Zugriff auf ihre Kamera, um ein Bild aufzunehmen. Falls ihr Browser Sie im nächsten Schritt um die Berechtigung zur Nutzung der Kamera fragt, muss der Zugriff auf die Kamera gewährt werden.' %} {# TODO: make translatable #}
+	{% set webcamImgModeAskButtonCameraText = (modeAskButtonCameraText ?: properties.webcamImgModeAskButtonCameraText) ?: 'Zugriff erlauben' %} {# TODO: make translatable #}
+	{% set webcamImgModeAskButtonManualText = (modeAskButtonManualText ?: properties.webcamImgModeAskButtonManualText) ?: 'Stattdessen ein Bild hochladen' %} {# TODO: make translatable #}
+	{% set webcamImgModeCameSubmitButtonText = (modeCameSubmitButtonText ?: properties.webcamImgModeCameSubmitButtonText) ?: 'Bild übermitteln' %} {# TODO: make translatable #}
+	{% set webcamImgModeManualTitleText = (modeManualTitleText ?: properties.webcamImgModeManualTitleText) ?: 'Bild hochladen' %} {# TODO: make translatable #}
+	{% set webcamImgModeManualDescriptionText = (modeManualDescriptionText ?: properties.webcamImgModeManualDescriptionText) ?: 'Kein Zugriff auf die Kamera gewünscht oder möglich. Laden Sie stattdessen ein Bild hoch.' %} {# TODO: make translatable #}
+	{% set webcamImgModeManualUploadImageButtonText = (modeManualUploadImageButtonText ?: properties.webcamImgModeManualUploadImageButtonText) ?: 'Bild hochladen' %} {# TODO: make translatable #}
+	{% set webcamImgBorderRadius = (borderRadius ?: properties.webcamImgBorderRadius) ?: 'bsi-corner-rounded' %}
+	{% set webcamImgMainButtonColor = (buttonColor ?: properties.webcamImgMainButtonColor) ?: 'bsi-btn-color-dark' %}
+	{% set webcamImgAlternativeButtonColor = (uploadButtonColor ?: properties.webcamImgAlternativeButtonColor) ?: 'bsi-btn-color-primary' %}
+    {% set webcamImgMainButtonLayout = (buttonLayout ?: properties.webcamImgMainButtonLayout) ?: 'bsi-btn-filled' %}
+	{% set webcamImgAlternativeButtonLayout = (uploadButtonLayout ?: properties.webcamImgAlternativeButtonLayout) ?: 'bsi-btn-outline' %}
+
+
+	<div x-data="webcamImageUpload" x-ref="webcamImageUpload" data-bsi-element="{{ webcamImgElementId }}" class="{{ 'bsi-element-' ~ webcamImgElementId }} bsi-webcam-front">
+		<div class="card sm-6 text-center text-bg-light">
+			{# MODE = ASK #}
+			{# Accessing the camera is a sensitive topic. Inform the user first before accessing it #}
+			<div x-show="isAsk" class="card-header">
+				<i class="card-img-top bi bi-camera"></i>
+			</div>
+			<div x-show="isAsk" class="card-body">
+				<h5 class="card-title" data-bsi-element-part="{{ webcamImgModeAskTitlePartId }}">{{ webcamImgModeAskTitleText }}</h5>
+				<p data-bsi-element-part="{{ webcamImgModeAskDescriptionPartId }}">{{ webcamImgModeAskDescriptionText }}</p>
+				<div class="bsi-element-button-new-v3cFFn bsi-btn-element {{ webcamImgMainButtonLayout }} bsi-btn-size-lg bsi-btn-width-default {{ webcamImgBorderRadius }} bsi-btn-letter-uppercase bsi-btn-icon-hide  {{ webcamImgMainButtonColor }} bsi-video-btn">
+					<button @click="accessCamera" class="btn" data-bsi-element-part="{{ webcamImgModeAskButtonCameraPartId }}">{{ webcamImgModeAskButtonCameraText }}</button>
+				</div>
+				<div class="bsi-element-button-new-v3cFFn bsi-btn-element bsi-btn-width-default {{ webcamImgBorderRadius }} bsi-btn-icon-hide {{ webcamImgAlternativeButtonColor }} {{ webcamImgAlternativeButtonLayout }} bsi-btn-size-sm bsi-btn-letter-default bsi-video-btn">
+					<button @click="showUploadDialog" class="btn" data-bsi-element-part="{{ webcamImgModeAskButtonManualPartId }}">{{ webcamImgModeAskButtonManualText }}</button>
+				</div>
+			</div>
+
+			{# MODE = CAMERA #}
+			{# Allow the user to capture an image, preview it, allow to re-capture another one and finally submit it. #}
+			<div x-show="isCamera" class="camera bsi-ce-hide">
+				<div class="card-header">
+					<video x-show="isCameraCapture" x-ref="video" autoplay muted playsinline></video>
+					<canvas x-show="isPreview" x-ref="canvas"></canvas>
+					<button x-show="isCameraCapture" @click="capturePicture" class="camera-button camera-button-capture btn-primary bi bi-circle-fill" />
+					<button x-show="isPreview" @click="undoPicture" class="camera-button camera-button-undo btn-secondary bi bi-arrow-counterclockwise" />
+				</div>
+				<div class="card-body bsi-element-button-new-v3cFFn bsi-btn-element {{ webcamImgMainButtonLayout }} bsi-btn-size-lg bsi-btn-width-default {{ webcamImgBorderRadius }} bsi-btn-letter-uppercase bsi-btn-icon-hide {{ webcamImgMainButtonColor }} bsi-video-btn ">
+					<button x-bind:disabled="isCameraCapture" @click="uploadImageCapture" class="btn">{{ webcamImgModeCameSubmitButtonText }}</button>
+				</div>
+			</div>
+
+			{# MODE = MANUAL #}
+			{# Browser/operating system has no camera support or the user rejected to access it. Allow him to upload an image instead. #}
+			<div x-show="isManual" class="card-header">
+				<i class="card-img-top bi bi-upload bsi-ce-hide"></i>
+			</div>
+			<div x-show="isManual" class="card-body bsi-ce-hide">
+				<h5 class="card-title" data-bsi-element-part="{{ webcamImgModeManualTitlePartId }}">{{ webcamImgModeManualTitleText }}</h5>
+				<p class="card-text" data-bsi-element-part="{{ webcamImgModeManualDescriptionPartId }}">{{ webcamImgModeManualDescriptionText }}</p>
+				<form x-ref="form" data-bsi-element-part="{{ webcamImgFormPartId }}" id="webcam-image-upload">
+					<div data-bsi-remove-if="draft">
+						<ul class="text-danger" data-bsi-form-validation="">
+							<li data-bsi-form-validation-item=""></li>
+						</ul>
+					</div>
+					<div data-bsi-element-part="{{ webcamImgFileFormFieldPartId }}" data-bsi-form-field-fixed-type data-bsi-hide-required id="webcam-image-upload-file">
+						<label class="d-none" for="webcam-selfie">{{ webcamImgModeManualUploadImageButtonText }}</label>
+						{# with an attribute 'capture="user"' we could indicate to the browser that we prefer using the camera app and we want an image from the front camera #}
+						<input type="file" x-ref="fileInput" required accept="image/*"
+							name="webcam-selfie" class="form-control form-control-lg"/>
+					</div>
+					<br>
+					<input type="reset" class="d-none" disabled />
+					<div class="bsi-element-button-new-v3cFFn bsi-btn-element {{ webcamImgMainButtonLayout }} bsi-btn-size-lg bsi-btn-width-default {{ webcamImgBorderRadius }} bsi-btn-letter-uppercase bsi-btn-icon-hide {{ webcamImgMainButtonColor }} bsi-video-btn">
+						<input type="submit" class="btn" value="Bild übermitteln" /> 
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endapply %}

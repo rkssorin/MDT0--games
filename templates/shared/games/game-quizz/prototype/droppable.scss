@@ -1,0 +1,663 @@
+/***********************************droppable elements********************/
+  
+.draggable--is-dragging,
+.draggable--is-dragging * {
+    cursor: grabbing;
+}
+
+
+@-webkit-keyframes placed {
+    to {
+        -webkit-transform: scale(0);
+        transform: scale(0)
+    }
+}
+
+@keyframes placed {
+    to {
+        -webkit-transform: scale(0);
+        transform: scale(0)
+    }
+}
+
+@-webkit-keyframes halftone {
+    0% {
+        background-position: 0 0, .6rem .6rem
+    }
+
+    to {
+        background-position: .6rem .6rem, 1.2rem 1.2rem
+    }
+}
+
+@keyframes halftone {
+    0% {
+        background-position: 0 0, .6rem .6rem
+    }
+
+    to {
+        background-position: .6rem .6rem, 1.2rem 1.2rem
+    }
+}
+
+
+.Pattern {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto
+}
+
+.Pattern--typeStripes {
+    background-image: repeating-linear-gradient(-45deg, var(--white), var(--white) 40%, currentColor 0, currentColor 50%, var(--white) 0);
+    background-size: .8rem .8rem;
+    border-radius: 12px;
+}
+
+.Pattern--typeHalftone {
+    background-image: radial-gradient(currentColor 24%, transparent 25%), radial-gradient(currentColor 24%, transparent 25%);
+    background-position: 0 0, .6rem .6rem;
+    background-size: 0.5rem 0.5rem;
+    -webkit-animation: halftone .48s steps(3) infinite both paused;
+    animation: halftone .48s steps(3) infinite both paused;
+    border-radius: 12px;
+}
+
+.Pattern--typePlaced {
+    background-color: #007bc1
+}
+.animal_drop.draggable-dropzone--occupieddraggable-container-over span.numbers_opl {
+    filter: drop-shadow(0 0 8px #000000);
+}
+
+
+
+// .BlockWrapper .Block {
+//     height: 100%
+// }
+
+.Block {
+    position: relative;
+    display: block
+}
+
+.BlockContent {
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // flex-direction: column;
+    // text-align: center;
+    position: relative;
+    // min-height: 8.6rem;
+    // height: 100%;
+    // color: #fff;
+    // background-color: #212529;
+    // border: .6rem solid #212529
+    user-select: none;
+    -webkit-user-select: none;
+    pointer-events: none;
+}
+
+
+.BlockContent .Heading {
+    margin-top: -.1em
+}
+
+// .BlockLayout--typeFlex,
+// .BlockLayout--typeFloat {
+//     margin-top: -.6rem;
+//     margin-left: -.6rem
+// }
+
+// .BlockLayout--typeFlex>.BlockWrapper,
+// .BlockLayout--typeFloat>.BlockWrapper {
+//     margin-top: .6rem;
+//     margin-left: .6rem
+// }
+
+// .BlockLayout--typeFlex>.Block,
+// .BlockLayout--typeFloat>.Block {
+//     padding-top: .6rem;
+//     padding-left: .6rem
+// }
+
+// @media screen and (min-width:768px) {
+
+//     .BlockLayout--typeFlex,
+//     .BlockLayout--typeFloat {
+//         margin-top: -.8rem;
+//         margin-left: -.8rem
+//     }
+
+//     .BlockLayout--typeFlex>.BlockWrapper,
+//     .BlockLayout--typeFloat>.BlockWrapper {
+//         margin-top: .8rem;
+//         margin-left: .8rem
+//     }
+
+//     .BlockLayout--typeFlex>.Block,
+//     .BlockLayout--typeFloat>.Block {
+//         padding-top: .8rem;
+//         padding-left: .8rem
+//     }
+// }
+
+.BlockLayout--typeFlex {
+    display: flex;
+    flex-wrap: wrap
+}
+
+.BlockLayout--typeFlex .Block {
+    flex: 1 1 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;    
+}
+.BlockContent img{
+  width: 100%;
+  border-radius: 12px;;
+}
+
+.BlockLayout--typePositioned {
+    position: relative
+}
+
+// .Block--typeHollow .BlockContent {
+//     color: #c3cfd8;
+//     background-color: #fff;
+//     border-color: currentColor
+// }
+
+.Block--typeStripes .BlockContent {
+    // background: rgba(231, 241, 250, 0.85);
+    background-size: .8rem .8rem;
+    // color: #212529;
+    // border-color: currentColor;
+    transition: color .12s cubic-bezier(.64, 0, .35, 1)
+}
+
+.Block--isDraggable {
+    cursor: grab;
+}
+
+.Block--isDraggable .BlockContent {
+    // color: #212529;
+    // background-color: #fff;
+    // border-color: currentColor;
+    transition: color .12s cubic-bezier(.64, 0, .35, 1), background-color .12s cubic-bezier(.64, 0, .35, 1), -webkit-transform .24s cubic-bezier(.32, 1.46, .54, 1.28);
+    transition: color .12s cubic-bezier(.64, 0, .35, 1), background-color .12s cubic-bezier(.64, 0, .35, 1), transform .24s cubic-bezier(.32, 1.46, .54, 1.28);
+    transition: color .12s cubic-bezier(.64, 0, .35, 1), background-color .12s cubic-bezier(.64, 0, .35, 1), transform .24s cubic-bezier(.32, 1.46, .54, 1.28), -webkit-transform .24s cubic-bezier(.32, 1.46, .54, 1.28)
+}
+
+
+.Block--isDraggable.draggable-source--is-dragging .BlockContent .Pattern--typeHalftone {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    -webkit-animation-play-state: running;
+    animation-play-state: running
+}
+
+.Block--isDraggable.draggable-source--placed .BlockContent .Pattern--typePlaced {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    -webkit-animation: placed .24s cubic-bezier(.64, 0, .35, 1) both;
+    animation: placed .24s cubic-bezier(.64, 0, .35, 1) both
+}
+
+.Block--isDraggable.draggable-mirror {
+    z-index: 7;
+    transition: width .24s cubic-bezier(.32, 1.46, .54, 1.28), height .24s cubic-bezier(.32, 1.46, .54, 1.28);
+    // height: 110px !important;
+    opacity: 0.4;
+}
+
+.Block--isDraggable.draggable-mirror .BlockContent {
+    height: 100%;
+    color: #fff;
+    background-color: transparent;
+    border-color: transparent;
+    -webkit-transform: scale(1.025);
+    transform: scale(1.025)
+}
+
+.BlockWrapper {
+    position: relative
+}
+
+.BlockWrapper.draggable-dropzone--occupied .Block--typeHollow,
+.BlockWrapper.draggable-dropzone--occupied .Block--typeStripes {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto
+}
+.animal{
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 101%;
+  border-radius: 12px;
+  background-position: center;
+  box-shadow: 5px 5px 20px 0px #00000025;
+  align-items: center;
+    justify-content: center;
+    display: flex;
+  img{
+    opacity: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    pointer-events: none;    
+    -webkit-touch-callout:none;
+
+
+  }
+}
+.animal_comun{
+  border: 3px solid #fff;
+  border-radius: 12px;
+  box-shadow: none;
+  .Block.Block--typeHollow{
+    opacity: 0.3;
+    filter: grayscale(1);
+    
+    
+  }
+  &.draggable-dropzone--occupied{
+    border: 0px solid #fff;
+    box-shadow: 5px 5px 20px 0px #00000025;
+    .Block.Block--typeHollow{
+      opacity: 1;
+    }
+  }
+}
+@-webkit-keyframes plate-small {
+
+    0%,
+    to {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+
+    10% {
+        -webkit-transform: scale(1.1, .96);
+        transform: scale(1.1, .96)
+    }
+
+    25% {
+        -webkit-transform: scale(.925, 1.075);
+        transform: scale(.925, 1.075)
+    }
+
+    50% {
+        -webkit-transform: scale(1.0125, .975);
+        transform: scale(1.0125, .975)
+    }
+
+    75% {
+        -webkit-transform: scale(.975, 1.0125);
+        transform: scale(.975, 1.0125)
+    }
+
+    95% {
+        -webkit-transform: scale(1.005, .995);
+        transform: scale(1.005, .995)
+    }
+}
+
+@keyframes plate-small {
+
+    0%,
+    to {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+
+    10% {
+        -webkit-transform: scale(1.1, .96);
+        transform: scale(1.1, .96)
+    }
+
+    25% {
+        -webkit-transform: scale(.925, 1.075);
+        transform: scale(.925, 1.075)
+    }
+
+    50% {
+        -webkit-transform: scale(1.0125, .975);
+        transform: scale(1.0125, .975)
+    }
+
+    75% {
+        -webkit-transform: scale(.975, 1.0125);
+        transform: scale(.975, 1.0125)
+    }
+
+    95% {
+        -webkit-transform: scale(1.005, .995);
+        transform: scale(1.005, .995)
+    }
+}
+
+@-webkit-keyframes plate-medium {
+
+    0%,
+    to {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+
+    10% {
+        -webkit-transform: scale(1.15, .95);
+        transform: scale(1.15, .95)
+    }
+
+    25% {
+        -webkit-transform: scale(.9, 1.1);
+        transform: scale(.9, 1.1)
+    }
+
+    50% {
+        -webkit-transform: scale(1.025, .96);
+        transform: scale(1.025, .96)
+    }
+
+    75% {
+        -webkit-transform: scale(.98, 1.025);
+        transform: scale(.98, 1.025)
+    }
+
+    95% {
+        -webkit-transform: scale(1.01, .985);
+        transform: scale(1.01, .985)
+    }
+}
+
+@keyframes plate-medium {
+
+    0%,
+    to {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+
+    10% {
+        -webkit-transform: scale(1.15, .95);
+        transform: scale(1.15, .95)
+    }
+
+    25% {
+        -webkit-transform: scale(.9, 1.1);
+        transform: scale(.9, 1.1)
+    }
+
+    50% {
+        -webkit-transform: scale(1.025, .96);
+        transform: scale(1.025, .96)
+    }
+
+    75% {
+        -webkit-transform: scale(.98, 1.025);
+        transform: scale(.98, 1.025)
+    }
+
+    95% {
+        -webkit-transform: scale(1.01, .985);
+        transform: scale(1.01, .985)
+    }
+}
+
+@-webkit-keyframes plate-big {
+
+    0%,
+    to {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+
+    10% {
+        -webkit-transform: scale(1.2, .9);
+        transform: scale(1.2, .9)
+    }
+
+    25% {
+        -webkit-transform: scale(.85, 1.15);
+        transform: scale(.85, 1.15)
+    }
+
+    50% {
+        -webkit-transform: scale(1.075, .95);
+        transform: scale(1.075, .95)
+    }
+
+    75% {
+        -webkit-transform: scale(.975, 1.05);
+        transform: scale(.975, 1.05)
+    }
+
+    95% {
+        -webkit-transform: scale(1.0125, .98);
+        transform: scale(1.0125, .98)
+    }
+}
+
+@keyframes plate-big {
+
+    0%,
+    to {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+
+    10% {
+        -webkit-transform: scale(1.2, .9);
+        transform: scale(1.2, .9)
+    }
+
+    25% {
+        -webkit-transform: scale(.85, 1.15);
+        transform: scale(.85, 1.15)
+    }
+
+    50% {
+        -webkit-transform: scale(1.075, .95);
+        transform: scale(1.075, .95)
+    }
+
+    75% {
+        -webkit-transform: scale(.975, 1.05);
+        transform: scale(.975, 1.05)
+    }
+
+    95% {
+        -webkit-transform: scale(1.0125, .98);
+        transform: scale(1.0125, .98)
+    }
+}
+
+@-webkit-keyframes plate-placed {
+
+    0%,
+    to {
+        color: #212529
+    }
+
+    50% {
+        color: #007bc1
+    }
+}
+
+@keyframes plate-placed {
+
+    0%,
+    to {
+        color: #212529
+    }
+
+    50% {
+        color: #007bc1
+    }
+}
+
+
+
+
+.BlockLayout .BlockWrapper .Block:nth-child(1n+3):not(.draggable-source--is-dragging) {
+    min-height: 0;
+    height: 0
+}
+
+.BlockLayout--typeFlex .BlockWrapper {
+    flex: 1 1 calc(50% - 0.8rem)
+}
+
+@media screen and (min-width:480px) {
+    .BlockLayout--typeFlex .BlockWrapper {
+        flex-basis: calc(25% - 0.8rem)
+    }
+}
+
+
+
+
+.SwapAnimation .Block.draggable--original~.Block:nth-child(2),
+.SwapAnimation .Block.draggable--original~.Block:nth-child(3),
+.SwapAnimation .Block.draggable--original~.Block:nth-child(5),
+.SwapAnimation .Block.draggable--original~.Block:nth-child(6),
+.SwapAnimation .Block.draggable--original~.Block:nth-child(8),
+.SwapAnimation .Block.draggable--original~.Block:nth-child(9),
+.SwapAnimation .Block:first-child,
+.SwapAnimation .Block:nth-child(2),
+.SwapAnimation .Block:nth-child(4),
+.SwapAnimation .Block:nth-child(5),
+.SwapAnimation .Block:nth-child(7),
+.SwapAnimation .Block:nth-child(8) {
+    flex-basis: 50%
+}
+
+.SwapAnimation .Block.draggable--original~.Block:nth-child(4),
+.SwapAnimation .Block.draggable--original~.Block:nth-child(7),
+.SwapAnimation .Block.draggable--original~.Block:nth-child(10),
+.SwapAnimation .Block:nth-child(3),
+.SwapAnimation .Block:nth-child(6),
+.SwapAnimation .Block:nth-child(9) {
+    flex-basis: 100%
+}
+
+@media screen and (min-width:768px) {
+
+    .SwapAnimation .Block.draggable--original~.Block:nth-child(2),
+    .SwapAnimation .Block.draggable--original~.Block:nth-child(3),
+    .SwapAnimation .Block.draggable--original~.Block:nth-child(4),
+    .SwapAnimation .Block.draggable--original~.Block:nth-child(5),
+    .SwapAnimation .Block.draggable--original~.Block:nth-child(6),
+    .SwapAnimation .Block.draggable--original~.Block:nth-child(7),
+    .SwapAnimation .Block.draggable--original~.Block:nth-child(8),
+    .SwapAnimation .Block.draggable--original~.Block:nth-child(9),
+    .SwapAnimation .Block.draggable--original~.Block:nth-child(10),
+    .SwapAnimation .Block:first-child,
+    .SwapAnimation .Block:nth-child(2),
+    .SwapAnimation .Block:nth-child(3),
+    .SwapAnimation .Block:nth-child(4),
+    .SwapAnimation .Block:nth-child(5),
+    .SwapAnimation .Block:nth-child(6),
+    .SwapAnimation .Block:nth-child(7),
+    .SwapAnimation .Block:nth-child(8),
+    .SwapAnimation .Block:nth-child(9) {
+        flex-basis: 33.333%
+    }
+}
+
+@media screen and (min-width:768px) {
+    .SwapAnimation .BlockContent {
+        height: 13.6rem
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .SwapAnimation .BlockContent {
+        height: 18.4rem
+    }
+}
+
+@media screen and (min-width:1920px) {
+    .SwapAnimation .BlockContent {
+        height: 23.2rem
+    }
+}
+
+.SortAnimation .Block.draggable--original~.Block:nth-child(2),
+.SortAnimation .Block.draggable--original~.Block:nth-child(3),
+.SortAnimation .Block.draggable--original~.Block:nth-child(5),
+.SortAnimation .Block.draggable--original~.Block:nth-child(6),
+.SortAnimation .Block.draggable--original~.Block:nth-child(8),
+.SortAnimation .Block.draggable--original~.Block:nth-child(9),
+.SortAnimation .Block:first-child,
+.SortAnimation .Block:nth-child(2),
+.SortAnimation .Block:nth-child(4),
+.SortAnimation .Block:nth-child(5),
+.SortAnimation .Block:nth-child(7),
+.SortAnimation .Block:nth-child(8) {
+    flex-basis: 50%
+}
+
+.SortAnimation .Block.draggable--original~.Block:nth-child(4),
+.SortAnimation .Block.draggable--original~.Block:nth-child(7),
+.SortAnimation .Block.draggable--original~.Block:nth-child(10),
+.SortAnimation .Block:nth-child(3),
+.SortAnimation .Block:nth-child(6),
+.SortAnimation .Block:nth-child(9) {
+    flex-basis: 100%
+}
+
+@media screen and (min-width:768px) {
+
+    .SortAnimation .Block.draggable--original~.Block:nth-child(2),
+    .SortAnimation .Block.draggable--original~.Block:nth-child(3),
+    .SortAnimation .Block.draggable--original~.Block:nth-child(4),
+    .SortAnimation .Block.draggable--original~.Block:nth-child(5),
+    .SortAnimation .Block.draggable--original~.Block:nth-child(6),
+    .SortAnimation .Block.draggable--original~.Block:nth-child(7),
+    .SortAnimation .Block.draggable--original~.Block:nth-child(8),
+    .SortAnimation .Block.draggable--original~.Block:nth-child(9),
+    .SortAnimation .Block.draggable--original~.Block:nth-child(10),
+    .SortAnimation .Block:first-child,
+    .SortAnimation .Block:nth-child(2),
+    .SortAnimation .Block:nth-child(3),
+    .SortAnimation .Block:nth-child(4),
+    .SortAnimation .Block:nth-child(5),
+    .SortAnimation .Block:nth-child(6),
+    .SortAnimation .Block:nth-child(7),
+    .SortAnimation .Block:nth-child(8),
+    .SortAnimation .Block:nth-child(9) {
+        flex-basis: 33.333%
+    }
+}
+
+@media screen and (min-width:768px) {
+    .SortAnimation .BlockContent {
+        height: 13.6rem
+    }
+}
+
+@media screen and (min-width:1440px) {
+    .SortAnimation .BlockContent {
+        height: 18.4rem
+    }
+}
+
+@media screen and (min-width:1920px) {
+    .SortAnimation .BlockContent {
+        height: 23.2rem
+    }
+}

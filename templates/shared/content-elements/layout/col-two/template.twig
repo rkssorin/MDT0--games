@@ -1,0 +1,14 @@
+{% apply spaceless %}
+    {% set colTwoAlignment = (colTwoAlignment ?: properties.colTwoAlignment) ?: 'bsi-col-align-left' %}
+
+    <div data-bsi-element="col-two-ILRIL0" class="bsi-element-col-two-ILRIL0 bsi-column-element container bsi-ratio-6-6 bsi-col-order-default bsi-space-around-visible bsi-gaps-visible {{ colTwoAlignment }} bsi-bg-color-transparent bsi-opacity-100 bsi-gradient-hide bsi-mobile-break">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 bsi-column bsi-column-1" data-bsi-dropzone="col-two-dropzone-1-aDxFmN">
+                {% block col_two_dropzone_1 %}{% endblock %}
+            </div>
+            <div class="col-sm-12 col-md-6 bsi-column bsi-column-2" data-bsi-dropzone="col-two-dropzone-2-BSeopF">
+                {% block col_two_dropzone_2 %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endapply %}

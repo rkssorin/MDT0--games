@@ -1,0 +1,31 @@
+{% macro render(elementId = null, urlPartId = null, imagePartId = null, imageSrc = null) %}{% apply spaceless %}
+    {% deprecated 'The usage of "element.render(...)" is deprecated, use "include ... with {...}" instead. For detailed information, visit: https://github.com/bsi-software/bsi-cx-design-master-template-web/blob/main/MIGRATION_GUIDE.md"' %}
+    {% include './template.twig' %}
+{% endapply %}{% endmacro %}
+
+{% apply spaceless %}
+    {% set chartElementId = elementId ?: 'chart-qEBqKT' %}
+    {% set chartUrlPartId = urlPartId ?: 'chart-part-url-cDW6yK' %}
+    {% set chartImagePartId = imagePartId ?: 'chart-part-image-rpPPzg' %}
+    {% set chartImageSrc = imageSrc ?: bsi_cx_asset('../../../../static/image.png') %}
+    {% set borderColors = [
+        (properties.chartBorderColor1 ?: '#116985ff'),
+        (properties.chartBorderColor2 ?: '#27aab0ff'),
+        (properties.chartBorderColor3 ?: '#94e7a8ff'),
+        (properties.chartBorderColor4 ?: '#c7f296ff')
+    ] %}
+    {% set backgroundColors = [
+        (properties.chartBackgroundColor1 ?: '#11698566'),
+        (properties.chartBackgroundColor2 ?: '#27aab066'),
+        (properties.chartBackgroundColor3 ?: '#94e7a866'),
+        (properties.chartBackgroundColor4 ?: '#c7f29666')
+    ] %}    
+
+    {% if cx.version.TARGET >= cx.version.CX_22_0 %}
+        <div x-data="chartElement" x-init="initChart" data-bsi-element="{{ chartElementId }}"
+        class="mb-3 chart-js {{ 'bsi-element-' ~ chartElementId }}" data-bsi-element-part="{{ chartUrlPartId }}" data-bsi-url-provider="Diagramm"
+        data-borderColors="{{ borderColors|join(',') }}" data-backgroundColors="{{ backgroundColors|join(',') }}">
+            <img src="{{ chartImageSrc }}" alt="" class="w-100" data-bsi-element-part="{{ chartImagePartId }}"/>
+        </div>
+    {% endif %}
+{% endapply %}

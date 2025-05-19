@@ -1,0 +1,176 @@
+@import "../../../../styles/properties";
+
+@mixin styles($id: 'news-snippet-4E7jFg', $primary-color: $primary, $secondary-color: $secondary, $dark-color: $dark, $light-color: $light) {
+  .bsi-element-#{$id} {
+    &.bsi-news-bg-color-grey .bsi-news-element {
+      background-color: #f8f9fa !important;
+      border: none;
+    }
+
+    @media (min-width: $md) {
+      &.bsi-ratio-2-10.bsi-image-left,
+      &.bsi-ratio-2-10.bsi-image-right {
+        .bsi-col-image {
+          width: 16.66666667%;;
+        }
+        .bsi-col-content {
+          width: 83.33333333%;
+        }
+      }
+      &.bsi-ratio-3-9.bsi-image-left,
+      &.bsi-ratio-3-9.bsi-image-right {
+        .bsi-col-image {
+          width: 25%;
+        }
+        .bsi-col-content {
+          width: 75%;
+        }
+      }
+      &.bsi-ratio-4-8.bsi-image-left,
+      &.bsi-ratio-4-8.bsi-image-right {
+        .bsi-col-image {
+          width: 33.33333333%;
+        }
+        .bsi-col-content {
+          width: 66.66666667%;
+        }
+      }
+      &.bsi-ratio-5-7.bsi-image-left,
+      &.bsi-ratio-5-7.bsi-image-right {
+        .bsi-col-image {
+          width: 41.66666667%;
+        }
+        .bsi-col-content {
+          width: 58.33333333%;
+        }
+      }
+      &.bsi-ratio-6-6.bsi-image-left,
+      &.bsi-ratio-6-6.bsi-image-right {
+        .bsi-col-image {
+          width: 50%;
+        }
+        .bsi-col-content {
+          width: 50%;
+        }
+      }
+    }
+
+    &.bsi-image-top {
+      .bsi-news-element {
+        flex-direction: column;
+      }
+      .bsi-news-image {
+        border-top-left-radius: calc(0.25rem - 1px);
+        border-top-right-radius: calc(0.25rem - 1px);
+      }
+    }
+
+    &.bsi-image-bottom {
+      .bsi-news-element {
+        flex-direction: column-reverse;
+      }
+      .bsi-news-image {
+        border-bottom-left-radius: calc(0.25rem - 1px);
+        border-bottom-right-radius: calc(0.25rem - 1px);
+      }
+    }
+
+    &.bsi-image-left {
+      .bsi-news-element {
+        flex-direction: row;
+      }
+      .bsi-news-image {
+        @media (min-width: $md) {
+          border-bottom-left-radius: 0.25rem !important;
+          border-top-left-radius: 0.25rem !important;
+        }
+      }
+    }
+
+    &.bsi-image-right {
+      .bsi-news-element {
+        flex-direction: row-reverse;
+      }
+      .bsi-news-image {
+        @media (min-width: $md) {
+          border-bottom-right-radius: 0.25rem !important;
+          border-top-right-radius: 0.25rem !important;
+        }
+      }
+    }
+
+    &.bsi-news-btn-hide {
+      .bsi-news-btn {
+        display: none;
+      }
+    }
+
+    $colors: ("primary": $primary-color, "secondary": $secondary-color, "dark": $dark-color, "light": $light-color);
+    @each $name, $color in $colors {
+      $contrast-color: $light-color;
+      @if $name == "light" {
+        $contrast-color: $dark-color;
+      }
+      &.bsi-btn-color-#{$name} {
+        &.bsi-btn-filled .bsi-news-btn {
+          color: $contrast-color;
+          background-color: $color;
+          border-color: $color;
+          &:hover {
+            color: $color;
+            background-color: transparent;
+            border-color: $color;
+          }
+        }
+
+        &.bsi-btn-outline .bsi-news-btn {
+          color: $color;
+          background-color: transparent;
+          border-color: $color;
+          &:hover {
+            color: $contrast-color;
+            background-color: $color;
+            border-color: $color;
+          }
+        }
+      }
+    }
+
+    $heights: (150px, 200px, 250px, 300px, 350px, 400px, 450px, 500px);
+    @each $height in $heights {
+      &.bsi-height-fixed-#{$height} {
+        .bsi-col-image, .bsi-col-content {
+          height: $height;
+        }
+      }
+    }
+
+    .bsi-news-element {
+      display: flex !important;
+      height: 100%;
+    }
+
+    .bsi-news-title {
+      color: $primary-color;
+      a {
+        text-decoration: none;
+      }
+    }
+
+    .bsi-news-headline,
+    .bsi-news-text {
+      color: #212529;
+    }
+
+    .bsi-news-image {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      overflow: hidden;
+      @media (max-width: 767px) {
+        border-top-left-radius: 0.25rem !important;
+        border-top-right-radius: 0.25rem !important;
+      }
+    }
+  }
+}

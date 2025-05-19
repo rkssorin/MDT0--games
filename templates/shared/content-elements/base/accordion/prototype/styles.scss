@@ -1,0 +1,78 @@
+@import "../../../../styles/properties";
+
+@mixin styles($id: 'accordion-OowSb3',
+    $accordion-header-bg: $primary,
+    $accordion-border-color: $primary,
+    $accordion-header-color: $light
+) {
+    .bsi-element-#{$id} {
+        .accordion-header {
+            background-color: $accordion-header-bg;
+            color: $accordion-header-color;
+            border: 1px solid $accordion-border-color;
+            display: flex;
+            padding: 1rem;
+            gap: 0.5rem;
+            align-items: center !important;
+            cursor: pointer;
+            font-size: 1.25rem;
+            font-weight: 700;
+            width: 100%;
+
+            i, svg {
+                height: 1.5rem;
+                line-height: 1rem;
+                align-self: center;
+                font-size: 1.5rem;
+            }
+
+            .active {
+                display: none;
+            }
+
+            .accordion-title {
+                flex-grow: 1;
+            }
+
+            &:focus-visible {
+                outline: 0.2rem solid $secondary;
+            }
+        }
+
+
+        .accordion-content {
+            display: none;
+            padding: 1rem;
+            border: 1px solid $accordion-border-color;
+
+            div:last-child p {
+                margin: 0;
+            }
+        }
+
+        &.active {
+            >.accordion-content {
+                display: block;
+            }
+
+            >.accordion-header {
+                .active {
+                    display: block;
+                }
+                .inactive {
+                    display: none;
+                }
+                .rotate-180 {
+                    transition: 0.5s all;
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+}
+
+.bsi-ce-edit-mode {
+    .accordion-content {
+        display: block !important;
+    }
+}

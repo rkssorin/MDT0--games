@@ -1,0 +1,26 @@
+{% macro render(elementId = null, newsPartId = null, btnPartId = null) %}{% apply spaceless %}
+    {% deprecated 'The usage of "element.render(...)" is deprecated, use "include ... with {...}" instead. For detailed information, visit: https://github.com/bsi-software/bsi-cx-design-master-template-web/blob/main/MIGRATION_GUIDE.md"' %}
+    {% include './template.twig' %}
+{% endapply %}{% endmacro %}
+
+{% apply spaceless %}
+    {% set newsElementId = elementId ?: 'news-snippet-4E7jFg' %}
+    {% set newsPartId = newsPartId ?: 'news-snippet-part-Z6vBxS' %}
+    {% set newsBtnPartId = btnPartId ?: 'news-snippet-part-btn-BplEx2' %}
+
+    <div x-data="newsSnippet" data-bsi-element="{{ newsElementId }}" data-bsi-element-part="{{ newsPartId }}" class="{{ 'bsi-element-' ~ newsElementId }} bsi-news-bg-color-grey bsi-image-left bsi-ratio-4-8 bsi-news-btn-visible bsi-btn-color-secondary bsi-btn-outline bsi-height-auto">
+        <div data-bsi-news-snippet="news-snippets" class="card mb-3 bsi-news-element row g-0">
+            <div class="bsi-col-image">
+                <img class="bsi-news-image img-fluid" src="{{ bsi_cx_asset('../../../../static/image.png') }}" data-bsi-property="image"/>
+            </div>
+            <div class="bsi-col-content">
+                <div x-init="setButtonUrl" class="card-body">
+                    <h2 class="bsi-news-title card-title" data-bsi-property="title">{{ bsi_cx_lorem(3) }}</h2>
+                    <p class="bsi-news-headline card-text lead" data-bsi-property="headline">{{ bsi_cx_lorem(9) }}</p>
+                    <p class="bsi-news-text card-text" data-bsi-property="text">{{ bsi_cx_lorem(40) }}</p>
+                    <a class="bsi-news-btn btn btn-outline-secondary" href="" data-bsi-element-part="{{ newsBtnPartId }}">{{ bsi_cx_lorem(2) }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endapply %}

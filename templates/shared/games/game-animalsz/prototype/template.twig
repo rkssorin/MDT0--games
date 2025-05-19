@@ -1,0 +1,274 @@
+{% macro render(elementId = null, imagePartIdImage1 = null, imagePartIdImage2 = null, imagePartIdImage3 = null, imagePartIdImage4 = null, imageSrcDesktop = null, imgSrcMobile = null, imgSrc1 = null, imgSrc2 = null, imgSrc3 = null, imgSrc4 = null, textPartIdWelcome = null, textPartIdWelcome = null, textPartIdBadgeText = null, textPartIdIntroTop = null, textPartIdIntroTopDesktop = null, textPartIdIntroTopMobile = null, textPartIdTextSmallDescription = null, textPartIdTextPfuiPfui = null, textPartIdTextHuiHui = null, textPartIdTextVielenDank = null, elementPartIdButtonReset = null, elementPartIdButtonSendToForm = null, elementPartIdButtonClose2 = null, elementPartIdButtonClose2 = null) %}
+	{% apply spaceless %}
+	{% deprecated 'The usage of "element.render(...)" is deprecated, use "include ... with {...}" instead. For detailed information, visit: https://github.com/bsi-software/bsi-cx-design-master-template-web/blob/main/MIGRATION_GUIDE.md"' %}
+	{% include './template.twig' %}
+	{% endapply %}
+{% endmacro %}
+
+{% apply spaceless %}
+{% set gameElementId = elementId ?: 'game-gme235425' %}
+
+
+{% set imagePartIdImage1 = imagePartIdImage1 ?: 'figure-part-image-JoCwpV' %}
+{% set imagePartIdImage11 = imagePartIdImage11 ?: 'figure-part-image-JoCwpV' %}
+{% set imagePartIdImage2 = imagePartIdImage2 ?: 'figure-part-image-JoCwpV' %}
+{% set imagePartIdImage22 = imagePartIdImage22 ?: 'figure-part-image-JoCwpV' %}
+{% set imagePartIdImage3 = imagePartIdImage3 ?: 'figure-part-image-JoCwpV' %}
+{% set imagePartIdImage33 = imagePartIdImage33 ?: 'figure-part-image-JoCwpV' %}
+{% set imagePartIdImage4 = imagePartIdImage4 ?: 'figure-part-image-JoCwpV' %}
+{% set imagePartIdImage44 = imagePartIdImage44 ?: 'figure-part-image-JoCwpV' %}
+
+{% set gameImageSrc1 = imageSrc1 ?: bsi_cx_asset('../../../static/game-animals/img-1.jpg') %}
+{% set gameImageSrc11 = imageSrc11 ?: bsi_cx_asset('../../../static/game-animals/img-1.jpg') %}
+
+{% set gameImageSrc2 = imageSrc2 ?: bsi_cx_asset('../../../static/game-animals/img-2.jpg') %}
+{% set gameImageSrc22 = imageSrc22 ?: bsi_cx_asset('../../../static/game-animals/img-2.jpg') %}
+
+{% set gameImageSrc3 = imageSrc3 ?: bsi_cx_asset('../../../static/game-animals/img-3.jpg') %}
+{% set gameImageSrc33 = imageSrc33 ?: bsi_cx_asset('../../../static/game-animals/img-3.jpg') %}
+
+{% set gameImageSrc4 = imageSrc4 ?: bsi_cx_asset('../../../static/game-animals/img-4.jpg') %}
+{% set gameImageSrc44 = imageSrc44 ?: bsi_cx_asset('../../../static/game-animals/img-4.jpg') %}
+
+{% set gameStartSrc = gameStartSrc ?: bsi_cx_asset('../../../static/game-animals/start.svg') %}
+
+
+{% set textPartIdBadgeText = textPartIdBadgeText ?: 'text-part-Fjse59' %}
+{% set textPartIdIntroTop = textPartIdIntroTop ?: 'text-part-Fjse59' %}
+
+
+{% set textPartIdIntroTopDesktop = textPartIdIntroTopDesktop ?: 'text-part-Fjse59' %}
+{% set textPartIdIntroTopMobile = textPartIdIntroTopMobile ?: 'text-part-Fjse59' %}
+
+{% set textPartIdStartTitle = textPartIdStartTitle ?: 'title-start-part-4b0a' %}
+{% set textPartIdStartText = textPartIdStartText ?: 'text-start-part-4b11' %}
+
+{% set textPartIdTextSmallDescription = textPartIdTextSmallDescription ?: 'text-part-Fjse59' %}
+{% set textPartIdTextPfuiPfui = textPartIdTextPfuiPfui ?: 'text-part-Fjse59' %}
+
+{% set textPartIdTextHuiHui = textPartIdTextHuiHui ?: 'text-part-Fjse59' %}
+{% set textPartIdTextVielenDank = textPartIdTextVielenDank ?: 'text-part-Fjse59' %}
+
+{% set elementPartIdStartButton = elementPartIdStartButton ?: 'figure-part-image-JoCwpV' %}
+{% set elementPartIdButtonReset = elementPartIdButtonReset ?: 'button-part-0Cq8Xc' %}
+{% set elementPartIdButtonSendToForm = elementPartIdButtonSendToForm ?: 'button-part-0Cq8Xc' %}
+
+
+<div x-data="gameElement" class="image bild-fixe-breite-responsive bild_caption_button game_of_fortune bsi-element-{{ gameElementId }}" data-bsi-element="{{ gameElementId }}">
+
+
+	<div x-init="initGame" class="row image-wrapper">
+
+		<div class="start_btn_overlay" id="start_btn">
+			<span class="button_start_text title_text_play" data-bsi-element-part="{{ textPartIdStartTitle }}">MITSPIELEN UND GEWINNEN!</span>
+			<a href="" data-bsi-element-part="{{ elementPartIdStartButton }}">
+				<img src="{{gameStartSrc}}" alt="START" width="188" class="button-start">
+			</a>
+			<span class="button_start_text" data-bsi-element-part="{{ textPartIdStartText }}">Spiel starten!</span>
+		</div>
+
+		<div class="element-wrapper caption_onimg">
+			<div class="element wysiwyg" data-bsi-element-part="{{textPartIdIntroTop}}">
+				<h1>Wer gewinnt das Highspeed rennen?</h1>
+				<p>Schieben Sie die Teilnehmer in der Reihenfolge ihrer Geschwindigkeit und nehmen Sie an unserer Verlosung teil.</p>
+			</div>
+		</div>
+
+		<div class="element-wrapper caption_onimg show_desktop_text">
+			<div class="element wysiwyg" data-bsi-element-part="{{textPartIdIntroTopDesktop}}">
+				<p>Desktop text: Schieben Sie die Teilnehmer in der Reihenfolge ihrer Geschwindigkeit und nehmen Sie an unserer Verlosung teil.</p>
+			</div>
+		</div>
+
+		<div class="element-wrapper caption_onimg show_mobile_text">
+			<div class="element wysiwyg" data-bsi-element-part="{{textPartIdIntroTopMobile}}">
+				<p>Mobile text: Schieben Sie die Teilnehmer in der Reihenfolge ihrer Geschwindigkeit und nehmen Sie an unserer Verlosung teil.</p>
+			</div>
+		</div>
+
+		
+		<div class="animal_images BlockLayout BlockLayout--typeFlex">
+			<div class="animal_image1 animal_comun BlockWrapper BlockWrapper--isDropzone draggable-dropzone--occupied" id="animal1">
+				<span class="Block Block--typeHollow">
+					<div class="BlockContent">
+						<a data-bsi-element-part="{{ imagePartIdImage1 }}" style="background-image:url('{{ gameImageSrc1 }}')" class="animal">
+							<img src="{{ gameImageSrc1 }}" class="animal">
+						</a>
+					</div>
+				</span>
+				<span class="Block Block--item1 Block--isDraggable" title="Click to drag" data-zone="1">
+					<div class="BlockContent">
+						<a data-bsi-element-part="{{ imagePartIdImage11 }}" style="background-image:url('{{ gameImageSrc11 }}')" class="animal">
+							<img src="{{ gameImageSrc11 }}" class="animal">
+						</a>
+						<div class="Pattern Pattern--typeHalftone"></div>
+						<div class="Pattern Pattern--typePlaced"></div>
+					</div>
+				</span>
+			</div>
+			<div class="animal_image2 animal_comun BlockWrapper BlockWrapper--isDropzone draggable-dropzone--occupied" id="animal2">
+				<span class="Block Block--typeHollow">
+					<div class="BlockContent">
+						<a data-bsi-element-part="{{ imagePartIdImage2 }}" style="background-image:url('{{ gameImageSrc2 }}')" class="animal">
+							<img src="{{ gameImageSrc2 }}" class="animal">
+						</a>
+					</div>
+				</span>
+				<span class="Block Block--item1 Block--isDraggable" title="Click to drag" data-zone="2">
+					<div class="BlockContent">
+						<a data-bsi-element-part="{{ imagePartIdImage22 }}" style="background-image:url('{{ gameImageSrc22 }}')" class="animal">
+							<img src="{{ gameImageSrc22 }}" class="animal">
+						</a>
+						<div class="Pattern Pattern--typeHalftone"></div>
+						<div class="Pattern Pattern--typePlaced"></div>
+					</div>
+				</span>
+			</div>
+			<div class="animal_image3 animal_comun BlockWrapper BlockWrapper--isDropzone draggable-dropzone--occupied" id="animal3">
+				<span class="Block Block--typeHollow">
+					<div class="BlockContent">
+						<a data-bsi-element-part="{{ imagePartIdImage3 }}" style="background-image:url('{{ gameImageSrc3 }}')" class="animal">
+							<img src="{{ gameImageSrc3 }}" class="animal">
+						</a>
+					</div>
+				</span>
+				<span class="Block Block--item1 Block--isDraggable" title="Click to drag" data-zone="3">
+					<div class="BlockContent">
+						<a data-bsi-element-part="{{ imagePartIdImage33 }}" style="background-image:url('{{ gameImageSrc33 }}')" class="animal">
+							<img src="{{ gameImageSrc33 }}" class="animal">
+						</a>
+						<div class="Pattern Pattern--typeHalftone"></div>
+						<div class="Pattern Pattern--typePlaced"></div>
+					</div>
+				</span>
+			</div>
+			<div class="animal_image4 animal_comun BlockWrapper BlockWrapper--isDropzone draggable-dropzone--occupied" id="animal4">
+				<span class="Block Block--typeHollow">
+					<div class="BlockContent">
+						<a data-bsi-element-part="{{ imagePartIdImage4 }}" style="background-image:url('{{ gameImageSrc4 }}')" class="animal">
+							<img src="{{ gameImageSrc4 }}" class="animal">
+						</a>
+					</div>
+				</span>
+				<span class="Block Block--item1 Block--isDraggable" title="Click to drag" data-zone="4">
+					<div class="BlockContent">
+						<a data-bsi-element-part="{{ imagePartIdImage44 }}" style="background-image:url('{{ gameImageSrc44 }}')" class="animal">
+							<img src="{{ gameImageSrc44 }}" class="animal">
+						</a>
+						<div class="Pattern Pattern--typeHalftone"></div>
+						<div class="Pattern Pattern--typePlaced"></div>
+					</div>
+				</span>
+			</div>
+
+		</div>
+
+
+		<div class="dropp_images_dropzones BlockLayout BlockLayout--typeFlex">
+			<div class="animal_droppzone_image4 animal_drop BlockWrapper BlockWrapper--isDropzone" id="animaldrop4">
+				<div class="Block Block--typeStripes">
+					<span class="BlockContent numbers_opl">4</span>
+				</div>
+			</div>
+			<div class="animal_droppzone_image3 animal_drop BlockWrapper BlockWrapper--isDropzone" id="animaldrop3">
+				<div class="Block Block--typeStripes">
+					<span class="BlockContent numbers_opl">3</span>
+				</div>
+			</div>
+			<div class="animal_droppzone_image2 animal_drop BlockWrapper BlockWrapper--isDropzone" id="animaldrop2">
+				<div class="Block Block--typeStripes">
+					<span class="BlockContent numbers_opl">2</span>
+				</div>
+			</div>
+			<div class="animal_droppzone_image1 animal_drop BlockWrapper BlockWrapper--isDropzone" id="animaldrop1">
+				<div class="Block Block--typeStripes">
+					<span class="BlockContent numbers_opl">1</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="corner_content">
+			<div class="element">
+				<div class="button zuruk_btn">
+					<a href="[link]" data-bsi-element-part="{{ elementPartIdButtonReset }}">zuruecksetzen</a>
+				</div>
+			</div>
+
+			<div class="element wysiwyg textsmall_description" data-bsi-element-part="{{ textPartIdTextSmallDescription }}">
+				<p>
+					At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesenti</p>
+			</div>
+
+			<div class="element">
+				<div class="button toform_btn">
+					<button type="button" class="button_open_form">
+						<a href="[link]" data-bsi-element-part="{{ elementPartIdButtonSendToForm }}">Ihre Antwort abschicken</a>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="form_overlay main_form">
+			<div class="form_container_popup" class="bsi-vertical-align ce-dropzone ce-dropzone-mandatory">
+				<div
+					data-bsi-dropzone="game_form_container" class="outside_form_cont">
+					<!-- -->
+					{% block form_container_dropzone_01a2 %}
+						{% include '../../form-container-game/template.twig' %}
+
+					{% endblock %}
+				</div>
+				<div class="element">
+					<div class="button button_close">
+						<a href="[link]">X</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="form_overlay lose">
+			<div class="element-wrapper general_box ribbon ribbon_box_1">
+				<div class="white_inside_box">
+					<div class="element wysiwyg" data-bsi-element-part="{{ textPartIdTextPfuiPfui }}">
+						<h1>pfui pfui</h1>
+						<p>
+							Leider haben Sie nicht richtig geantwortet.<br/>
+							Sie nehmen totzdem an der Verlosung teil und werden, im Falle eines Gewinns per E-Mail benachrichtigt.</p>
+					</div>
+
+					{# <div class="element"><div class="button button_close"><a href="[link]">X</a></div></div> #}
+				</div>
+			</div>
+		</div>
+
+		<div class="form_overlay win">
+			<div class="element-wrapper general_box ribbon ribbon_box_2">
+				<div class="white_inside_box">
+					<div class="element wysiwyg" data-bsi-element-part="{{ textPartIdTextHuiHui }}">
+						<h1>HUI Hui.</h1>
+						<p>
+							Sie haben YESSSS richtig geantwortet.<br>
+							Sie nehmen  an der Verlosung teil und werden, im Falle eines Gewinns per E-Mail benachrichtigt.</p>
+					</div>
+
+					{# <div class="element"><div class="button button_close"><a href="[link]">X</a></div></div> #}
+				</div>
+			</div>
+		</div>
+
+		<div class="form_overlay thank_you">
+			<div class="element-wrapper general_box ribbon ribbon_box_3">
+				<div class="white_inside_box">
+					<div class="element wysiwyg" data-bsi-element-part="{{ textPartIdTextVielenDank }}">
+						<h4>Deal.</h4>
+						<h1>Vielen Dank {Mister Muster}.</h1>
+						<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa qua</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+</div>
+{% endapply %}

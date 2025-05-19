@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="161px" height="111px" viewBox="0 0 161 111" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 2</title>
+    <g id="Landingpage" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Landingpage_Weihnachten-Glucksrad" transform="translate(-880.000000, -1783.000000)">
+            <g id="Group-2" transform="translate(880.000000, 1783.000000)">
+                <rect id="Rectangle" fill-opacity="0.8" fill="#383838" x="0" y="0" width="161" height="111" rx="12"></rect>
+                <polygon id="Triangle" fill="#FFFFFF" transform="translate(86.500000, 55.500000) rotate(90.000000) translate(-86.500000, -55.500000) " points="86.5 35 110 76 63 76"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

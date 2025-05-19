@@ -1,0 +1,11 @@
+{% macro render(elementId = null) %}{% apply spaceless %}
+    {% deprecated 'The usage of "element.render(...)" is deprecated, use "include ... with {...}" instead. For detailed information, visit: https://github.com/bsi-software/bsi-cx-design-master-template-web/blob/main/MIGRATION_GUIDE.md"' %}
+    {% include './template.twig' %}
+{% endapply %}{% endmacro %}
+
+{% apply spaceless %}
+    {% set spacerElementId = elementId ?: 'spacer-jarY9b' %}
+    {% set spacerSpacingStyle = spacingStyle ?: 'pt-1-5' %}
+
+    <div data-bsi-element="{{ spacerElementId }}" class="{{ 'bsi-element-' ~ spacerElementId }} {{ spacerSpacingStyle }}"></div>
+{% endapply %}

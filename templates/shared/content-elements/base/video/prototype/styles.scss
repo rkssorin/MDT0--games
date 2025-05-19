@@ -1,0 +1,20 @@
+@mixin styles($id: 'video-C4cbKm') {
+  .bsi-element-#{$id} {
+    .responsive-video {
+      padding-bottom: 56.25%;
+      padding-top: 0px;
+      position: relative;
+      height: 0;
+      overflow: hidden;
+
+      iframe {
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        max-height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}

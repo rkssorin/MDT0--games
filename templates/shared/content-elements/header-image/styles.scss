@@ -1,0 +1,3 @@
+@use '../base/banner/prototype/styles.scss' as element;
+
+@include element.styles('header-image-xC4085', bsiProperty('primaryColor', #494949), bsiProperty('secondaryColor', #035970), bsiProperty('darkColor', #000000), bsiProperty('lightColor', #ffffff), bsiProperty('headerImageHeight', 440px));

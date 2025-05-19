@@ -1,0 +1,172 @@
+@import "../../../../styles/properties";
+
+@mixin styles($id: 'card-crRST4', $card-primary-color: $primary, $card-secondary-color: $secondary, $card-tertiary-color: $tertiary, $card-dark: $dark) {
+  .bsi-element-#{$id} {
+    width: 100%;
+
+    .bsi-card-element {
+      display: flex !important;
+      height: 100%;
+    }
+
+    .bsi-card-image > figure {
+      margin-bottom: 0;
+      height: 100%;
+    }
+
+    .bsi-card-image img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      overflow: hidden;
+      @media (max-width: ($md - 1px)) {
+        border-top-left-radius: 0.25rem !important;
+        border-top-right-radius: 0.25rem !important;
+      }
+    }
+
+    @media (min-width: $md) {
+      &.bsi-ratio-2-10.bsi-image-left,
+      &.bsi-ratio-2-10.bsi-image-right {
+        .bsi-card-image {
+          width: 16.66666667%;;
+        }
+
+        .card-body {
+          width: 83.33333333%;
+        }
+      }
+      &.bsi-ratio-3-9.bsi-image-left,
+      &.bsi-ratio-3-9.bsi-image-right {
+        .bsi-card-image {
+          width: 25%;
+        }
+
+        .card-body {
+          width: 75%;
+        }
+      }
+      &.bsi-ratio-4-8.bsi-image-left,
+      &.bsi-ratio-4-8.bsi-image-right {
+        .bsi-card-image {
+          width: 33.33333333%;
+        }
+
+        .card-body {
+          width: 66.66666667%;
+        }
+      }
+      &.bsi-ratio-5-7.bsi-image-left,
+      &.bsi-ratio-5-7.bsi-image-right {
+        .bsi-card-image {
+          width: 41.66666667%;
+        }
+
+        .card-body {
+          width: 58.33333333%;
+        }
+      }
+      &.bsi-ratio-6-6.bsi-image-left,
+      &.bsi-ratio-6-6.bsi-image-right {
+        .bsi-card-image {
+          width: 50%;
+        }
+
+        .card-body {
+          width: 50%;
+        }
+      }
+    }
+
+    &.bsi-image-top {
+      .bsi-card-element {
+        flex-direction: column;
+      }
+
+      .bsi-card-image img {
+        border-top-left-radius: calc(0.25rem - 1px);
+        border-top-right-radius: calc(0.25rem - 1px);
+      }
+    }
+
+    &.bsi-image-bottom {
+      .bsi-card-element {
+        flex-direction: column-reverse;
+      }
+
+      .bsi-card-image img {
+        border-bottom-left-radius: calc(0.25rem - 1px);
+        border-bottom-right-radius: calc(0.25rem - 1px);
+      }
+    }
+
+    &.bsi-image-left {
+      .bsi-card-element {
+        flex-direction: row;
+      }
+
+      .bsi-card-image img {
+        @media (min-width: $md) {
+          border-bottom-left-radius: 0.25rem !important;
+          border-top-left-radius: 0.25rem !important;
+        }
+      }
+    }
+
+    &.bsi-image-right {
+      .bsi-card-element {
+        flex-direction: row-reverse;
+      }
+
+      .bsi-card-image img {
+        @media (min-width: $md) {
+          border-bottom-right-radius: 0.25rem !important;
+          border-top-right-radius: 0.25rem !important;
+        }
+      }
+    }
+
+    &.bsi-shadow-hide {
+      box-shadow: none !important;
+    }
+
+    &.bsi-border-hide {
+      border: none;
+    }
+
+    &.bsi-corner-sharp {
+      border-radius: 0;
+    }
+
+    $heights: (150px, 200px, 250px, 300px, 350px, 400px, 450px, 500px);
+    @each $height in $heights {
+      &.bsi-height-fixed-#{$height} {
+        height: $height;
+      }
+    }
+
+    $colors: ("primary": $card-primary-color, "secondary": $card-secondary-color, "tertiary": $card-tertiary-color, "dark": $card-dark);
+    @for $i from 10 through 100 {
+      @if $i % 10 == 0 {
+        $opacity-percentage: $i*1%;
+        @each $name, $color in $colors {
+          &.bsi-bg-color-#{$name}.bsi-opacity-#{$i} {
+            background-color: mix(white, $color, 100%-$opacity-percentage);
+
+            &.bsi-gradient-to-bottom {
+              background-image: linear-gradient(to bottom, white, mix(white, $color, 100%-$opacity-percentage));
+            }
+
+            &.bsi-gradient-to-top {
+              background-image: linear-gradient(to top, white, mix(white, $color, 100%-$opacity-percentage));
+            }
+
+            &.bsi-gradient-to-bottom-and-top {
+              background-image: linear-gradient(white, mix(white, $color, 100%-$opacity-percentage), white);
+            }
+          }
+        }
+      }
+    }
+  }
+}

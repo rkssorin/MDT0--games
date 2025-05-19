@@ -1,0 +1,46 @@
+{% macro render(elementId = null, partId = null) %}{% apply spaceless %}
+    {% deprecated 'The usage of "element.render(...)" is deprecated, use "include ... with {...}" instead. For detailed information, visit: https://github.com/bsi-software/bsi-cx-design-master-template-web/blob/main/MIGRATION_GUIDE.md"' %}
+    {% include './template.twig' %}
+{% endapply %}{% endmacro %}
+
+{% apply spaceless %}
+    {% set tableElementId = elementId ?: 'table-FuXKu7' %}
+    {% set tablePartId = partId ?: 'table-part-STrydn' %}
+
+    <div x-data="tableElement" data-bsi-element="{{ tableElementId }}" data-bsi-element-part="{{ tablePartId }}" class="{{ 'bsi-element-' ~ tableElementId }} mb-3 bsi-shadow-visible bsi-border-hide bsi-table-secondary bsi-table-mobile">
+        <table x-init="setHeaderTableMobile" class="table table-hover">
+            <colgroup>
+                <col/>
+                <col/>
+                <col/>
+                <col/>
+            </colgroup>
+            <tbody>
+            <tr>
+                <th>#</th>
+                <th>Title 1</th>
+                <th>Title 2</th>
+                <th>Title 3</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Text 1</td>
+                <td>Text 2</td>
+                <td>Text 3</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Text 1</td>
+                <td>Text 2</td>
+                <td>Text 3</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Text 1</td>
+                <td>Text 2</td>
+                <td>Text 3</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endapply %}

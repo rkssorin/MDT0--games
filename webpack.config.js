@@ -28,7 +28,7 @@ const websiteBuildConfig = new BuildConfig()
 	new ModuleConfig()
 	  .withName('main')
 	  .withPath('main.js'));*/
-
+//test
 module.exports = WebpackConfigBuilder.fromConfigs(
 	// websiteBuildConfig.clone()
 	//   .withName('master-template-cx-1.3-website')

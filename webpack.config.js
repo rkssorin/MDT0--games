@@ -47,7 +47,7 @@ module.exports = WebpackConfigBuilder.fromConfigs(
 	//   .withPropertiesFilePath(path.resolve(__dirname, 'properties-de.js')),
 
 	// landingpageBuildConfig.clone().withName("master-template-cx-24.0-landingpage-de").withTargetVersion(Version.CX_24_0).withPropertiesFilePath(path.resolve(__dirname, "properties-de.js")),
-	landingpageBuildConfig.clone().withName("master-template-cx-23.2-landingpage-de").withTargetVersion(Version.CX_23_2).withPropertiesFilePath(path.resolve(__dirname, "properties-de.js"))
+	landingpageBuildConfig.clone().withName("gamification-main-master-template-cx-23.2-landingpage-de").withTargetVersion(Version.CX_23_2).withPropertiesFilePath(path.resolve(__dirname, "properties-de.js"))
 
 	/*landingpageBuildConfig.clone()
 	.withName('master-template-cx-22.0-landingpage-en')

@@ -29,6 +29,8 @@
 
 {% set gameStartSrc = gameStartSrc ?: bsi_cx_asset('../../../static/game-animals/start.svg') %}
 
+{% set textPartIdTrackEventLabel = textPartIdTrackEventLabel ?: 'text-tracker-part-Fjse59' %}
+
 {% set textPartIdWelcomeLabel = textPartIdWelcome ?: 'text-part-Fjse59' %}
 
 
@@ -61,6 +63,8 @@
 			<span class="button_start_text" data-bsi-element-part="{{ textPartIdStartText }}">Spiel starten!</span>
 		</div>
 
+		<div class="track-event" data-bsi-element-part="{{ textPartIdTrackEventLabel }}">[trackEvent]</div>
+		
 		<div class="element-wrapper caption_onimg">
 			<div class="element wysiwyg" data-bsi-element-part="{{textPartIdWelcomeLabel}}">
 				<h1>Wer gewinnt das Highspeed rennen?</h1>

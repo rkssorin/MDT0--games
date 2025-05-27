@@ -104,8 +104,8 @@ module.exports = (
   textPartIdStartText = "text-start-part-4b11",
   textPartLabelStartText = "Start text",
 
-  textPartIdTrackEventLabel = "text-tracker-part-Fjse59",
-  textPartLabelTrackEvent = "Track Event (PLEASE, NEVER EMPTY  «[trackEvent»])",
+  // textPartIdTrackEventLabel = "text-tracker-part-Fjse59",
+  // textPartLabelTrackEvent = "Track Event (PLEASE, NEVER EMPTY  «[trackEvent»])",
   
 
   textPartIdWelcome = "text-part-Fjse59",
@@ -164,9 +164,9 @@ module.exports = (
         .withId(textPartIdStartText)
         .withLabel(textPartLabelStartText),
 
-	  cx.part.plainText
-        .withId(textPartIdTrackEventLabel)
-        .withLabel(textPartLabelTrackEvent),
+	 // cx.part.plainText
+     //   .withId(textPartIdTrackEventLabel)
+       // .withLabel(textPartLabelTrackEvent),
 
       cx.part.formattedText
         .withHtmlEditorConfig(require("../../../configs/editor/full.js"))

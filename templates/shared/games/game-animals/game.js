@@ -18,6 +18,8 @@ Alpine.data("gameElementAnimals", () => ({
 			(e) => {
 				startBtn.classList.add("fadeOut");
 				this.fetchURL(startA.href);
+				this.populateTrackingForm('game-start', 'start-button', new Date().toISOString(), 'click');
+				
 			},
 			{ once: true }
 		);
@@ -118,7 +120,7 @@ Alpine.data("gameElementAnimals", () => ({
 					if (evt.dropzone.dataset.dropzone !== droppableOrigin.originalLocation) {
 						evt.cancel();
 					}
-
+					console.log("placeContainer", grabbedContainer, dropzone);
 					getFinalData();
 					return;
 				}
@@ -277,6 +279,7 @@ Alpine.data("gameElementAnimals", () => ({
 				});
 			};
 			window.placeContainer = function (grabbedContainer, dropzone) {
+				
 				dropzones.forEach(function (dropzone) {
 					if (!dropzone.filled) {
 						dropzone.classList.remove("draggable-dropzone--occupied", "draggable-container-over");
@@ -364,5 +367,37 @@ Alpine.data("gameElementAnimals", () => ({
 				});
 			});
 		}
+	},
+	resetTrackingForm() {
+		this.root.querySelector('.track-event-form').reset();
+	},
+	populateTrackingForm(eventName, eventElement, eventTime, eventType,) {
+		const form = this.root.querySelector('.track-event-form');
+		if (form) {
+			form.querySelector("input[name='eventName']").value = eventName;
+			form.querySelector("input[name='eventElement']").value = eventElement;
+			form.querySelector("input[name='eventTime']").value = eventTime;
+			form.querySelector("input[name='eventType']").value = eventType;
+			this.postData(form.action, new URLSearchParams(new FormData(form)))
+		}
+		
+			
+	},
+	async postData(url = "", data) {
+		// Default options are marked with *
+		const response = await fetch(url, {
+			method: "POST", // *GET, POST, PUT, DELETE, etc.
+			mode: "cors", // no-cors, *cors, same-origin
+			cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: "same-origin", // include, *same-origin, omit
+			headers: {
+				//"Content-Type": "application/json",
+				"Content-Type": "application/x-www-form-urlencoded",
+			},
+			redirect: "follow", // manual, *follow, error
+			referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+			body: data, // body data type must match "Content-Type" header
+		});
+		return response.json(); // parses JSON response into native JavaScript objects
 	},
 }));

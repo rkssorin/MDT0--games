@@ -7,15 +7,84 @@
 {% set formButtonLayout = (formButtonLayout ?: properties.formButtonLayout) ?: 'bsi-form-btn-outline' %}
 
 <div x-data="formElementGame" data-bsi-element="form-container-game-4244" class="bsi-element-form-container-692qIu container mb-3 {{ formWidth }} {{ formLayout }} {{ formBorderRadius }} {{ formLabelPosition }} {{ formColor }} {{ formButtonLayout }} bsi-form-color-default">
+	<div class="track-event">
+		<form method="post" class="track-event-form" id="trackingForm" novalidate data-bsi-element-part="form-container-part-track-event" >
+			<div data-bsi-remove-if="draft">
+				<ul class="text-danger" data-bsi-form-validation="">
+					<li data-bsi-form-validation-item=""></li>
+				</ul>
+			</div>
+			<div data-bsi-dropzone="form-container-dropzone-game-565345">
+				{% block form_container_dropzone_90 %}
+					{% include '../../content-elements/form/form-field/template.twig' 
+						with {
+							formFieldDefaultId: 'eventName',
+							labelText: 'eventName'
+						}
+					%}
+					{% include '../../content-elements/form/form-field/template.twig' 
+						with {
+							formFieldDefaultId: 'eventElement',
+							labelText: 'eventElement'
+						}
+					%}
+					{% include '../../content-elements/form/form-field/template.twig' 
+						with {
+							formFieldDefaultId: 'eventTime',
+							labelText: 'eventTime'
+						}
+					%} 
+					{% include '../../content-elements/form/form-field/template.twig' 
+						with {
+							formFieldDefaultId: 'eventType',
+							labelText: 'eventType'
+						} 	
+					%}
+				{% endblock %}
+			</div>
+			<input type="submit" name="eventSubmit" value='send'>
+		</form>
+	</div>
+
 	<div class="card border-light shadow">
 		<div class="card-body">
 			<form x-init="initFormGame" x-on:submit="submitFormGame" data-bsi-element-part="form-container-part-6eHZEX" id="form" data-bsi-show-form-type-field class="needs-validation" novalidate>
 				<div data-bsi-dropzone="form-container-dropzone-game-5655">
 					{% block form_container_dropzone %}
 						{% include '../../content-elements/base/text/template.twig' %}
-						{% include '../../content-elements/form/multi-column/template.twig' %}
-						{% include '../../content-elements/form/form-field/template.twig' %}
-						{% include '../../content-elements/form/checkbox/template.twig' %}
+						{# {% include '../../content-elements/form/multi-column/template.twig' %} #}
+						{% include '../../content-elements/form/form-field/template.twig' 
+							with {
+								formFieldDefaultId: 'r1',
+								labelText: 'r1'
+
+							}
+						%}
+						{% include '../../content-elements/form/form-field/template.twig' 
+							with {
+								formFieldDefaultId: 'r2',
+								labelText: 'r2'
+							}
+						%}
+						{% include '../../content-elements/form/form-field/template.twig' 
+							with {
+								formFieldDefaultId: 'r3',
+								labelText: 'r3'
+							}
+						%}
+						{% include '../../content-elements/form/form-field/template.twig' 
+							with {
+								formFieldDefaultId: 'Vorname',
+								labelText: 'Vorname'
+							}
+						%}
+						{% include '../../content-elements/form/form-field/template.twig' 
+							with {
+								formFieldDefaultId: 'Nachname',
+								labelText: 'Nachname'
+							}
+						%}
+						{# {% include '../../content-elements/form/checkbox/template.twig' %} #}
 					{% endblock %}
 				</div>
 				<div data-bsi-remove-if="draft">

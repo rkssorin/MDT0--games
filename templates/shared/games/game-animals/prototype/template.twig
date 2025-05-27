@@ -1,4 +1,4 @@
-{% macro render(elementId = null, imagePartIdImage1 = null, imagePartIdImage2 = null, imagePartIdImage3 = null, imageSrcDesktop = null, imgSrcMobile = null, imgSrc1 = null, imgSrc2 = null, imgSrc3 = null, textPartIdWelcome = null, textPartIdIntroTopDesktop = null, textPartIdIntroTopMobile = null, textPartIdTextPfuiPfui = null, textPartIdTextHuiHui = null, textPartIdTextVielenDank = null, elementPartIdButtonReset = null, elementPartIdButtonSendToForm = null, elementPartIdButtonClose2 = null, elementPartIdButtonClose2 = null) %}
+{% macro render(elementId = null, imagePartIdImage1 = null, imagePartIdImage2 = null, imagePartIdImage3 = null, imageSrcDesktop = null, imgSrcMobile = null, imgSrc1 = null, imgSrc2 = null, imgSrc3 = null, textPartIdWelcome = null, textPartIdIntroTopDesktop = null, textPartIdIntroTopMobile = null, textPartIdTextPfuiPfui = null, textPartIdTextHuiHui = null, textPartIdTextVielenDank = null, elementPartIdButtonReset = null, elementPartIdButtonSendToForm = null, elementPartIdButtonClose2 = null, elementPartIdButtonClose2 = null, textPartIdTrackEventLabel = null) %}
 	{% apply spaceless %}
 	{% deprecated 'The usage of "element.render(...)" is deprecated, use "include ... with {...}" instead. For detailed information, visit: https://github.com/bsi-software/bsi-cx-design-master-template-web/blob/main/MIGRATION_GUIDE.md"' %}
 	{% include './template.twig' %}
@@ -77,7 +77,6 @@
 				<p>Desktop text: Schieben Sie die Teilnehmer in der Reihenfolge ihrer Geschwindigkeit und nehmen Sie an unserer Verlosung teil.</p>
 			</div>
 		</div>
-
 		<div class="element-wrapper caption_onimg show_mobile_text">
 			<div class="element wysiwyg" data-bsi-element-part="{{textPartIdIntroTopMobile}}">
 				<p>Mobile text: Schieben Sie die Teilnehmer in der Reihenfolge ihrer Geschwindigkeit und nehmen Sie an unserer Verlosung teil.</p>

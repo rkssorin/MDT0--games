@@ -22,6 +22,9 @@ $bg: bsiProperty('background', 'transparent');
       display: none;
     }
 
+    .track-event{
+      display: none;
+    }
 
     @keyframes pulse {
       0% {
@@ -1009,6 +1012,13 @@ $bg: bsiProperty('background', 'transparent');
 }
 
 .bsi-ce-edit-mode {
+  .bsi-element-form-field-REEhtN:has(input[name=r1]),
+    .bsi-element-form-field-REEhtN:has(input[name=r2]),
+    .bsi-element-form-field-REEhtN:has(input[name=r3]),
+    .bsi-element-form-field-REEhtN:has(input[name=r4]) {
+      width: 50px;
+      display: inline-block !important;
+    }
   .form_overlay.main_form {
     top: auto;
     left: auto;

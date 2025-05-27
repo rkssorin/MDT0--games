@@ -84,6 +84,11 @@ module.exports = (
   textPartIdQuizStart = "title-start-part-4b0a",
   textPartLabelQuizStart = "Start Title",
 
+  textPartIdTrackEventLabel = "text-tracker-part-Fjse59",
+  textPartLabelTrackEvent = "Track Event (PLEASE, NEVER EMPTY  «[trackEvent»])",
+  
+
+
   smallTextPartIdDescription = "text-part-Fjse59",
   smallTextPartLabelDescription = "Small text description",
 
@@ -165,6 +170,11 @@ module.exports = (
       // cx.part.plainText.withId(textPartId).withLabel(textPartLabel),
 
       cx.part.plainText.withId(textPartIdQuizStart).withLabel(textPartLabelQuizStart),
+
+      cx.part.plainText
+        .withId(textPartIdTrackEventLabel)
+        .withLabel(textPartLabelTrackEvent),
+        
       cx.part.formattedText.withHtmlEditorConfig(require("../../../configs/editor/full.js")).withId(smallTextPartIdDescription).withLabel(smallTextPartLabelDescription),
       cx.part.plainText.withId(textPartIdstartButtonText).withLabel(textPartLabelstartButtonText),
       cx.part.plainText.withId(textPartIdQuizQuestion).withLabel(textPartLabelQuizQuestion),

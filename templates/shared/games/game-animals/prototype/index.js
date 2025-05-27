@@ -105,7 +105,7 @@ module.exports = (
   textPartLabelStartText = "Start text",
 
   textPartIdTrackEventLabel = "text-tracker-part-Fjse59",
-  textPartLabelTrackEvent = "Track Event (PLEASE, NEVER EMPTY  «trackEvent»)",
+  textPartLabelTrackEvent = "Track Event (PLEASE, NEVER EMPTY  «[trackEvent»])",
   
 
   textPartIdWelcome = "text-part-Fjse59",

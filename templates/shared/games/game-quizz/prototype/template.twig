@@ -1,4 +1,4 @@
-{% macro render(elementId = null, imagePartIdImage1 = null, imagePartIdImage2 = null, imagePartIdImage3 = null, imagePartIdImage4 = null, imageSrcDesktop = null, imgSrcMobile = null, imgSrc1 = null, imgSrc2 = null, imgSrc3 = null, imgSrc4 = null, textPartIdWelcome = null, textPartIdWelcome = null, textPartIdBadgeText = null, textPartIdIntroTop = null, textPartIdIntroTopDesktop = null, textPartIdIntroTopMobile = null, textPartIdTextSmallDescription = null, textPartIdTextPfuiPfui = null, textPartIdTextHuiHui = null, textPartIdTextVielenDank = null, elementPartIdButtonReset = null, elementPartIdButtonSendToForm = null, elementPartIdButtonClose2 = null, elementPartIdButtonClose2 = null) %}
+{% macro render(elementId = null, imagePartIdImage1 = null, imagePartIdImage2 = null, imagePartIdImage3 = null, imagePartIdImage4 = null, imageSrcDesktop = null, imgSrcMobile = null, imgSrc1 = null, imgSrc2 = null, imgSrc3 = null, imgSrc4 = null, textPartIdWelcome = null, textPartIdWelcome = null, textPartIdBadgeText = null, textPartIdIntroTop = null, textPartIdIntroTopDesktop = null, textPartIdIntroTopMobile = null, textPartIdTextSmallDescription = null, textPartIdTextPfuiPfui = null, textPartIdTextHuiHui = null, textPartIdTextVielenDank = null, elementPartIdButtonReset = null, elementPartIdButtonSendToForm = null, elementPartIdButtonClose2 = null, elementPartIdButtonClose2 = null, textPartIdTrackEventLabel = null) %}
 	{% apply spaceless %}
 	{% deprecated 'The usage of "element.render(...)" is deprecated, use "include ... with {...}" instead. For detailed information, visit: https://github.com/bsi-software/bsi-cx-design-master-template-web/blob/main/MIGRATION_GUIDE.md"' %}
 	{% include './template.twig' %}
@@ -15,6 +15,8 @@
 {% set startButtonText = textPartIdstartButtonText ?: 'title-start-part-4b0a' %}
 {% set quizQuestion = textPartIdQuizQuestion ?: 'title-start-part-4b0a' %}
 {% set formFieldTimeout = formfiledPartIdTimeout ?: 'form-field-wuizz' %}
+
+{% set textPartIdTrackEventLabel = textPartIdTrackEventLabel ?: 'text-tracker-part-Fjse59' %}
 
 {% set htmlPartIdGvr = htmlPartIdGvr ?: 'html-part-OrXIAg' %}
 {% set htmlPartIdGap = htmlPartIdGap ?: 'html-part-OrXIAg' %}
@@ -62,6 +64,10 @@
 								<div class="blue_section_title">
 									<h1 data-bsi-element-part="{{textPartIdQuizStart}}">Starten Sie das Quiz</h1>
 								</div>
+
+								<div class="track-event" data-bsi-element-part="{{ textPartIdTrackEventLabel }}">[trackEvent]</div>
+
+
 								<div class="blue-section-content">
 									<div class="description-text wysiwyg" data-bsi-element-part="{{smallTextPartIdDescription}}" data-bsi-multiline="true">
 										Beantworten Sie die Quizfrage korrekt und nehmen Sie am Gewinnspiel teil. Jede richtige Antwort erhöht Ihre Chancen auf den Hauptpreis.<br/>

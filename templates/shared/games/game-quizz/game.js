@@ -14,9 +14,11 @@ Alpine.data("gameQuiz", () => ({
 			if (days.length > 1) {
 				if (days[0] == days[1]) {
 					formAnswer.submit();
+					this.populateTrackingForm('Abgeschickt', 'submit-button', new Date().toISOString(), 'auto');
 				}
 			}
 		}
+		this.populateTrackingForm('game-init', 'page-load', new Date().toISOString(), 'auto');
 		const isBSIEditMode = window.self !== window.top;
 		const counterSection = this.root.querySelector(".counter_section");
 		if (counterSection && !isBSIEditMode) {
@@ -85,11 +87,13 @@ Alpine.data("gameQuiz", () => ({
 				this.root.querySelector(".game_section_container").classList.add("u-hide");
 				this.root.querySelector("#time-out").classList.remove("u-hide");
 				await postData(postUrl, "timeout=2");
+				this.populateTrackingForm('timeout', 'AnswerTimeout', new Date().toISOString(), 'auto');
 			}
 
 			const handleAnswer = async (radio) => {
 				clearTimeout(timeout);
 				const response = await postData(postUrl, "timeout=0&answers=" + radio.target.value);
+
 				removeListeners();
 				//const responseJson = await response;
 				let answer = response.response;
@@ -99,23 +103,28 @@ Alpine.data("gameQuiz", () => ({
 						const card1 = this.root.querySelector("#success_1");
 						card1.scrollIntoView(true);
 						card1.classList.remove("u-hide");
+						this.populateTrackingForm('Win', 'Answer' + answer, new Date().toISOString(), 'auto');
 						break;
 					case "1":
 						const card2 = this.root.querySelector("#success_2");
 						card2.scrollIntoView(true);
 						card2.classList.remove("u-hide");
+						this.populateTrackingForm('Win', 'Answer' + answer, new Date().toISOString(), 'auto');
 						break;
 					case "3":
 						const card3 = this.root.querySelector("#didnt-win");
 						card3.scrollIntoView(true);
 						card3.classList.remove("u-hide");
+						this.populateTrackingForm('Lose', 'Answer' + answer, new Date().toISOString(), 'auto');
 						break;
 				}
+				this.populateTrackingForm('Response', 'Answer' + answer, new Date().toISOString(), 'click');
 			}
 			let timeout;
 			startTimer.addEventListener(
 				"click",
 				() => {
+					this.populateTrackingForm('Spiel gestartet', 'start-button', new Date().toISOString(), 'click');
 					startTimer.classList.add("disabled");
 					blurredArea.classList.remove("bluruiema");
 					timerLine.id = "loading";
@@ -131,7 +140,18 @@ Alpine.data("gameQuiz", () => ({
 
 		}
 	},
+	populateTrackingForm(eventName, eventElement, eventTime, eventType,) {
+		const form = this.root.querySelector('.track-event-form');
+		if (form) {
+			form.querySelector("input[name='eventName']").value = eventName;
+			form.querySelector("input[name='eventElement']").value = eventElement;
+			form.querySelector("input[name='eventTime']").value = eventTime;
+			form.querySelector("input[name='eventType']").value = eventType;
+			this.postData(form.action, new URLSearchParams(new FormData(form)))
+		}
 
+
+	},
 
 }));
 

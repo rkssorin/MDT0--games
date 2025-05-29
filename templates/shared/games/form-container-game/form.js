@@ -67,6 +67,9 @@ Alpine.data("formElementGame", () => ({
 			if (data) {
 				if (data.response == "1") {
 					display = ".win";
+					this.populateTrackingForm('form-win', 'submit-button', new Date().toISOString(), 'auto');
+				}else{
+					this.populateTrackingForm('form-lose', 'submit-button', new Date().toISOString(), 'auto');
 				}
 			}
 			document.querySelector(display).classList.add("open_game");

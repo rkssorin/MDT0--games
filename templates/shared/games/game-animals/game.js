@@ -37,7 +37,7 @@ Alpine.data("gameElementAnimals", () => ({
 			}
 		};
 		const is_mobile = detectmob();
-		document.querySelectorAll(".button.button_close a").forEach((button) => {
+		this.root.querySelectorAll(".button.button_close a").forEach((button) => {
 			button.addEventListener("click", (e) => {
 				e.preventDefault();
 				let parent = button.closest(".form_overlay");
@@ -46,6 +46,7 @@ Alpine.data("gameElementAnimals", () => ({
 					document.body.style.overflow = "hidden";
 				}
 				parent.classList.remove("open_game");
+				this.populateTrackingForm('close-form', 'close-button', new Date().toISOString(), 'click');
 			});
 		});
 		this.root.querySelector(".toform_btn .button_open_form").addEventListener("click", (e) => {

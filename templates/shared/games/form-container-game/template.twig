@@ -48,7 +48,7 @@
 
 	<div class="card border-light shadow">
 		<div class="card-body">
-			<form x-init="initFormGame" x-on:submit="submitFormGame" data-bsi-element-part="form-container-part-6eHZEX" id="form" data-bsi-show-form-type-field class="needs-validation" novalidate>
+			<form x-init="initFormGame" x-on:submit="submitFormGame" x-on:reset="resetFormGame" data-bsi-element-part="form-container-part-6eHZEX" id="form" data-bsi-show-form-type-field class="needs-validation" novalidate>
 				<div data-bsi-dropzone="form-container-dropzone-game-5655">
 					{% block form_container_dropzone %}
 						{% include '../../content-elements/base/text/template.twig' %}

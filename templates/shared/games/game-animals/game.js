@@ -3,23 +3,26 @@ import { Draggable, Sortable, Droppable, Swappable } from "@shopify/draggable";
 Alpine.data("gameElementAnimals", () => ({
 	root: null,
 	h2: null,
+	dropped: false,
 
 	initGame() {
 		this.root = this.$root;
 		this.h2 = this.$el;
+
 
 		const startBtn = this.root.querySelector("#start_btn");
 		const startA = startBtn.querySelector("a");
 		this.fetchURL = function (url) {
 			const response = fetch(url);
 		};
+		this.populateTrackingForm('game-init', 'page-load', new Date().toISOString(), 'auto-load');
 		startBtn.addEventListener(
 			"click",
 			(e) => {
 				startBtn.classList.add("fadeOut");
 				this.fetchURL(startA.href);
 				this.populateTrackingForm('game-start', 'start-button', new Date().toISOString(), 'click');
-				
+
 			},
 			{ once: true }
 		);
@@ -45,9 +48,10 @@ Alpine.data("gameElementAnimals", () => ({
 				parent.classList.remove("open_game");
 			});
 		});
-		document.querySelector(".toform_btn .button_open_form").addEventListener("click", (e) => {
+		this.root.querySelector(".toform_btn .button_open_form").addEventListener("click", (e) => {
 			e.preventDefault();
 			document.querySelector(".main_form").classList.add("open_game");
+			this.populateTrackingForm('open-form', 'open-form-button', new Date().toISOString(), 'click');
 		});
 
 		const containers = document.querySelectorAll(".animal_images .animal_comun");
@@ -116,11 +120,12 @@ Alpine.data("gameElementAnimals", () => ({
 			});
 
 			droppable.on("droppable:dropped", (evt) => {
+
 				if (!evt.dropzone.isOriginalDropzone) {
 					if (evt.dropzone.dataset.dropzone !== droppableOrigin.originalLocation) {
 						evt.cancel();
 					}
-					console.log("placeContainer", grabbedContainer, dropzone);
+
 					getFinalData();
 					return;
 				}
@@ -133,10 +138,12 @@ Alpine.data("gameElementAnimals", () => ({
 				}
 			});
 			droppable.on("droppable:stop", (evt) => {
+
 				if (!evt.dropzone.isOriginalDropzone) {
 					if (evt.dropzone.dataset.dropzone !== droppableOrigin.originalLocation) {
 						evt.cancel();
 					}
+
 					droppableOrigin.originalLocation = 0;
 					getFinalData();
 					return;
@@ -149,7 +156,11 @@ Alpine.data("gameElementAnimals", () => ({
 					return;
 				}
 				evt.dropzone.dataset.originalLocation = droppableOrigin.dropzone;
-
+				if (!this.dropped) {
+					//user is capable of droppign element in the right place
+					this.dropped = true;
+					this.populateTrackingForm('image-dropped', 'animal-image', new Date().toISOString(), 'drop');
+				}
 				getFinalData();
 			});
 			droppable.on("droppable:returned", (evt) => {
@@ -160,6 +171,7 @@ Alpine.data("gameElementAnimals", () => ({
 			document.querySelector(".button.zuruk_btn").addEventListener("click", (e) => {
 				e.preventDefault();
 				finalData = [];
+				this.populateTrackingForm('reset-game', 'zuruk-button', new Date().toISOString(), 'click');
 				let dragElements = droppable.getDraggableElements();
 				dragElements.forEach((element) => {
 					containers.forEach((container) => {
@@ -227,7 +239,11 @@ Alpine.data("gameElementAnimals", () => ({
 						return;
 					}
 					evt.dropzone.dataset.originalLocation = droppableOrigin.dropzone;
-
+					if (!this.dropped) {
+						//user is capable of droppign element in the right place
+						this.dropped = true;
+						this.populateTrackingForm('image-dropped', 'animal-image', new Date().toISOString(), 'drop');
+					}
 					getFinalData();
 				});
 				droppable.on("droppable:returned", (evt) => {
@@ -279,7 +295,7 @@ Alpine.data("gameElementAnimals", () => ({
 				});
 			};
 			window.placeContainer = function (grabbedContainer, dropzone) {
-				
+
 				dropzones.forEach(function (dropzone) {
 					if (!dropzone.filled) {
 						dropzone.classList.remove("draggable-dropzone--occupied", "draggable-container-over");
@@ -380,8 +396,8 @@ Alpine.data("gameElementAnimals", () => ({
 			form.querySelector("input[name='eventType']").value = eventType;
 			this.postData(form.action, new URLSearchParams(new FormData(form)))
 		}
-		
-			
+
+
 	},
 	async postData(url = "", data) {
 		// Default options are marked with *

@@ -85,6 +85,7 @@ $xxl: bsiProperty('gridBreakpointXXL', 1400px);
     .container, .container-slim {
         padding-right: calc(var(--bs-gutter-x)* 1.25);
         padding-left: calc(var(--bs-gutter-x)* 1.25);
+        max-width: 100%;
     }
 }
 // Customize colors

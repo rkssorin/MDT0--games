@@ -9,7 +9,7 @@ Alpine.data("gameElementCX", () => ({
 	initGame() {
 		this.root = this.$root;
 		this.h2 = this.$el;
-		_this = this;
+		const _this = this;
 		const wheel = this.root.querySelector("#fortune-wheel");
 
 		function easeInOutCubic(x) {

@@ -17,18 +17,19 @@ Alpine.data("formFieldBet", () => ({
         let quantiInvitatiMin = parseInt(self.querySelector("input").getAttribute("min")) || 0;
         let quantiInvitatiMax = parseInt(self.querySelector("input").getAttribute("max")) || 99;
         self.querySelector("input").value = Math.min(quantiInvitatiMax, Math.max(quantiInvitatiMin, quantiInvitati + op));
+         self.querySelector("input").dispatchEvent(new Event('change', { bubbles: true }));
         self.querySelectorAll(".score-modifier").forEach((e) => {
           e.classList.remove("disabled");
         });
         if (self.querySelector("input").value == quantiInvitatiMin) {
           element.classList.add("disabled");
         }
-      });
-      this.divEl.querySelector(".bsi-form-field-input").addEventListener("change", (e) => {
-        this.populateTrackingForm('Bet score modified ' + e.target.id, 'score-modifier', new Date().toISOString(), 'click');
-      }, { once: true });
+      });     
       
     });
+    this.divEl.querySelector(".bsi-form-field-input").addEventListener("change", (e) => {
+        this.populateTrackingForm('Bet score modified ' + e.target.id, 'score-modifier', new Date().toISOString(), 'click');
+      }, { once: true });
   },
   populateTrackingForm(eventName, eventElement, eventTime, eventType,) {
     const form = document.querySelector('.track-event-form');

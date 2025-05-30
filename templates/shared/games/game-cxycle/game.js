@@ -9,6 +9,7 @@ Alpine.data("gameElementCX", () => ({
 	initGame() {
 		this.root = this.$root;
 		this.h2 = this.$el;
+		_this = this;
 		const wheel = this.root.querySelector("#fortune-wheel");
 
 		function easeInOutCubic(x) {
@@ -60,7 +61,7 @@ Alpine.data("gameElementCX", () => ({
 						animate(wheel, 5000, 360 * 10 - 72 * (winner - 1), 3, function () {
 							wheel.querySelector(":nth-child(" + (winner + 1) + ")").classList.add("redish");
 							setTimeout(() => {
-								this.root.querySelector("#ribbon_box_" + winner).classList.add("fadeIn");
+								_this.root.querySelector("#ribbon_box_" + winner).classList.add("fadeIn");
 								wheelTitle2.classList.add("fadeIn");
 								wheelContainer.classList.add("fadeOut");
 								indicatorWheel.classList.remove("fadeIn");

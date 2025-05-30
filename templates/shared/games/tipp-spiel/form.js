@@ -38,10 +38,14 @@ Alpine.data('formElement', () => ({
       this._validateTelInput();
       this._validateRadioInput();
     }
+    
     this.form.classList.add('was-validated');
-    homeValue = this.form.querySelector('.hometeams-score').value;
-    visitorValue = this.form.querySelector('.visitors-score').value;
+    const homeValue = this.form.querySelector('.hometeams-score').value;
+    const visitorValue = this.form.querySelector('.visitors-score').value;
     this.populateTrackingForm('Score submited ' + homeValue + ' - ' + visitorValue, 'submit-button', new Date().toISOString(), 'click');
+    // e.preventDefault();
+    // this.form.submit();
+    
   },
   resetTrackingForm() {
     this.root.querySelector('.track-event-form').reset();

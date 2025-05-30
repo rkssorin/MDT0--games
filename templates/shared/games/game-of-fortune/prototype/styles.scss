@@ -26,6 +26,9 @@ $bg: bsiProperty('background', 'transparent');
       margin-left: 25%;
       transform: translateX(-12%);
     }
+    .track-event{
+      display: none;
+    }
 
     .container_machine {
       width: 1200px;

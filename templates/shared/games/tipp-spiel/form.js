@@ -40,7 +40,21 @@ Alpine.data('formElement', () => ({
     }
     this.form.classList.add('was-validated');
   },
+resetTrackingForm() {
+		this.root.querySelector('.track-event-form').reset();
+	},
+	populateTrackingForm(eventName, eventElement, eventTime, eventType,) {
+		const form = this.root.querySelector('.track-event-form');
+		if (form) {
+			form.querySelector("input[name='eventName']").value = eventName;
+			form.querySelector("input[name='eventElement']").value = eventElement;
+			form.querySelector("input[name='eventTime']").value = eventTime;
+			form.querySelector("input[name='eventType']").value = eventType;
+			this.postData(form.action, new URLSearchParams(new FormData(form)))
+		}
 
+
+	},
   _initFloatingLabels(floatingElement) {
     let input = floatingElement.querySelector('.form-control');
     let label = floatingElement.querySelector('.form-label');

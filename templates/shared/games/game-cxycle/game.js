@@ -12,6 +12,8 @@ Alpine.data("gameElementCX", () => ({
 		const _this = this;
 		const wheel = this.root.querySelector("#fortune-wheel");
 
+		this.populateTrackingForm('Visited', 'visited', new Date().toISOString(), 'auto');
+
 		function easeInOutCubic(x) {
 			return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
 		}
@@ -51,6 +53,7 @@ Alpine.data("gameElementCX", () => ({
 				function changeContent() {
 					const Http = new XMLHttpRequest();
 					if (typeof GaP != "undefined") {
+						_this.populateTrackingForm('Spiel gestartet', 'start-button', new Date().toISOString(), 'click');
 						const url = GaP;
 						//XHR
 						Http.open("GET", url);
@@ -66,6 +69,7 @@ Alpine.data("gameElementCX", () => ({
 								wheelContainer.classList.add("fadeOut");
 								indicatorWheel.classList.remove("fadeIn");
 								indicatorWheel.classList.add("fadeOut");
+								_this.populateTrackingForm('Played', 'landed ' + winner, new Date().toISOString(), 'auto');
 							}, 2000);
 						});
 					}
@@ -91,6 +95,7 @@ Alpine.data("gameElementCX", () => ({
 					allWhite.forEach((box) => {
 						box.classList.add("fadeOut");
 					});
+					_this.populateTrackingForm('Weiter clicked', 'ribbon-link', new Date().toISOString(), 'click');
 				})
 			);
 
@@ -125,6 +130,35 @@ Alpine.data("gameElementCX", () => ({
 			}
 		}
 	},
+	populateTrackingForm(eventName, eventElement, eventTime, eventType,) {
+		const form = this.root.querySelector('.track-event-form');
+		if (form) {
+			form.querySelector("input[name='eventName']").value = eventName;
+			form.querySelector("input[name='eventElement']").value = eventElement;
+			form.querySelector("input[name='eventTime']").value = eventTime;
+			form.querySelector("input[name='eventType']").value = eventType;
+			this.postData(form.action, new URLSearchParams(new FormData(form)))
+		}
+
+
+	},
+	async postData(url = "", data) {
+		// Default options are marked with *
+		const response = await fetch(url, {
+			method: "POST", // *GET, POST, PUT, DELETE, etc.
+			mode: "cors", // no-cors, *cors, same-origin
+			cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+			credentials: "same-origin", // include, *same-origin, omit
+			headers: {
+				//"Content-Type": "application/json",
+				"Content-Type": "application/x-www-form-urlencoded",
+			},
+			redirect: "follow", // manual, *follow, error
+			referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+			body: data, // body data type must match "Content-Type" header
+		});
+		return response.json(); // parses JSON response into native JavaScript objects
+	}
 
 }))
 

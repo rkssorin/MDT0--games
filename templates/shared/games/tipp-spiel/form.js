@@ -39,6 +39,9 @@ Alpine.data('formElement', () => ({
       this._validateRadioInput();
     }
     this.form.classList.add('was-validated');
+    homeValue = this.form.querySelector('.hometeams-score').value;
+    visitorValue = this.form.querySelector('.visitors-score').value;
+    this.populateTrackingForm('Score submited ' + homeValue + ' - ' + visitorValue, 'submit-button', new Date().toISOString(), 'click');
   },
   resetTrackingForm() {
     this.root.querySelector('.track-event-form').reset();

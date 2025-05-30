@@ -91,11 +91,12 @@ Alpine.data("gameElementCX", () => ({
 			ribbonLinks.forEach((a) =>
 				a.addEventListener("click", function (e) {
 					//e.preventDefault();
-					allWhite = this.root.querySelectorAll(".white_inside_box");
+					const allWhite = _this.root.querySelectorAll(".white_inside_box");
 					allWhite.forEach((box) => {
 						box.classList.add("fadeOut");
 					});
 					_this.populateTrackingForm('Weiter clicked', 'ribbon-link', new Date().toISOString(), 'click');
+					//window.open(a.href, "_self", 'noopener noreferrer');
 				})
 			);
 

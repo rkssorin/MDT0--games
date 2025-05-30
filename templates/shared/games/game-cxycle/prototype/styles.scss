@@ -467,6 +467,30 @@ height: 584px; */
       top: 30%;
     }
 
+    
+
+    .ribbon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      max-width: 1140px;
+      // max-height: 1067px;
+      height: 100%;
+
+      padding: 50px;
+      border-radius: 20px;
+      filter: drop-shadow(0 15px 30px rgba(221, 141, 141, 0.35));
+      background: rgb(197, 41, 155);
+      // background: linear-gradient(135deg, rgba(197,41,155,1) 0%, rgba(222,160,43,1) 100%);
+      background: linear-gradient(129.44deg, #936C6C 0%, #B1A892 100%);
+
+    }
+
     .white_inside_box .button {
       display: inline-block;
     }

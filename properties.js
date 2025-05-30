@@ -20,7 +20,7 @@ module.exports = {
 
 	// Elements using primaryFontFamily: all elements that do not explicitly have another font assigned to them
 	// To change the font family of the following elements, please scroll down and adjust it there: title H1-H3, text
-	primaryFontFamily: "BMWTypeNext Pro, Arial, sans‑serif",
+	primaryFontFamily: "Montserrat, Arial, sans‑serif",
 
 	/* ============================================================= */
 	/*	                      Grid breakpoint	                       */
@@ -149,9 +149,9 @@ module.exports = {
 	titleH3Text: "",
 
 	/* --------------------- Title font family --------------------- */
-	titleH1FontFamily: "BMWTypeNext Condensed Pro, Arial, sans‑serif",
-	titleH2FontFamily: "BMWTypeNext Condensed Pro, Arial, sans‑serif",
-	titleH3FontFamily: "BMWTypeNext Condensed Pro, Arial, sans‑serif",
+	titleH1FontFamily: "Montserrat, Arial, sans‑serif",
+	titleH2FontFamily: "Montserrat, Arial, sans‑serif",
+	titleH3FontFamily: "Montserrat, Arial, sans‑serif",
 
 	/* ---------------------- Title font size ---------------------- */
 	titleH1FontSize: "2.8rem",
@@ -194,7 +194,7 @@ module.exports = {
 	textContent: "",
 
 	/* --------------------- Text font family --------------------- */
-	textFontFamily: "BMWTypeNext Pro, Arial, sans‑serif",
+	textFontFamily: "Montserrat, Arial, sans‑serif",
 
 	/* ------------------------ Text color ------------------------ */
 	textColor: css.color("#494949"),

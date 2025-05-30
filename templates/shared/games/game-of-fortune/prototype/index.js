@@ -122,6 +122,11 @@ module.exports = (
 		.withStyleConfigs()
 
 		.withParts(
+			
+			cx.part.form
+			.withId("form-container-part-track-event")
+			.withLabel("Formular Track Event"),
+
 			// cx.part.image.withId(imagePartId).withLabel(imagePartLabel),
 			// cx.part.plainText.withId(textPartId).withLabel(textPartLabel),
 

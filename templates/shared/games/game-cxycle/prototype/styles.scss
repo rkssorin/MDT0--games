@@ -17,6 +17,9 @@ $bg: bsiProperty('background', 'transparent');
         opacity: 0;
       }
     }
+    .track-event{
+      display: none;
+    }
 
     .fadeOut {
       visibility: hidden !important;

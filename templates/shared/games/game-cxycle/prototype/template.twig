@@ -58,6 +58,44 @@
 
 <div x-data="gameElementCX" x-init="initGame" class=" image bild-fixe-breite-responsive bild_caption_button game_of_fortune bsi-element-{{gameElementId}}" data-bsi-element="{{gameElementId}}">
 
+	<div class="track-event">
+		<form method="post" class="track-event-form" id="trackingForm" novalidate data-bsi-element-part="form-container-part-track-event">
+			<div data-bsi-remove-if="draft">
+				<ul class="text-danger" data-bsi-form-validation="">
+					<li data-bsi-form-validation-item=""></li>
+				</ul>
+			</div>
+			<div data-bsi-dropzone="form-container-dropzone-game-565345">
+				{% block form_container_dropzone_90 %}
+					{% include '../../../content-elements/form/form-field/template.twig' 
+					with {
+						formFieldDefaultId: 'eventName',
+						labelText: 'eventName'
+					}
+				%}
+					{% include '../../../content-elements/form/form-field/template.twig' 
+					with {
+						formFieldDefaultId: 'eventElement',
+						labelText: 'eventElement'
+					}
+				%}
+					{% include '../../../content-elements/form/form-field/template.twig' 
+					with {
+						formFieldDefaultId: 'eventTime',
+						labelText: 'eventTime'
+					}
+				%}
+					{% include '../../../content-elements/form/form-field/template.twig' 
+					with {
+						formFieldDefaultId: 'eventType',
+						labelText: 'eventType'
+					} 	
+				%}
+				{% endblock %}
+			</div>
+			<input type="submit" name="eventSubmit" value='send'>
+		</form>
+	</div>
 
 	<div class="row image-wrapper">
 		<img data-bsi-element-part="{{imagePartIdImage1}}" src="{{gameImageHeaderDesktop}}" class="header-desktop" alt="">

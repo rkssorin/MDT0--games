@@ -62,7 +62,7 @@
 {% set smallTextPartIdDescription = smallTextPartIdDescription ?: 'text-part-Fjse59' %}
 
 
-	<div x-data="gameElement" x-init="initGame" class="image bild-fixe-breite-responsive bild_caption_button game_of_fortune bsi-element-{{gameElementId}}" data-bsi-element="{{gameElementId}}"> <div class="row image-wrapper">
+	<div x-data="gameElementFortune" x-init="initGame" class="image bild-fixe-breite-responsive bild_caption_button game_of_fortune bsi-element-{{gameElementId}}" data-bsi-element="{{gameElementId}}"> <div class="row image-wrapper">
 
 		<audio id="audioWin" class="u-hide">
 			<source src=" {{audioWinSrc}} " type="audio/ogg">

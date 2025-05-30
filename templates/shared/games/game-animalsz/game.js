@@ -1,6 +1,6 @@
 import Alpine from '@alpinejs/csp';
 import { Draggable, Sortable, Droppable, Swappable } from "@shopify/draggable";
-Alpine.data("gameElement", () => ({
+Alpine.data("gameElementSZ", () => ({
 	root: null,
 	h2: null,
 

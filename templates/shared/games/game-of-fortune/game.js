@@ -1,7 +1,7 @@
 import Alpine from "@alpinejs/csp";
 
 
-Alpine.data("gameElement", () => ({
+Alpine.data("gameElementFortune", () => ({
 	root: null,
 	h2: null,
 

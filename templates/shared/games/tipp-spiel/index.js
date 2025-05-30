@@ -26,11 +26,14 @@ element
 		require("../../configs/styles/form-btn-alignment")
 	)
 	.withParts(
-
-		
 		cx.part.form
-			.withId("tipp-spiel-part-6eHZEX")
+			.withId("form-container-part-track-event")
 			/*.withLabel('Form'))*/
+			.withLabel("Formular Track Event"),
+			
+		cx.part.form
+			/*.withLabel('Form'))*/
+			.withId("tipp-spiel-part-6eHZEX")
 			.withLabel("Formular")
 	)
 	.withDropzones(

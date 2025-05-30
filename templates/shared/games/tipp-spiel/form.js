@@ -8,15 +8,15 @@ Alpine.data('formElement', () => ({
   initForm() {
     this.form = this.$el;
     this.root = this.$root;
-
+    this.populateTrackingForm('Visited', 'page-load', new Date().toISOString(), 'auto');
     if (this.root.classList.contains('bsi-form-label-floating')) {
-      for(const floatingElement of this.form.getElementsByClassName('bsi-label-floating-element')) {
+      for (const floatingElement of this.form.getElementsByClassName('bsi-label-floating-element')) {
         this._initFloatingLabels(floatingElement);
       }
     }
 
     if (this.root.classList.contains('bsi-form-info-as-tooltip')
-        && ['bsi-form-label-top', 'bsi-form-label-left'].some(labelClass => this.root.classList.contains(labelClass))) {
+      && ['bsi-form-label-top', 'bsi-form-label-left'].some(labelClass => this.root.classList.contains(labelClass))) {
       this.form.querySelectorAll('.bsi-form-element').forEach((formElement) => {
         let infoTextField = formElement.querySelector('.form-text');
         let tooltipIcon = formElement.querySelector('i');
@@ -40,21 +40,21 @@ Alpine.data('formElement', () => ({
     }
     this.form.classList.add('was-validated');
   },
-resetTrackingForm() {
-		this.root.querySelector('.track-event-form').reset();
-	},
-	populateTrackingForm(eventName, eventElement, eventTime, eventType,) {
-		const form = this.root.querySelector('.track-event-form');
-		if (form) {
-			form.querySelector("input[name='eventName']").value = eventName;
-			form.querySelector("input[name='eventElement']").value = eventElement;
-			form.querySelector("input[name='eventTime']").value = eventTime;
-			form.querySelector("input[name='eventType']").value = eventType;
-			this.postData(form.action, new URLSearchParams(new FormData(form)))
-		}
+  resetTrackingForm() {
+    this.root.querySelector('.track-event-form').reset();
+  },
+  populateTrackingForm(eventName, eventElement, eventTime, eventType,) {
+    const form = this.root.querySelector('.track-event-form');
+    if (form) {
+      form.querySelector("input[name='eventName']").value = eventName;
+      form.querySelector("input[name='eventElement']").value = eventElement;
+      form.querySelector("input[name='eventTime']").value = eventTime;
+      form.querySelector("input[name='eventType']").value = eventType;
+      this.postData(form.action, new URLSearchParams(new FormData(form)))
+    }
 
 
-	},
+  },
   _initFloatingLabels(floatingElement) {
     let input = floatingElement.querySelector('.form-control');
     let label = floatingElement.querySelector('.form-label');
@@ -122,4 +122,33 @@ resetTrackingForm() {
       }
     }
   },
+  populateTrackingForm(eventName, eventElement, eventTime, eventType,) {
+    const form = this.root.querySelector('.track-event-form');
+    if (form) {
+      form.querySelector("input[name='eventName']").value = eventName;
+      form.querySelector("input[name='eventElement']").value = eventElement;
+      form.querySelector("input[name='eventTime']").value = eventTime;
+      form.querySelector("input[name='eventType']").value = eventType;
+      this.postData(form.action, new URLSearchParams(new FormData(form)))
+    }
+
+
+  },
+  async postData(url = "", data) {
+    // Default options are marked with *
+    const response = await fetch(url, {
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, *cors, same-origin
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: "same-origin", // include, *same-origin, omit
+      headers: {
+        //"Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      redirect: "follow", // manual, *follow, error
+      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: data, // body data type must match "Content-Type" header
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
+  }
 }))

@@ -6,6 +6,7 @@ Alpine.data("gameElement", () => ({
 	h2: null,
 
 	initGame() {
+		
 		this.root = this.$root;
 		this.h2 = this.$el;
 		this.populateTrackingForm('Visited', 'page-load', new Date().toISOString(), 'auto');
@@ -156,7 +157,7 @@ Alpine.data("gameElement", () => ({
 			}
 			turnOnGlow() {
 				console.log('you win');
-				this.populateTrackingForm('Win', 'win-spin', new Date().toISOString(), 'auto');
+				_this.populateTrackingForm('Win', 'win-spin', new Date().toISOString(), 'auto');
 				for (let bar of glowBar) {
 					bar.classList.add('flux_fast');
 				}
@@ -167,7 +168,7 @@ Alpine.data("gameElement", () => ({
 			}
 			glowLose() {
 				console.log('you lost');
-				this.populateTrackingForm('Lose', 'lose-spin', new Date().toISOString(), 'auto');
+				_this.populateTrackingForm('Lose', 'lose-spin', new Date().toISOString(), 'auto');
 				this.spinningGlow(false);
 				for (let bar of glowBar) {
 					bar.classList.add('flux_dark');
@@ -206,7 +207,7 @@ Alpine.data("gameElement", () => ({
 			}
 			afterRun() {
 				completed = true;
-				this.populateTrackingForm('Spiel gestartet', 'spin-handle', new Date().toISOString(), 'click');
+				_this.populateTrackingForm('Spiel gestartet', 'spin-handle', new Date().toISOString(), 'click');
 				var results = [], win = true;
 				this.colArrDone = [];
 				for (var i = 0; i < this.options.colNum; i++) {
@@ -571,7 +572,7 @@ Alpine.data("gameElement", () => ({
 			});
 		}
 	},
-	populateTrackingForm(eventName, eventElement, eventTime, eventType,) {
+	populateTrackingForm(eventName, eventElement, eventTime, eventType) {
 		const form = this.root.querySelector('.track-event-form');
 		if (form) {
 			form.querySelector("input[name='eventName']").value = eventName;
